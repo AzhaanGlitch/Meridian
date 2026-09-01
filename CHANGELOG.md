@@ -9,3 +9,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:50:42]` UI: ensure custom node tooltip preview when hovering over blocked steps and ensure smooth state transitions without visual layout shifts
 - `[10:17:36]` Feat: improve Android splash screen exit animation and window background theme and persist user preferences to local storage seamlessly
 - `[10:38:54]` Refactor: enhance Mongoose pre-save hook for sanitizing child card references and improve frame rate and eliminate micro-stutters during heavy animations
+- `[11:01:15]` Enhance keyboard navigation shortcuts for panning and centering flowchart canvas to streamline component props and clean up legacy utility helpers
