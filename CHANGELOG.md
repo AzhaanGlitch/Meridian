@@ -35,3 +35,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:13:56]` Tune canvas background grid dot alignment and subtle dark mode styling to ensure smooth state transitions without visual layout shifts
 - `[20:38:52]` Tune goal archive view and soft-delete restoration workflow
 - `[21:05:37]` Improve goal status transitions and completion celebration particle effect
+- `[21:27:38]` Feat: clean up Android splash screen exit animation and window background theme and prevent unnecessary re-renders with memoization and useCallback hooks
