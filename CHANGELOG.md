@@ -34,3 +34,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:51:25]` Add card flip 3D perspective angle and glare gradient opacity to persist user preferences to local storage seamlessly
 - `[20:13:56]` Tune canvas background grid dot alignment and subtle dark mode styling to ensure smooth state transitions without visual layout shifts
 - `[20:38:52]` Tune goal archive view and soft-delete restoration workflow
+- `[21:05:37]` Improve goal status transitions and completion celebration particle effect
