@@ -37,3 +37,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:05:37]` Improve goal status transitions and completion celebration particle effect
 - `[21:27:38]` Feat: clean up Android splash screen exit animation and window background theme and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[21:51:11]` Feat: ensure staggered entrance transitions for sticky note goal cards and persist user preferences to local storage seamlessly
+- `[22:13:24]` Fix: fix arrowhead markers and bidirectional edges in flowchart canvas and streamline component props and clean up legacy utility helpers
