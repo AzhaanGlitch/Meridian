@@ -17,3 +17,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:02:33]` UI: optimize empty state illustrations and helper tips on goals dashboard and provide user-friendly fallback messaging on network timeouts
 - `[13:25:48]` Support goal archive view and soft-delete restoration workflow to ensure smooth state transitions without visual layout shifts
 - `[13:50:39]` Enhance toast notification queue for background auto-save status
+- `[14:14:53]` Optimize flowchart multi-node selection box and batch dragging logic to add defensive checks against null and undefined payload keys
