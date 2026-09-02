@@ -57,3 +57,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:42:15]` UI: enhance hover state scaling and transition curves on action toolbars and improve frame rate and eliminate micro-stutters during heavy animations
 - `[15:05:25]` Update structured JSON logging for incoming API requests and response latency
 - `[15:30:39]` Optimize export flowchart high-res PNG canvas scale factor
+- `[15:57:16]` Refactor: fix goal search query debouncing and fuzzy matching highlight and ensure smooth state transitions without visual layout shifts
