@@ -50,3 +50,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:46:23]` Enhance flowchart multi-node selection box and batch dragging logic
 - `[12:11:26]` Tune fluid typography scale across ultra-wide and mobile viewports
 - `[12:37:52]` Fix: tweak service worker cache invalidation on new deployment release and ensure backward compatibility with existing saved layouts
+- `[12:58:47]` Style: tweak flowchart multi-node selection box and batch dragging logic and streamline component props and clean up legacy utility helpers
