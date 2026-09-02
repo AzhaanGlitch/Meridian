@@ -47,3 +47,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:32:38]` Fix: refactor Android WebView bridge interface for native gesture dispatching and ensure backward compatibility with existing saved layouts
 - `[10:53:38]` Clean up keyboard navigation shortcuts for panning and centering flowchart canvas
 - `[11:22:10]` Fix card flip 3D perspective angle and glare gradient opacity
+- `[11:46:23]` Enhance flowchart multi-node selection box and batch dragging logic
