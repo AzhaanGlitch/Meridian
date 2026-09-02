@@ -60,3 +60,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:57:16]` Refactor: fix goal search query debouncing and fuzzy matching highlight and ensure smooth state transitions without visual layout shifts
 - `[16:18:25]` Optimize fluid typography scale across ultra-wide and mobile viewports
 - `[16:47:55]` Update smooth Bezier curves and connection handle snapping in flowchart to provide user-friendly fallback messaging on network timeouts
+- `[17:10:52]` Feat: fix goal priority flag indicators and custom sorting filters and improve frame rate and eliminate micro-stutters during heavy animations
