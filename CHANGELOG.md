@@ -39,3 +39,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:51:11]` Feat: ensure staggered entrance transitions for sticky note goal cards and persist user preferences to local storage seamlessly
 - `[22:13:24]` Fix: fix arrowhead markers and bidirectional edges in flowchart canvas and streamline component props and clean up legacy utility helpers
 - `[22:39:52]` Style: tune goal search query debouncing and fuzzy matching highlight and ensure smooth state transitions without visual layout shifts
+
+### September 02, 2026 (Wednesday)
+- `[09:16:36]` Improve keyboard navigation shortcuts for panning and centering flowchart canvas
