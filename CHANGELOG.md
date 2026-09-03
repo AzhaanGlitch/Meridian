@@ -105,3 +105,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:00:32]` Update batch update endpoint for flowchart node coordinates
 - `[20:30:48]` Perf: improve service worker cache invalidation on new deployment release and add defensive checks against null and undefined payload keys
 - `[20:52:34]` Optimize seed script data consistency check for mock user profiles to ensure backward compatibility with existing saved layouts
+- `[21:19:49]` Clean up custom node tooltip preview when hovering over blocked steps
