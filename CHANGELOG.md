@@ -87,3 +87,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:15:53]` Tweak recurring goal cadence presets (daily, weekly, monthly)
 - `[12:41:45]` Style: add loading skeletons for dashboard statistics and cards and improve frame rate and eliminate micro-stutters during heavy animations
 - `[13:08:51]` Optimize offline cache storage and IndexedDB syncing worker
+- `[13:31:42]` Style: tune goal archive view and soft-delete restoration workflow and provide user-friendly fallback messaging on network timeouts
