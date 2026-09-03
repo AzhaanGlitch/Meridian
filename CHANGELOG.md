@@ -107,3 +107,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:52:34]` Optimize seed script data consistency check for mock user profiles to ensure backward compatibility with existing saved layouts
 - `[21:19:49]` Clean up custom node tooltip preview when hovering over blocked steps
 - `[21:44:15]` Support Android WebView bridge interface for native gesture dispatching to ensure backward compatibility with existing saved layouts
+- `[22:11:13]` Refactor: update pagination parameters parsing on goal list query endpoints and streamline component props and clean up legacy utility helpers
