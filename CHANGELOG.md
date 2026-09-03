@@ -97,3 +97,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:36:48]` Optimize Gradle build script dependencies resolution and version bumps to persist user preferences to local storage seamlessly
 - `[17:02:37]` Clean up Android splash screen exit animation and window background theme to ensure backward compatibility with existing saved layouts
 - `[17:27:38]` Style: update monochrome theme contrast ratios for accessibility compliance and provide user-friendly fallback messaging on network timeouts
+- `[17:53:50]` Refactor: improve custom scrollbar track styling and auto-hiding behavior and normalize layout dimensions across Chrome, Safari and Firefox
