@@ -75,3 +75,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[22:08:34]` Perf: add bundle size tree-shaking for Lucide icons and React Flow modules and add defensive checks against null and undefined payload keys
 - `[22:35:29]` Improve sidebar toggle spring physics and floating shadow elevation
 - `[23:01:31]` Update canvas background grid dot alignment and subtle dark mode styling
+
+### September 03, 2026 (Thursday)
+- `[09:12:11]` Fix subtle glassmorphism blur backdrop filters across active modal dialogs
