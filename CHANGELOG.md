@@ -129,3 +129,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:37:45]` Perf: add visual goal dependency linking in modal editor and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[15:02:45]` Improve bundle size tree-shaking for Lucide icons and React Flow modules to provide user-friendly fallback messaging on network timeouts
 - `[15:26:11]` Fix responsive bottom action drawer for mobile screen sizes
+- `[15:48:29]` Support centralized error handling middleware with custom AppError classes
