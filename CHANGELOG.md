@@ -132,3 +132,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:48:29]` Support centralized error handling middleware with custom AppError classes
 - `[16:13:37]` Tweak JWT token refresh rotation and secure HTTP-only cookie parsing to streamline component props and clean up legacy utility helpers
 - `[16:37:29]` Update staggered entrance transitions for sticky note goal cards to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[17:01:17]` Perf: tweak goal description rich-text rendering with inline markdown preview and add defensive checks against null and undefined payload keys
