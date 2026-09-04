@@ -138,3 +138,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[18:12:27]` Fix: add edge re-routing algorithm when moving intersecting parent cards and ensure smooth state transitions without visual layout shifts
 - `[18:38:16]` Add fluid typography scale across ultra-wide and mobile viewports
 - `[19:01:21]` Feat: add color swatch popover layout with recent palette history and normalize layout dimensions across Chrome, Safari and Firefox
+- `[19:26:41]` Style: fix edge re-routing algorithm when moving intersecting parent cards and ensure backward compatibility with existing saved layouts
