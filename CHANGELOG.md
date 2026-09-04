@@ -130,3 +130,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:02:45]` Improve bundle size tree-shaking for Lucide icons and React Flow modules to provide user-friendly fallback messaging on network timeouts
 - `[15:26:11]` Fix responsive bottom action drawer for mobile screen sizes
 - `[15:48:29]` Support centralized error handling middleware with custom AppError classes
+- `[16:13:37]` Tweak JWT token refresh rotation and secure HTTP-only cookie parsing to streamline component props and clean up legacy utility helpers
