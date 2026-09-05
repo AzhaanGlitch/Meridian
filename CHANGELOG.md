@@ -179,3 +179,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:50:31]` Support pagination parameters parsing on goal list query endpoints
 - `[20:17:44]` Add canvas background grid dot alignment and subtle dark mode styling
 - `[20:40:24]` Tweak node connection anchor points to prevent wire overlapping to reduce latency and eliminate redundant state updates
+- `[21:02:38]` Feat: refactor loading skeletons for dashboard statistics and cards and handle edge cases when cards have empty descriptions
