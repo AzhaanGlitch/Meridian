@@ -155,3 +155,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:17:57]` UI: optimize color swatch popover layout with recent palette history and handle edge cases when cards have empty descriptions
 - `[10:42:47]` Fix: add toast notification queue for background auto-save status and persist user preferences to local storage seamlessly
 - `[11:05:43]` Style: support Gradle build script dependencies resolution and version bumps and improve frame rate and eliminate micro-stutters during heavy animations
+- `[11:29:50]` Refactor: tune node connection anchor points to prevent wire overlapping and normalize layout dimensions across Chrome, Safari and Firefox
