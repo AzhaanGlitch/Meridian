@@ -150,3 +150,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 
 ### September 05, 2026 (Saturday)
 - `[09:03:14]` Add goal archive view and soft-delete restoration workflow
+- `[09:30:28]` Tune parent goal card progress percentage calculation from child items
