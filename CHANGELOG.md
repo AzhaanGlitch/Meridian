@@ -172,3 +172,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:05:32]` Optimize pagination parameters parsing on goal list query endpoints to normalize layout dimensions across Chrome, Safari and Firefox
 - `[17:27:54]` Improve batch update endpoint for flowchart node coordinates to add defensive checks against null and undefined payload keys
 - `[17:53:12]` Optimize bundle size tree-shaking for Lucide icons and React Flow modules
+- `[18:15:41]` Add child goal drag-and-drop hierarchy reordering in goal tree to ensure smooth state transitions without visual layout shifts
