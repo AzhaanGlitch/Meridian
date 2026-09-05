@@ -181,3 +181,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:40:24]` Tweak node connection anchor points to prevent wire overlapping to reduce latency and eliminate redundant state updates
 - `[21:02:38]` Feat: refactor loading skeletons for dashboard statistics and cards and handle edge cases when cards have empty descriptions
 - `[21:28:32]` Perf: optimize Android asset pipeline compression and adaptive app icons and ensure backward compatibility with existing saved layouts
+- `[21:54:53]` Perf: refactor goal archive view and soft-delete restoration workflow and ensure backward compatibility with existing saved layouts
