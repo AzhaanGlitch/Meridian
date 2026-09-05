@@ -168,3 +168,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:28:36]` Tune bundle size tree-shaking for Lucide icons and React Flow modules
 - `[15:51:34]` Perf: improve goal priority flag indicators and custom sorting filters and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[16:16:42]` Update flowchart node drag responsiveness and boundary constraints to improve frame rate and eliminate micro-stutters during heavy animations
+- `[16:42:47]` Support service worker cache invalidation on new deployment release
