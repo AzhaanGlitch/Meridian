@@ -166,3 +166,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:42:36]` Fix sidebar toggle spring physics and floating shadow elevation
 - `[15:02:51]` Refactor local storage fallback synchronization when network is disconnected
 - `[15:28:36]` Tune bundle size tree-shaking for Lucide icons and React Flow modules
+- `[15:51:34]` Perf: improve goal priority flag indicators and custom sorting filters and prevent unnecessary re-renders with memoization and useCallback hooks
