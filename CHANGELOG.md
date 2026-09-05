@@ -147,3 +147,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:48:10]` Enhance Android splash screen exit animation and window background theme
 - `[22:11:24]` Fix: update fluid typography scale across ultra-wide and mobile viewports and normalize layout dimensions across Chrome, Safari and Firefox
 - `[22:37:50]` Fix: ensure goal status transitions and completion celebration particle effect and reduce latency and eliminate redundant state updates
+
+### September 05, 2026 (Saturday)
+- `[09:03:14]` Add goal archive view and soft-delete restoration workflow
