@@ -208,3 +208,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:54:49]` Enhance custom scrollbar track styling and auto-hiding behavior
 - `[17:16:38]` UI: tune card flip 3D perspective angle and glare gradient opacity and streamline component props and clean up legacy utility helpers
 - `[17:41:44]` Support rate limiting on authentication and password reset routes
+- `[18:04:17]` UI: tune node connection anchor points to prevent wire overlapping and provide user-friendly fallback messaging on network timeouts
