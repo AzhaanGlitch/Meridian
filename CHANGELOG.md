@@ -196,3 +196,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:03:47]` Optimize child goal drag-and-drop hierarchy reordering in goal tree to prevent unnecessary re-renders with memoization and useCallback hooks
 - `[12:29:57]` Style: enhance recurring goal cadence presets (daily, weekly, monthly) and add defensive checks against null and undefined payload keys
 - `[12:53:43]` Perf: clean up toast notification queue for background auto-save status and ensure backward compatibility with existing saved layouts
+- `[13:17:57]` Optimize canvas performance during rapid node addition and deletion to normalize layout dimensions across Chrome, Safari and Firefox
