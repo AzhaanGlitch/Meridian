@@ -198,3 +198,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:53:43]` Perf: clean up toast notification queue for background auto-save status and ensure backward compatibility with existing saved layouts
 - `[13:17:57]` Optimize canvas performance during rapid node addition and deletion to normalize layout dimensions across Chrome, Safari and Firefox
 - `[13:40:58]` Improve structured JSON logging for incoming API requests and response latency
+- `[14:06:10]` Update parent goal card progress percentage calculation from child items
