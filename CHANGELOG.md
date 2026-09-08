@@ -273,3 +273,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:32:29]` Clean up pagination parameters parsing on goal list query endpoints to provide user-friendly fallback messaging on network timeouts
 - `[20:06:52]` Tweak node connection anchor points to prevent wire overlapping
 - `[20:42:33]` Fix: add MongoDB index optimization on goal tags and owner reference fields and improve frame rate and eliminate micro-stutters during heavy animations
+- `[21:13:41]` Refactor: improve sidebar toggle spring physics and floating shadow elevation and ensure backward compatibility with existing saved layouts
