@@ -268,3 +268,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:50:43]` Clean up goal category tags and color palette synchronization
 - `[17:22:34]` Enhance Mongoose pre-save hook for sanitizing child card references
 - `[17:55:14]` Optimize keyboard navigation shortcuts for panning and centering flowchart canvas
+- `[18:28:26]` UI: tweak nested milestone checklist items with progress tracking and streamline component props and clean up legacy utility helpers
