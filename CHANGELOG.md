@@ -275,3 +275,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:42:33]` Fix: add MongoDB index optimization on goal tags and owner reference fields and improve frame rate and eliminate micro-stutters during heavy animations
 - `[21:13:41]` Refactor: improve sidebar toggle spring physics and floating shadow elevation and ensure backward compatibility with existing saved layouts
 - `[21:44:42]` Style: clean up arrowhead markers and bidirectional edges in flowchart canvas and provide user-friendly fallback messaging on network timeouts
+- `[22:18:48]` UI: enhance nested milestone checklist items with progress tracking and ensure backward compatibility with existing saved layouts
