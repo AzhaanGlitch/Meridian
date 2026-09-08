@@ -256,3 +256,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:11:43]` Clean up visual goal dependency linking in modal editor
 - `[10:45:25]` Style: fix goal target completion date picker and countdown badge display and improve frame rate and eliminate micro-stutters during heavy animations
 - `[11:18:58]` Support export flowchart high-res PNG canvas scale factor to ensure backward compatibility with existing saved layouts
+- `[11:53:39]` Ensure Android splash screen exit animation and window background theme to provide user-friendly fallback messaging on network timeouts
