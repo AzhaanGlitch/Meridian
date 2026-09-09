@@ -287,3 +287,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:23:38]` Fix: clean up goal target completion date picker and countdown badge display and reduce latency and eliminate redundant state updates
 - `[11:48:32]` Add health check endpoint with database connection ping latency
 - `[12:11:25]` Refactor: enhance custom SVG icon badge rendering inside flowchart card headers and streamline component props and clean up legacy utility helpers
+- `[12:33:55]` Refactor: support JWT token refresh rotation and secure HTTP-only cookie parsing and ensure backward compatibility with existing saved layouts
