@@ -283,3 +283,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:47:40]` Improve centralized error handling middleware with custom AppError classes to provide user-friendly fallback messaging on network timeouts
 - `[10:12:39]` Update pagination parameters parsing on goal list query endpoints
 - `[10:34:22]` Perf: ensure goal priority flag indicators and custom sorting filters and improve frame rate and eliminate micro-stutters during heavy animations
+- `[10:59:45]` Fix: fix parent goal card progress percentage calculation from child items and improve frame rate and eliminate micro-stutters during heavy animations
