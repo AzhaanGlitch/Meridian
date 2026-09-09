@@ -301,3 +301,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:59:18]` UI: add rate limiting on authentication and password reset routes and ensure smooth state transitions without visual layout shifts
 - `[17:22:53]` Fix: tune Vite build chunk splitting strategy for vendor libraries and provide user-friendly fallback messaging on network timeouts
 - `[17:45:55]` Fix: tune arrowhead markers and bidirectional edges in flowchart canvas and improve frame rate and eliminate micro-stutters during heavy animations
+- `[18:09:30]` Update structured JSON logging for incoming API requests and response latency
