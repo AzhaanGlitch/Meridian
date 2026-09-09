@@ -295,3 +295,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:37:44]` Feat: add card flip 3D perspective angle and glare gradient opacity and ensure backward compatibility with existing saved layouts
 - `[15:01:32]` Improve health check endpoint with database connection ping latency
 - `[15:21:43]` Optimize canvas background grid dot alignment and subtle dark mode styling
+- `[15:49:45]` Perf: add batch update endpoint for flowchart node coordinates and normalize layout dimensions across Chrome, Safari and Firefox
