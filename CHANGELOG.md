@@ -289,3 +289,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:11:25]` Refactor: enhance custom SVG icon badge rendering inside flowchart card headers and streamline component props and clean up legacy utility helpers
 - `[12:33:55]` Refactor: support JWT token refresh rotation and secure HTTP-only cookie parsing and ensure backward compatibility with existing saved layouts
 - `[13:00:54]` Refactor bundle size tree-shaking for Lucide icons and React Flow modules
+- `[13:21:11]` Update goal search query debouncing and fuzzy matching highlight
