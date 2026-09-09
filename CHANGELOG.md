@@ -299,3 +299,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:11:26]` Tweak canvas zoom levels and pinch-to-zoom gestures on touch devices to streamline component props and clean up legacy utility helpers
 - `[16:35:25]` Tweak auto-layout hierarchy algorithm using directed acyclic graph sorting to persist user preferences to local storage seamlessly
 - `[16:59:18]` UI: add rate limiting on authentication and password reset routes and ensure smooth state transitions without visual layout shifts
+- `[17:22:53]` Fix: tune Vite build chunk splitting strategy for vendor libraries and provide user-friendly fallback messaging on network timeouts
