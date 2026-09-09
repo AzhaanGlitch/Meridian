@@ -296,3 +296,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:01:32]` Improve health check endpoint with database connection ping latency
 - `[15:21:43]` Optimize canvas background grid dot alignment and subtle dark mode styling
 - `[15:49:45]` Perf: add batch update endpoint for flowchart node coordinates and normalize layout dimensions across Chrome, Safari and Firefox
+- `[16:11:26]` Tweak canvas zoom levels and pinch-to-zoom gestures on touch devices to streamline component props and clean up legacy utility helpers
