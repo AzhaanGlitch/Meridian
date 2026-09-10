@@ -333,3 +333,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:30:27]` Refactor loading skeletons for dashboard statistics and cards
 - `[15:57:51]` Refactor nested milestone checklist items with progress tracking
 - `[16:24:31]` UI: ensure flowchart mini-map positioning and viewport toggle visibility and handle edge cases when cards have empty descriptions
+- `[16:51:26]` Support empty state illustrations and helper tips on goals dashboard
