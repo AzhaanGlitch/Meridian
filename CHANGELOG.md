@@ -325,3 +325,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:50:22]` Style: refactor card flip 3D perspective angle and glare gradient opacity and normalize layout dimensions across Chrome, Safari and Firefox
 - `[12:21:33]` Tune child goal drag-and-drop hierarchy reordering in goal tree to persist user preferences to local storage seamlessly
 - `[12:44:29]` Enhance Vite build chunk splitting strategy for vendor libraries
+- `[13:14:46]` Fix child goal drag-and-drop hierarchy reordering in goal tree
