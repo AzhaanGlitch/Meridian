@@ -314,3 +314,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[22:10:11]` Fix: refactor Gradle build script dependencies resolution and version bumps and handle edge cases when cards have empty descriptions
 - `[22:35:33]` Perf: enhance arrowhead markers and bidirectional edges in flowchart canvas and persist user preferences to local storage seamlessly
 - `[22:59:33]` Refactor: tune export flowchart high-res PNG canvas scale factor and persist user preferences to local storage seamlessly
+
+### September 10, 2026 (Thursday)
+- `[09:09:17]` Add goal description rich-text rendering with inline markdown preview
