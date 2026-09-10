@@ -327,3 +327,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:44:29]` Enhance Vite build chunk splitting strategy for vendor libraries
 - `[13:14:46]` Fix child goal drag-and-drop hierarchy reordering in goal tree
 - `[13:41:39]` Support workspace membership role permissions checking middleware to ensure backward compatibility with existing saved layouts
+- `[14:09:50]` Ensure goal description rich-text rendering with inline markdown preview
