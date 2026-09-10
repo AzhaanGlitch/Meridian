@@ -345,3 +345,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:51:58]` Refactor local storage fallback synchronization when network is disconnected
 - `[21:19:41]` Add node connection anchor points to prevent wire overlapping
 - `[21:45:23]` Perf: ensure rate limiting on authentication and password reset routes and handle edge cases when cards have empty descriptions
+- `[22:15:51]` Support bundle size tree-shaking for Lucide icons and React Flow modules
