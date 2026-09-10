@@ -332,3 +332,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:00:32]` UI: clean up fluid typography scale across ultra-wide and mobile viewports and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[15:30:27]` Refactor loading skeletons for dashboard statistics and cards
 - `[15:57:51]` Refactor nested milestone checklist items with progress tracking
+- `[16:24:31]` UI: ensure flowchart mini-map positioning and viewport toggle visibility and handle edge cases when cards have empty descriptions
