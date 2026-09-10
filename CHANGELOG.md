@@ -328,3 +328,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:14:46]` Fix child goal drag-and-drop hierarchy reordering in goal tree
 - `[13:41:39]` Support workspace membership role permissions checking middleware to ensure backward compatibility with existing saved layouts
 - `[14:09:50]` Ensure goal description rich-text rendering with inline markdown preview
+- `[14:32:17]` Refactor: clean up nested milestone checklist items with progress tracking and improve frame rate and eliminate micro-stutters during heavy animations
