@@ -363,3 +363,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:22:46]` Improve edge re-routing algorithm when moving intersecting parent cards
 - `[14:51:50]` Tweak pagination parameters parsing on goal list query endpoints to ensure backward compatibility with existing saved layouts
 - `[15:17:12]` Refactor: ensure canvas performance during rapid node addition and deletion and add defensive checks against null and undefined payload keys
+- `[15:48:19]` Enhance empty state illustrations and helper tips on goals dashboard
