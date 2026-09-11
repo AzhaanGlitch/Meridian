@@ -373,3 +373,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:12:34]` Refactor: enhance workspace membership role permissions checking middleware and ensure backward compatibility with existing saved layouts
 - `[19:37:32]` Style: tune color swatch popover layout with recent palette history and normalize layout dimensions across Chrome, Safari and Firefox
 - `[20:08:45]` UI: tweak toast notification queue for background auto-save status and ensure backward compatibility with existing saved layouts
+- `[20:39:25]` Improve edge re-routing algorithm when moving intersecting parent cards to provide user-friendly fallback messaging on network timeouts
