@@ -350,3 +350,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 
 ### September 11, 2026 (Friday)
 - `[09:00:46]` Clean up visual goal dependency linking in modal editor
+- `[09:28:34]` Style: clean up Android splash screen exit animation and window background theme and ensure smooth state transitions without visual layout shifts
