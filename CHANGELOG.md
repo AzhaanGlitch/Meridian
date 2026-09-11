@@ -353,3 +353,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:28:34]` Style: clean up Android splash screen exit animation and window background theme and ensure smooth state transitions without visual layout shifts
 - `[10:01:17]` Refactor keyboard navigation shortcuts for panning and centering flowchart canvas
 - `[10:28:45]` Optimize goal target completion date picker and countdown badge display
+- `[10:58:42]` Refactor: add flowchart mini-map positioning and viewport toggle visibility and handle edge cases when cards have empty descriptions
