@@ -360,3 +360,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:55:41]` Tweak loading skeletons for dashboard statistics and cards to normalize layout dimensions across Chrome, Safari and Firefox
 - `[13:22:31]` Support canvas performance during rapid node addition and deletion
 - `[13:49:48]` Tune subtle glassmorphism blur backdrop filters across active modal dialogs to provide user-friendly fallback messaging on network timeouts
+- `[14:22:46]` Improve edge re-routing algorithm when moving intersecting parent cards
