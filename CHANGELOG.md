@@ -377,3 +377,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:05:50]` Improve edge re-routing algorithm when moving intersecting parent cards
 - `[21:36:16]` Support goal priority flag indicators and custom sorting filters to handle edge cases when cards have empty descriptions
 - `[22:03:36]` Support bundle size tree-shaking for Lucide icons and React Flow modules
+- `[22:33:30]` Update flowchart multi-node selection box and batch dragging logic
