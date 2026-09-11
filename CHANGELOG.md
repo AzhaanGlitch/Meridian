@@ -367,3 +367,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:18:40]` Tweak flowchart multi-node selection box and batch dragging logic
 - `[16:47:30]` Support Vite build chunk splitting strategy for vendor libraries
 - `[17:13:39]` Clean up Mongoose pre-save hook for sanitizing child card references
+- `[17:43:49]` Refactor: tune visual goal dependency linking in modal editor and add defensive checks against null and undefined payload keys
