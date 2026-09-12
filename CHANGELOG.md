@@ -395,3 +395,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:59:54]` Fix responsive bottom action drawer for mobile screen sizes
 - `[15:28:18]` Tune nested milestone checklist items with progress tracking to normalize layout dimensions across Chrome, Safari and Firefox
 - `[16:01:33]` Enhance bundle size tree-shaking for Lucide icons and React Flow modules to ensure smooth state transitions without visual layout shifts
+- `[16:28:58]` Improve custom SVG icon badge rendering inside flowchart card headers
