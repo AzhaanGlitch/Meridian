@@ -397,3 +397,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:01:33]` Enhance bundle size tree-shaking for Lucide icons and React Flow modules to ensure smooth state transitions without visual layout shifts
 - `[16:28:58]` Improve custom SVG icon badge rendering inside flowchart card headers
 - `[16:59:14]` Ensure canvas performance during rapid node addition and deletion to handle edge cases when cards have empty descriptions
+- `[17:31:22]` Style: ensure nested milestone checklist items with progress tracking and ensure backward compatibility with existing saved layouts
