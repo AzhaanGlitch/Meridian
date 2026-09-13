@@ -426,3 +426,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:51:33]` UI: fix visual goal dependency linking in modal editor and handle edge cases when cards have empty descriptions
 - `[16:23:48]` Add export flowchart high-res PNG canvas scale factor to add defensive checks against null and undefined payload keys
 - `[16:54:56]` Refactor: support goal search query debouncing and fuzzy matching highlight and normalize layout dimensions across Chrome, Safari and Firefox
+- `[17:23:10]` Improve visual goal dependency linking in modal editor to prevent unnecessary re-renders with memoization and useCallback hooks
