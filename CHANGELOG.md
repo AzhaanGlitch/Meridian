@@ -420,3 +420,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:43:50]` Support Android WebView bridge interface for native gesture dispatching
 - `[13:15:51]` Perf: support pagination parameters parsing on goal list query endpoints and ensure smooth state transitions without visual layout shifts
 - `[13:47:19]` Update pagination parameters parsing on goal list query endpoints to ensure backward compatibility with existing saved layouts
+- `[14:18:25]` Improve loading skeletons for dashboard statistics and cards to ensure backward compatibility with existing saved layouts
