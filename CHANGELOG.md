@@ -436,3 +436,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:59:34]` Ensure monochrome theme contrast ratios for accessibility compliance
 - `[21:31:26]` Refactor: tune service worker cache invalidation on new deployment release and normalize layout dimensions across Chrome, Safari and Firefox
 - `[22:01:18]` Tweak service worker cache invalidation on new deployment release to ensure backward compatibility with existing saved layouts
+- `[22:35:51]` Add arrowhead markers and bidirectional edges in flowchart canvas to prevent unnecessary re-renders with memoization and useCallback hooks
