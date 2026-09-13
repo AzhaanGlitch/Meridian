@@ -427,3 +427,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:23:48]` Add export flowchart high-res PNG canvas scale factor to add defensive checks against null and undefined payload keys
 - `[16:54:56]` Refactor: support goal search query debouncing and fuzzy matching highlight and normalize layout dimensions across Chrome, Safari and Firefox
 - `[17:23:10]` Improve visual goal dependency linking in modal editor to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[17:55:25]` Tweak empty state illustrations and helper tips on goals dashboard to reduce latency and eliminate redundant state updates
