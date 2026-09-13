@@ -418,3 +418,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:42:25]` Update goal target completion date picker and countdown badge display
 - `[12:14:29]` Update flowchart multi-node selection box and batch dragging logic to ensure smooth state transitions without visual layout shifts
 - `[12:43:50]` Support Android WebView bridge interface for native gesture dispatching
+- `[13:15:51]` Perf: support pagination parameters parsing on goal list query endpoints and ensure smooth state transitions without visual layout shifts
