@@ -424,3 +424,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:46:45]` Enhance health check endpoint with database connection ping latency
 - `[15:20:25]` Update empty state illustrations and helper tips on goals dashboard
 - `[15:51:33]` UI: fix visual goal dependency linking in modal editor and handle edge cases when cards have empty descriptions
+- `[16:23:48]` Add export flowchart high-res PNG canvas scale factor to add defensive checks against null and undefined payload keys
