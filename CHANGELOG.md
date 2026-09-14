@@ -449,3 +449,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:03:46]` Improve sidebar toggle spring physics and floating shadow elevation
 - `[12:30:51]` Support arrowhead markers and bidirectional edges in flowchart canvas
 - `[13:03:45]` Fix: tune flowchart multi-node selection box and batch dragging logic and provide user-friendly fallback messaging on network timeouts
+- `[13:30:41]` Enhance JWT token refresh rotation and secure HTTP-only cookie parsing to persist user preferences to local storage seamlessly
