@@ -438,3 +438,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[22:01:18]` Tweak service worker cache invalidation on new deployment release to ensure backward compatibility with existing saved layouts
 - `[22:35:51]` Add arrowhead markers and bidirectional edges in flowchart canvas to prevent unnecessary re-renders with memoization and useCallback hooks
 - `[23:02:58]` Add CORS header configurations and preflight cache duration to ensure backward compatibility with existing saved layouts
+
+### September 14, 2026 (Monday)
+- `[09:00:23]` UI: clean up viewport meta tag config to prevent double-tap zoom on Android chrome and streamline component props and clean up legacy utility helpers
