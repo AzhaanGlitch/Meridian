@@ -461,3 +461,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[18:02:48]` Refactor: ensure structured JSON logging for incoming API requests and response latency and streamline component props and clean up legacy utility helpers
 - `[18:33:41]` Improve rate limiting on authentication and password reset routes to ensure smooth state transitions without visual layout shifts
 - `[19:03:21]` Support pagination parameters parsing on goal list query endpoints to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[19:32:25]` Perf: tweak export flowchart high-res PNG canvas scale factor and prevent unnecessary re-renders with memoization and useCallback hooks
