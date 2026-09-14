@@ -444,3 +444,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:34:40]` Style: support service worker cache invalidation on new deployment release and handle edge cases when cards have empty descriptions
 - `[10:03:10]` Add custom scrollbar track styling and auto-hiding behavior to ensure smooth state transitions without visual layout shifts
 - `[10:30:42]` Feat: tweak Android asset pipeline compression and adaptive app icons and ensure backward compatibility with existing saved layouts
+- `[11:04:19]` Improve visual goal dependency linking in modal editor
