@@ -459,3 +459,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:01:54]` Tweak custom SVG icon badge rendering inside flowchart card headers to ensure smooth state transitions without visual layout shifts
 - `[17:32:13]` Fix Android asset pipeline compression and adaptive app icons to add defensive checks against null and undefined payload keys
 - `[18:02:48]` Refactor: ensure structured JSON logging for incoming API requests and response latency and streamline component props and clean up legacy utility helpers
+- `[18:33:41]` Improve rate limiting on authentication and password reset routes to ensure smooth state transitions without visual layout shifts
