@@ -484,3 +484,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:07:26]` Support nested milestone checklist items with progress tracking to reduce latency and eliminate redundant state updates
 - `[15:39:38]` Ensure Vite build chunk splitting strategy for vendor libraries
 - `[16:16:54]` Enhance arrowhead markers and bidirectional edges in flowchart canvas to streamline component props and clean up legacy utility helpers
+- `[16:49:48]` Support custom SVG icon badge rendering inside flowchart card headers to prevent unnecessary re-renders with memoization and useCallback hooks
