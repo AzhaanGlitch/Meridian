@@ -479,3 +479,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:23:57]` Tweak service worker cache invalidation on new deployment release to persist user preferences to local storage seamlessly
 - `[12:56:34]` Style: update structured JSON logging for incoming API requests and response latency and streamline component props and clean up legacy utility helpers
 - `[13:28:47]` Clean up goal description rich-text rendering with inline markdown preview to provide user-friendly fallback messaging on network timeouts
+- `[14:00:56]` Tune empty state illustrations and helper tips on goals dashboard to normalize layout dimensions across Chrome, Safari and Firefox
