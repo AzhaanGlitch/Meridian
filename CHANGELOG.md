@@ -501,3 +501,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:14:22]` Fix: tune Android WebView bridge interface for native gesture dispatching and reduce latency and eliminate redundant state updates
 - `[09:38:27]` Style: tweak canvas background grid dot alignment and subtle dark mode styling and persist user preferences to local storage seamlessly
 - `[10:05:33]` UI: optimize goal status transitions and completion celebration particle effect and normalize layout dimensions across Chrome, Safari and Firefox
+- `[10:34:43]` Support hover state scaling and transition curves on action toolbars
