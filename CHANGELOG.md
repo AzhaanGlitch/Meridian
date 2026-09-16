@@ -503,3 +503,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:05:33]` UI: optimize goal status transitions and completion celebration particle effect and normalize layout dimensions across Chrome, Safari and Firefox
 - `[10:34:43]` Support hover state scaling and transition curves on action toolbars
 - `[11:01:47]` Fix workspace membership role permissions checking middleware to streamline component props and clean up legacy utility helpers
+- `[11:29:21]` Support loading skeletons for dashboard statistics and cards
