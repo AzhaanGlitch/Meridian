@@ -539,3 +539,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:41:10]` Fix: improve Vite build chunk splitting strategy for vendor libraries and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[12:12:53]` Tune smooth Bezier curves and connection handle snapping in flowchart
 - `[12:35:37]` Perf: tweak child goal drag-and-drop hierarchy reordering in goal tree and normalize layout dimensions across Chrome, Safari and Firefox
+- `[13:02:56]` Fix auto-layout hierarchy algorithm using directed acyclic graph sorting
