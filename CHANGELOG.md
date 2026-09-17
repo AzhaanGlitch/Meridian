@@ -551,3 +551,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:06:41]` Enhance canvas performance during rapid node addition and deletion
 - `[17:36:14]` Clean up smooth Bezier curves and connection handle snapping in flowchart to streamline component props and clean up legacy utility helpers
 - `[18:00:34]` Ensure health check endpoint with database connection ping latency
+- `[18:27:58]` Tune export flowchart high-res PNG canvas scale factor
