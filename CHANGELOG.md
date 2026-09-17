@@ -540,3 +540,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:12:53]` Tune smooth Bezier curves and connection handle snapping in flowchart
 - `[12:35:37]` Perf: tweak child goal drag-and-drop hierarchy reordering in goal tree and normalize layout dimensions across Chrome, Safari and Firefox
 - `[13:02:56]` Fix auto-layout hierarchy algorithm using directed acyclic graph sorting
+- `[13:31:18]` Enhance goal priority flag indicators and custom sorting filters to provide user-friendly fallback messaging on network timeouts
