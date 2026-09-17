@@ -529,3 +529,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:49:50]` Support rate limiting on authentication and password reset routes to prevent unnecessary re-renders with memoization and useCallback hooks
 - `[22:16:23]` Refactor: enhance goal search query debouncing and fuzzy matching highlight and normalize layout dimensions across Chrome, Safari and Firefox
 - `[22:42:45]` Ensure child goal drag-and-drop hierarchy reordering in goal tree to persist user preferences to local storage seamlessly
+
+### September 17, 2026 (Thursday)
+- `[09:26:16]` Fix: support viewport meta tag config to prevent double-tap zoom on Android chrome and handle edge cases when cards have empty descriptions
