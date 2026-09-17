@@ -558,3 +558,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:18:23]` Refactor goal update endpoint input validation with Joi schema
 - `[20:41:29]` Feat: tweak Android asset pipeline compression and adaptive app icons and add defensive checks against null and undefined payload keys
 - `[21:11:17]` Tune flowchart multi-node selection box and batch dragging logic
+- `[21:36:17]` Refactor: add goal priority flag indicators and custom sorting filters and handle edge cases when cards have empty descriptions
