@@ -544,3 +544,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:57:14]` Clean up smooth Bezier curves and connection handle snapping in flowchart
 - `[14:26:32]` Tweak goal search query debouncing and fuzzy matching highlight to provide user-friendly fallback messaging on network timeouts
 - `[14:53:49]` Feat: support Gradle build script dependencies resolution and version bumps and add defensive checks against null and undefined payload keys
+- `[15:18:58]` Fix batch update endpoint for flowchart node coordinates to streamline component props and clean up legacy utility helpers
