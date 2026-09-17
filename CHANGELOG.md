@@ -549,3 +549,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:15:48]` Tweak fluid typography scale across ultra-wide and mobile viewports to handle edge cases when cards have empty descriptions
 - `[16:40:23]` Feat: clean up visual goal dependency linking in modal editor and reduce latency and eliminate redundant state updates
 - `[17:06:41]` Enhance canvas performance during rapid node addition and deletion
+- `[17:36:14]` Clean up smooth Bezier curves and connection handle snapping in flowchart to streamline component props and clean up legacy utility helpers
