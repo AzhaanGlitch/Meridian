@@ -547,3 +547,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:18:58]` Fix batch update endpoint for flowchart node coordinates to streamline component props and clean up legacy utility helpers
 - `[15:46:18]` Style: improve custom scrollbar track styling and auto-hiding behavior and provide user-friendly fallback messaging on network timeouts
 - `[16:15:48]` Tweak fluid typography scale across ultra-wide and mobile viewports to handle edge cases when cards have empty descriptions
+- `[16:40:23]` Feat: clean up visual goal dependency linking in modal editor and reduce latency and eliminate redundant state updates
