@@ -572,3 +572,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:10:27]` Fix centralized error handling middleware with custom AppError classes
 - `[12:37:21]` Perf: improve flowchart mini-map positioning and viewport toggle visibility and reduce latency and eliminate redundant state updates
 - `[13:08:29]` Optimize node connection anchor points to prevent wire overlapping
+- `[13:37:22]` Refactor: update loading skeletons for dashboard statistics and cards and persist user preferences to local storage seamlessly
