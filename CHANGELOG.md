@@ -579,3 +579,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:32:36]` Tune flowchart multi-node selection box and batch dragging logic to ensure backward compatibility with existing saved layouts
 - `[16:00:12]` Improve CORS header configurations and preflight cache duration
 - `[16:29:47]` Fix goal priority flag indicators and custom sorting filters to provide user-friendly fallback messaging on network timeouts
+- `[16:58:47]` Ensure flowchart multi-node selection box and batch dragging logic
