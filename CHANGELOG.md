@@ -590,3 +590,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:50:53]` Perf: update subtle glassmorphism blur backdrop filters across active modal dialogs and ensure backward compatibility with existing saved layouts
 - `[21:22:45]` Tweak monochrome theme contrast ratios for accessibility compliance
 - `[21:49:17]` Perf: add flowchart multi-node selection box and batch dragging logic and add defensive checks against null and undefined payload keys
+- `[22:19:53]` Support custom SVG icon badge rendering inside flowchart card headers
