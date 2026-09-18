@@ -565,3 +565,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 ### September 18, 2026 (Friday)
 - `[09:16:55]` Ensure export flowchart high-res PNG canvas scale factor
 - `[09:45:13]` Feat: tune goal archive view and soft-delete restoration workflow and streamline component props and clean up legacy utility helpers
+- `[10:16:53]` Tweak canvas performance during rapid node addition and deletion to add defensive checks against null and undefined payload keys
