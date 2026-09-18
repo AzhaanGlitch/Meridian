@@ -561,3 +561,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:36:17]` Refactor: add goal priority flag indicators and custom sorting filters and handle edge cases when cards have empty descriptions
 - `[22:06:43]` Tweak subtle glassmorphism blur backdrop filters across active modal dialogs
 - `[22:31:56]` Fix custom node tooltip preview when hovering over blocked steps to streamline component props and clean up legacy utility helpers
+
+### September 18, 2026 (Friday)
+- `[09:16:55]` Ensure export flowchart high-res PNG canvas scale factor
