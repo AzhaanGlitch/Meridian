@@ -578,3 +578,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:02:31]` Style: add pagination parameters parsing on goal list query endpoints and improve frame rate and eliminate micro-stutters during heavy animations
 - `[15:32:36]` Tune flowchart multi-node selection box and batch dragging logic to ensure backward compatibility with existing saved layouts
 - `[16:00:12]` Improve CORS header configurations and preflight cache duration
+- `[16:29:47]` Fix goal priority flag indicators and custom sorting filters to provide user-friendly fallback messaging on network timeouts
