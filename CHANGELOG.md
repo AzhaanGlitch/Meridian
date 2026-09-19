@@ -592,3 +592,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:49:17]` Perf: add flowchart multi-node selection box and batch dragging logic and add defensive checks against null and undefined payload keys
 - `[22:19:53]` Support custom SVG icon badge rendering inside flowchart card headers
 - `[22:46:11]` Fix goal status transitions and completion celebration particle effect
+
+### September 19, 2026 (Saturday)
+- `[09:00:12]` Tune edge re-routing algorithm when moving intersecting parent cards to ensure backward compatibility with existing saved layouts
