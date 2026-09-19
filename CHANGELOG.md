@@ -617,3 +617,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:44:54]` Ensure rate limiting on authentication and password reset routes
 - `[20:13:34]` Feat: update responsive bottom action drawer for mobile screen sizes and ensure backward compatibility with existing saved layouts
 - `[20:48:35]` Ensure arrowhead markers and bidirectional edges in flowchart canvas
+- `[21:20:24]` UI: support auto-layout hierarchy algorithm using directed acyclic graph sorting and normalize layout dimensions across Chrome, Safari and Firefox
