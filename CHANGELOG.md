@@ -600,3 +600,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:37:12]` Perf: ensure monochrome theme contrast ratios for accessibility compliance and provide user-friendly fallback messaging on network timeouts
 - `[11:12:40]` Add node connection anchor points to prevent wire overlapping
 - `[11:43:22]` Support monochrome theme contrast ratios for accessibility compliance to provide user-friendly fallback messaging on network timeouts
+- `[12:16:11]` Enhance rate limiting on authentication and password reset routes
