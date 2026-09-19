@@ -609,3 +609,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:26:47]` Add rate limiting on authentication and password reset routes
 - `[16:00:22]` Tune micro-interaction haptic feedback animations on card tap
 - `[16:28:13]` Improve sidebar toggle spring physics and floating shadow elevation
+- `[17:00:31]` Fix: ensure goal status transitions and completion celebration particle effect and ensure backward compatibility with existing saved layouts
