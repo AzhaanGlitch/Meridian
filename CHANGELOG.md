@@ -616,3 +616,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:11:50]` Tune hover state scaling and transition curves on action toolbars to ensure backward compatibility with existing saved layouts
 - `[19:44:54]` Ensure rate limiting on authentication and password reset routes
 - `[20:13:34]` Feat: update responsive bottom action drawer for mobile screen sizes and ensure backward compatibility with existing saved layouts
+- `[20:48:35]` Ensure arrowhead markers and bidirectional edges in flowchart canvas
