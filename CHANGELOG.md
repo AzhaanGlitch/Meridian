@@ -619,3 +619,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:48:35]` Ensure arrowhead markers and bidirectional edges in flowchart canvas
 - `[21:20:24]` UI: support auto-layout hierarchy algorithm using directed acyclic graph sorting and normalize layout dimensions across Chrome, Safari and Firefox
 - `[21:48:25]` Optimize hover state scaling and transition curves on action toolbars
+- `[22:20:55]` Fix: support JWT token refresh rotation and secure HTTP-only cookie parsing and normalize layout dimensions across Chrome, Safari and Firefox
