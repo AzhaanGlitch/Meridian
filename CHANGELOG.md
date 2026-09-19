@@ -605,3 +605,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:18:48]` Perf: improve custom node tooltip preview when hovering over blocked steps and improve frame rate and eliminate micro-stutters during heavy animations
 - `[13:52:32]` UI: ensure staggered entrance transitions for sticky note goal cards and ensure backward compatibility with existing saved layouts
 - `[14:21:27]` Clean up flowchart multi-node selection box and batch dragging logic
+- `[14:55:32]` Refactor recurring goal cadence presets (daily, weekly, monthly)
