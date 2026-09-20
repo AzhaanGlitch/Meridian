@@ -635,3 +635,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:17:15]` Fix: update Vite build chunk splitting strategy for vendor libraries and add defensive checks against null and undefined payload keys
 - `[14:50:50]` Update custom SVG icon badge rendering inside flowchart card headers to normalize layout dimensions across Chrome, Safari and Firefox
 - `[15:26:35]` UI: tune service worker cache invalidation on new deployment release and provide user-friendly fallback messaging on network timeouts
+- `[16:03:34]` Refactor centralized error handling middleware with custom AppError classes
