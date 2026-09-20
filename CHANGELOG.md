@@ -637,3 +637,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:26:35]` UI: tune service worker cache invalidation on new deployment release and provide user-friendly fallback messaging on network timeouts
 - `[16:03:34]` Refactor centralized error handling middleware with custom AppError classes
 - `[16:37:12]` Refactor: update Gradle build script dependencies resolution and version bumps and normalize layout dimensions across Chrome, Safari and Firefox
+- `[17:13:13]` Refactor keyboard navigation shortcuts for panning and centering flowchart canvas
