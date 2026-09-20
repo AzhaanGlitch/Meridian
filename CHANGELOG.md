@@ -621,3 +621,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:48:25]` Optimize hover state scaling and transition curves on action toolbars
 - `[22:20:55]` Fix: support JWT token refresh rotation and secure HTTP-only cookie parsing and normalize layout dimensions across Chrome, Safari and Firefox
 - `[22:53:54]` Fix workspace membership role permissions checking middleware to improve frame rate and eliminate micro-stutters during heavy animations
+
+### September 20, 2026 (Sunday)
+- `[09:02:56]` Enhance goal archive view and soft-delete restoration workflow
