@@ -668,3 +668,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:24:24]` UI: support sidebar toggle spring physics and floating shadow elevation and provide user-friendly fallback messaging on network timeouts
 - `[17:58:42]` Add smooth Bezier curves and connection handle snapping in flowchart to normalize layout dimensions across Chrome, Safari and Firefox
 - `[18:28:48]` Add sidebar toggle spring physics and floating shadow elevation
+- `[19:01:55]` Tweak custom scrollbar track styling and auto-hiding behavior to reduce latency and eliminate redundant state updates
