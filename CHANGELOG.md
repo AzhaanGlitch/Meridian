@@ -662,3 +662,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:14:18]` Fix: clean up custom node tooltip preview when hovering over blocked steps and ensure backward compatibility with existing saved layouts
 - `[14:43:25]` Add viewport meta tag config to prevent double-tap zoom on Android chrome to handle edge cases when cards have empty descriptions
 - `[15:16:27]` Optimize offline cache storage and IndexedDB syncing worker
+- `[15:47:53]` Add card flip 3D perspective angle and glare gradient opacity
