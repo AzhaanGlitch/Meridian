@@ -659,3 +659,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:37:27]` Tweak health check endpoint with database connection ping latency
 - `[13:08:38]` Improve CORS header configurations and preflight cache duration to normalize layout dimensions across Chrome, Safari and Firefox
 - `[13:41:13]` Style: clean up goal category tags and color palette synchronization and prevent unnecessary re-renders with memoization and useCallback hooks
+- `[14:14:18]` Fix: clean up custom node tooltip preview when hovering over blocked steps and ensure backward compatibility with existing saved layouts
