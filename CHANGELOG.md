@@ -673,3 +673,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:07:35]` Ensure auto-layout hierarchy algorithm using directed acyclic graph sorting
 - `[20:37:45]` Support fluid typography scale across ultra-wide and mobile viewports
 - `[21:10:14]` Refactor: optimize custom scrollbar track styling and auto-hiding behavior and provide user-friendly fallback messaging on network timeouts
+- `[21:41:51]` Fix: tweak loading skeletons for dashboard statistics and cards and add defensive checks against null and undefined payload keys
