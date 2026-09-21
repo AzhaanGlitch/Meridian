@@ -654,3 +654,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:59:48]` Fix: tune arrowhead markers and bidirectional edges in flowchart canvas and ensure backward compatibility with existing saved layouts
 - `[10:31:48]` Support seed script data consistency check for mock user profiles
 - `[11:01:54]` Improve edge re-routing algorithm when moving intersecting parent cards to normalize layout dimensions across Chrome, Safari and Firefox
+- `[11:33:11]` Perf: optimize loading skeletons for dashboard statistics and cards and improve frame rate and eliminate micro-stutters during heavy animations
