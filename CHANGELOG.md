@@ -651,3 +651,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 
 ### September 21, 2026 (Monday)
 - `[09:27:32]` Enhance subtle glassmorphism blur backdrop filters across active modal dialogs
+- `[09:59:48]` Fix: tune arrowhead markers and bidirectional edges in flowchart canvas and ensure backward compatibility with existing saved layouts
