@@ -664,3 +664,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:16:27]` Optimize offline cache storage and IndexedDB syncing worker
 - `[15:47:53]` Add card flip 3D perspective angle and glare gradient opacity
 - `[16:22:21]` Refactor: tune workspace membership role permissions checking middleware and streamline component props and clean up legacy utility helpers
+- `[16:51:28]` Style: add batch update endpoint for flowchart node coordinates and handle edge cases when cards have empty descriptions
