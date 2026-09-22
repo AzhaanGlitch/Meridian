@@ -683,3 +683,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:28:21]` Refactor: update keyboard navigation shortcuts for panning and centering flowchart canvas and normalize layout dimensions across Chrome, Safari and Firefox
 - `[11:02:58]` Refactor: refactor JWT token refresh rotation and secure HTTP-only cookie parsing and provide user-friendly fallback messaging on network timeouts
 - `[11:33:57]` Update health check endpoint with database connection ping latency
+- `[12:10:28]` UI: tune parent goal card progress percentage calculation from child items and normalize layout dimensions across Chrome, Safari and Firefox
