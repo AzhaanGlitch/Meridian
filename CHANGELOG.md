@@ -684,3 +684,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:02:58]` Refactor: refactor JWT token refresh rotation and secure HTTP-only cookie parsing and provide user-friendly fallback messaging on network timeouts
 - `[11:33:57]` Update health check endpoint with database connection ping latency
 - `[12:10:28]` UI: tune parent goal card progress percentage calculation from child items and normalize layout dimensions across Chrome, Safari and Firefox
+- `[12:44:47]` Ensure export flowchart high-res PNG canvas scale factor to normalize layout dimensions across Chrome, Safari and Firefox
