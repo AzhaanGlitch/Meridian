@@ -686,3 +686,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:10:28]` UI: tune parent goal card progress percentage calculation from child items and normalize layout dimensions across Chrome, Safari and Firefox
 - `[12:44:47]` Ensure export flowchart high-res PNG canvas scale factor to normalize layout dimensions across Chrome, Safari and Firefox
 - `[13:18:17]` Feat: support pagination parameters parsing on goal list query endpoints and ensure smooth state transitions without visual layout shifts
+- `[13:49:18]` Improve Mongoose pre-save hook for sanitizing child card references to reduce latency and eliminate redundant state updates
