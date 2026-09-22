@@ -681,3 +681,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:17:31]` Tweak sidebar toggle spring physics and floating shadow elevation
 - `[09:53:52]` Optimize loading skeletons for dashboard statistics and cards to ensure backward compatibility with existing saved layouts
 - `[10:28:21]` Refactor: update keyboard navigation shortcuts for panning and centering flowchart canvas and normalize layout dimensions across Chrome, Safari and Firefox
+- `[11:02:58]` Refactor: refactor JWT token refresh rotation and secure HTTP-only cookie parsing and provide user-friendly fallback messaging on network timeouts
