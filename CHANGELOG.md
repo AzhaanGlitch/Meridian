@@ -696,3 +696,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:47:24]` Perf: tweak workspace membership role permissions checking middleware and improve frame rate and eliminate micro-stutters during heavy animations
 - `[18:24:47]` Update goal archive view and soft-delete restoration workflow to prevent unnecessary re-renders with memoization and useCallback hooks
 - `[18:56:28]` Tune Mongoose pre-save hook for sanitizing child card references to reduce latency and eliminate redundant state updates
+- `[19:29:31]` Perf: tune rate limiting on authentication and password reset routes and add defensive checks against null and undefined payload keys
