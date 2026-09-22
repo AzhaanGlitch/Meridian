@@ -688,3 +688,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:18:17]` Feat: support pagination parameters parsing on goal list query endpoints and ensure smooth state transitions without visual layout shifts
 - `[13:49:18]` Improve Mongoose pre-save hook for sanitizing child card references to reduce latency and eliminate redundant state updates
 - `[14:25:19]` Optimize goal description rich-text rendering with inline markdown preview
+- `[14:57:30]` Support flowchart multi-node selection box and batch dragging logic
