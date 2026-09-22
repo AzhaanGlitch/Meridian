@@ -694,3 +694,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:41:40]` Enhance flowchart node drag responsiveness and boundary constraints
 - `[17:14:10]` Optimize visual goal dependency linking in modal editor
 - `[17:47:24]` Perf: tweak workspace membership role permissions checking middleware and improve frame rate and eliminate micro-stutters during heavy animations
+- `[18:24:47]` Update goal archive view and soft-delete restoration workflow to prevent unnecessary re-renders with memoization and useCallback hooks
