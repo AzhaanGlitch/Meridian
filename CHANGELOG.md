@@ -712,3 +712,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:37:23]` Feat: tweak Vite build chunk splitting strategy for vendor libraries and streamline component props and clean up legacy utility helpers
 - `[10:58:17]` Ensure local storage fallback synchronization when network is disconnected to ensure backward compatibility with existing saved layouts
 - `[11:26:14]` Tweak keyboard navigation shortcuts for panning and centering flowchart canvas
+- `[11:49:28]` Fix: update offline cache storage and IndexedDB syncing worker and handle edge cases when cards have empty descriptions
