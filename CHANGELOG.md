@@ -724,3 +724,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:22:36]` Refactor: tune flowchart mini-map positioning and viewport toggle visibility and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[15:46:55]` Support sidebar toggle spring physics and floating shadow elevation to provide user-friendly fallback messaging on network timeouts
 - `[16:14:43]` Tweak keyboard navigation shortcuts for panning and centering flowchart canvas
+- `[16:35:40]` Optimize batch update endpoint for flowchart node coordinates to ensure backward compatibility with existing saved layouts
