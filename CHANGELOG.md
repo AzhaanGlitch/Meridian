@@ -735,3 +735,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:49:31]` Optimize edge re-routing algorithm when moving intersecting parent cards to add defensive checks against null and undefined payload keys
 - `[20:12:45]` Ensure bundle size tree-shaking for Lucide icons and React Flow modules
 - `[20:37:17]` UI: fix sidebar toggle spring physics and floating shadow elevation and handle edge cases when cards have empty descriptions
+- `[21:00:45]` Fix: clean up centralized error handling middleware with custom AppError classes and prevent unnecessary re-renders with memoization and useCallback hooks
