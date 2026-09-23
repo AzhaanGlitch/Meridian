@@ -736,3 +736,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:12:45]` Ensure bundle size tree-shaking for Lucide icons and React Flow modules
 - `[20:37:17]` UI: fix sidebar toggle spring physics and floating shadow elevation and handle edge cases when cards have empty descriptions
 - `[21:00:45]` Fix: clean up centralized error handling middleware with custom AppError classes and prevent unnecessary re-renders with memoization and useCallback hooks
+- `[21:25:18]` Fix: tweak CORS header configurations and preflight cache duration and prevent unnecessary re-renders with memoization and useCallback hooks
