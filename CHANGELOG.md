@@ -716,3 +716,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:10:28]` Optimize hover state scaling and transition curves on action toolbars to reduce latency and eliminate redundant state updates
 - `[12:34:58]` Add smooth Bezier curves and connection handle snapping in flowchart
 - `[12:59:31]` UI: optimize Gradle build script dependencies resolution and version bumps and persist user preferences to local storage seamlessly
+- `[13:22:33]` Optimize goal description rich-text rendering with inline markdown preview
