@@ -719,3 +719,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:22:33]` Optimize goal description rich-text rendering with inline markdown preview
 - `[13:49:27]` Enhance Vite build chunk splitting strategy for vendor libraries
 - `[14:11:17]` Style: refactor flowchart multi-node selection box and batch dragging logic and ensure backward compatibility with existing saved layouts
+- `[14:37:46]` Support Gradle build script dependencies resolution and version bumps
