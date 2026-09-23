@@ -714,3 +714,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:26:14]` Tweak keyboard navigation shortcuts for panning and centering flowchart canvas
 - `[11:49:28]` Fix: update offline cache storage and IndexedDB syncing worker and handle edge cases when cards have empty descriptions
 - `[12:10:28]` Optimize hover state scaling and transition curves on action toolbars to reduce latency and eliminate redundant state updates
+- `[12:34:58]` Add smooth Bezier curves and connection handle snapping in flowchart
