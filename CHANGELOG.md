@@ -753,3 +753,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:32:55]` Fix rate limiting on authentication and password reset routes
 - `[13:00:52]` Tweak health check endpoint with database connection ping latency to provide user-friendly fallback messaging on network timeouts
 - `[13:26:28]` Perf: enhance smooth Bezier curves and connection handle snapping in flowchart and ensure smooth state transitions without visual layout shifts
+- `[13:49:13]` Fix: support flowchart multi-node selection box and batch dragging logic and add defensive checks against null and undefined payload keys
