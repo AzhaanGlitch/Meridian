@@ -756,3 +756,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:49:13]` Fix: support flowchart multi-node selection box and batch dragging logic and add defensive checks against null and undefined payload keys
 - `[14:16:53]` Update goal target completion date picker and countdown badge display
 - `[14:42:23]` Clean up arrowhead markers and bidirectional edges in flowchart canvas to streamline component props and clean up legacy utility helpers
+- `[15:06:49]` Support sidebar toggle spring physics and floating shadow elevation
