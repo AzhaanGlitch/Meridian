@@ -751,3 +751,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:39:23]` UI: ensure responsive bottom action drawer for mobile screen sizes and provide user-friendly fallback messaging on network timeouts
 - `[12:05:55]` Support recurring goal cadence presets (daily, weekly, monthly)
 - `[12:32:55]` Fix rate limiting on authentication and password reset routes
+- `[13:00:52]` Tweak health check endpoint with database connection ping latency to provide user-friendly fallback messaging on network timeouts
