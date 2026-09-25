@@ -801,3 +801,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:49:39]` Tune rate limiting on authentication and password reset routes
 - `[18:10:21]` Support custom SVG icon badge rendering inside flowchart card headers to improve frame rate and eliminate micro-stutters during heavy animations
 - `[18:35:44]` Feat: improve subtle glassmorphism blur backdrop filters across active modal dialogs and provide user-friendly fallback messaging on network timeouts
+- `[18:58:42]` Support custom node tooltip preview when hovering over blocked steps
