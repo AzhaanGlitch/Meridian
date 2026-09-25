@@ -798,3 +798,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:36:49]` Style: support micro-interaction haptic feedback animations on card tap and persist user preferences to local storage seamlessly
 - `[17:00:30]` Fix: enhance goal archive view and soft-delete restoration workflow and handle edge cases when cards have empty descriptions
 - `[17:25:27]` Optimize goal priority flag indicators and custom sorting filters to provide user-friendly fallback messaging on network timeouts
+- `[17:49:39]` Tune rate limiting on authentication and password reset routes
