@@ -793,3 +793,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:36:22]` Fix goal description rich-text rendering with inline markdown preview to provide user-friendly fallback messaging on network timeouts
 - `[14:58:58]` Clean up offline cache storage and IndexedDB syncing worker
 - `[15:24:52]` Style: fix color swatch popover layout with recent palette history and prevent unnecessary re-renders with memoization and useCallback hooks
+- `[15:49:31]` Optimize child goal drag-and-drop hierarchy reordering in goal tree
