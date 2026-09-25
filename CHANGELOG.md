@@ -788,3 +788,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:34:40]` Refactor sidebar toggle spring physics and floating shadow elevation to ensure backward compatibility with existing saved layouts
 - `[13:02:28]` Support goal target completion date picker and countdown badge display
 - `[13:24:10]` Style: clean up goal target completion date picker and countdown badge display and prevent unnecessary re-renders with memoization and useCallback hooks
+- `[13:50:35]` UI: clean up custom SVG icon badge rendering inside flowchart card headers and improve frame rate and eliminate micro-stutters during heavy animations
