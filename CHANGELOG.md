@@ -799,3 +799,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:00:30]` Fix: enhance goal archive view and soft-delete restoration workflow and handle edge cases when cards have empty descriptions
 - `[17:25:27]` Optimize goal priority flag indicators and custom sorting filters to provide user-friendly fallback messaging on network timeouts
 - `[17:49:39]` Tune rate limiting on authentication and password reset routes
+- `[18:10:21]` Support custom SVG icon badge rendering inside flowchart card headers to improve frame rate and eliminate micro-stutters during heavy animations
