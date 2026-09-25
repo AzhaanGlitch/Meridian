@@ -807,3 +807,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:14:56]` Update goal priority flag indicators and custom sorting filters
 - `[20:34:35]` Style: optimize smooth Bezier curves and connection handle snapping in flowchart and provide user-friendly fallback messaging on network timeouts
 - `[20:59:58]` Style: clean up goal priority flag indicators and custom sorting filters and normalize layout dimensions across Chrome, Safari and Firefox
+- `[21:26:52]` Perf: refactor Vite build chunk splitting strategy for vendor libraries and streamline component props and clean up legacy utility helpers
