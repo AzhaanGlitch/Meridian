@@ -791,3 +791,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:50:35]` UI: clean up custom SVG icon badge rendering inside flowchart card headers and improve frame rate and eliminate micro-stutters during heavy animations
 - `[14:12:23]` Style: enhance goal target completion date picker and countdown badge display and ensure backward compatibility with existing saved layouts
 - `[14:36:22]` Fix goal description rich-text rendering with inline markdown preview to provide user-friendly fallback messaging on network timeouts
+- `[14:58:58]` Clean up offline cache storage and IndexedDB syncing worker
