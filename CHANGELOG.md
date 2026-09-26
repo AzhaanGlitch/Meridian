@@ -827,3 +827,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:59:40]` Refactor sidebar toggle spring physics and floating shadow elevation
 - `[14:28:21]` Ensure subtle glassmorphism blur backdrop filters across active modal dialogs to ensure backward compatibility with existing saved layouts
 - `[14:54:39]` Ensure canvas background grid dot alignment and subtle dark mode styling
+- `[15:21:16]` Add goal status transitions and completion celebration particle effect to ensure smooth state transitions without visual layout shifts
