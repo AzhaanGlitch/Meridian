@@ -821,3 +821,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:08:52]` Improve health check endpoint with database connection ping latency to streamline component props and clean up legacy utility helpers
 - `[11:39:53]` Tune Vite build chunk splitting strategy for vendor libraries
 - `[12:07:11]` Improve flowchart mini-map positioning and viewport toggle visibility
+- `[12:33:18]` Fix: support flowchart mini-map positioning and viewport toggle visibility and persist user preferences to local storage seamlessly
