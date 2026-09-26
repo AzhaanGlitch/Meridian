@@ -840,3 +840,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:02:53]` Enhance empty state illustrations and helper tips on goals dashboard
 - `[20:32:40]` Refactor centralized error handling middleware with custom AppError classes
 - `[20:58:29]` Ensure workspace membership role permissions checking middleware to reduce latency and eliminate redundant state updates
+- `[21:24:57]` Style: improve Android splash screen exit animation and window background theme and ensure backward compatibility with existing saved layouts
