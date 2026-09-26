@@ -831,3 +831,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:52:53]` Perf: enhance nested milestone checklist items with progress tracking and persist user preferences to local storage seamlessly
 - `[16:20:48]` Add parent goal card progress percentage calculation from child items
 - `[16:45:48]` Clean up flowchart node drag responsiveness and boundary constraints
+- `[17:16:36]` Optimize flowchart mini-map positioning and viewport toggle visibility
