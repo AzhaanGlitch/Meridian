@@ -820,3 +820,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:41:19]` Refactor goal category tags and color palette synchronization
 - `[11:08:52]` Improve health check endpoint with database connection ping latency to streamline component props and clean up legacy utility helpers
 - `[11:39:53]` Tune Vite build chunk splitting strategy for vendor libraries
+- `[12:07:11]` Improve flowchart mini-map positioning and viewport toggle visibility
