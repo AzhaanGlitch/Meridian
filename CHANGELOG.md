@@ -834,3 +834,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:16:36]` Optimize flowchart mini-map positioning and viewport toggle visibility
 - `[17:43:34]` Perf: optimize keyboard navigation shortcuts for panning and centering flowchart canvas and reduce latency and eliminate redundant state updates
 - `[18:09:15]` UI: update CORS header configurations and preflight cache duration and improve frame rate and eliminate micro-stutters during heavy animations
+- `[18:36:46]` UI: clean up parent goal card progress percentage calculation from child items and ensure smooth state transitions without visual layout shifts
