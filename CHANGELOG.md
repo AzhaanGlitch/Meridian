@@ -869,3 +869,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[18:30:49]` Add flowchart mini-map positioning and viewport toggle visibility
 - `[18:56:41]` Style: ensure custom scrollbar track styling and auto-hiding behavior and normalize layout dimensions across Chrome, Safari and Firefox
 - `[19:23:35]` Improve child goal drag-and-drop hierarchy reordering in goal tree
+- `[19:51:40]` UI: clean up arrowhead markers and bidirectional edges in flowchart canvas and ensure smooth state transitions without visual layout shifts
