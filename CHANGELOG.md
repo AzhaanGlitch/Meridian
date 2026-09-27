@@ -867,3 +867,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:34:57]` Fix: improve subtle glassmorphism blur backdrop filters across active modal dialogs and add defensive checks against null and undefined payload keys
 - `[18:04:32]` Refactor auto-layout hierarchy algorithm using directed acyclic graph sorting to prevent unnecessary re-renders with memoization and useCallback hooks
 - `[18:30:49]` Add flowchart mini-map positioning and viewport toggle visibility
+- `[18:56:41]` Style: ensure custom scrollbar track styling and auto-hiding behavior and normalize layout dimensions across Chrome, Safari and Firefox
