@@ -874,3 +874,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:42:53]` Refactor: improve pagination parameters parsing on goal list query endpoints and persist user preferences to local storage seamlessly
 - `[21:13:26]` Style: refactor subtle glassmorphism blur backdrop filters across active modal dialogs and add defensive checks against null and undefined payload keys
 - `[21:38:33]` UI: refactor local storage fallback synchronization when network is disconnected and reduce latency and eliminate redundant state updates
+- `[22:05:33]` Fix: enhance custom scrollbar track styling and auto-hiding behavior and normalize layout dimensions across Chrome, Safari and Firefox
