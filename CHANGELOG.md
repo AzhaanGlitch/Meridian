@@ -871,3 +871,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:23:35]` Improve child goal drag-and-drop hierarchy reordering in goal tree
 - `[19:51:40]` UI: clean up arrowhead markers and bidirectional edges in flowchart canvas and ensure smooth state transitions without visual layout shifts
 - `[20:16:39]` Fix viewport meta tag config to prevent double-tap zoom on Android chrome
+- `[20:42:53]` Refactor: improve pagination parameters parsing on goal list query endpoints and persist user preferences to local storage seamlessly
