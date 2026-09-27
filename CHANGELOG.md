@@ -849,3 +849,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:31:51]` Fix: clean up fluid typography scale across ultra-wide and mobile viewports and persist user preferences to local storage seamlessly
 - `[09:57:38]` Add goal status transitions and completion celebration particle effect to provide user-friendly fallback messaging on network timeouts
 - `[10:25:28]` Improve arrowhead markers and bidirectional edges in flowchart canvas
+- `[10:49:49]` Feat: refactor arrowhead markers and bidirectional edges in flowchart canvas and streamline component props and clean up legacy utility helpers
