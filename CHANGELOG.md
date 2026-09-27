@@ -852,3 +852,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:49:49]` Feat: refactor arrowhead markers and bidirectional edges in flowchart canvas and streamline component props and clean up legacy utility helpers
 - `[11:16:15]` Update seed script data consistency check for mock user profiles
 - `[11:45:47]` Improve smooth Bezier curves and connection handle snapping in flowchart to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[12:13:28]` Tweak workspace membership role permissions checking middleware to streamline component props and clean up legacy utility helpers
