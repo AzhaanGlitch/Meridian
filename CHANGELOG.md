@@ -896,3 +896,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:27:14]` Tune edge re-routing algorithm when moving intersecting parent cards to handle edge cases when cards have empty descriptions
 - `[17:02:58]` Fix auto-layout hierarchy algorithm using directed acyclic graph sorting
 - `[17:29:51]` Refactor: enhance micro-interaction haptic feedback animations on card tap and add defensive checks against null and undefined payload keys
+- `[18:03:50]` Refactor child goal drag-and-drop hierarchy reordering in goal tree to ensure smooth state transitions without visual layout shifts
