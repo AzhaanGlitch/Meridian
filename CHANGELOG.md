@@ -891,3 +891,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:54:36]` Refactor: support seed script data consistency check for mock user profiles and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[14:24:30]` Optimize responsive bottom action drawer for mobile screen sizes
 - `[14:57:27]` Tune MongoDB index optimization on goal tags and owner reference fields
+- `[15:28:36]` Fix: refactor goal description rich-text rendering with inline markdown preview and handle edge cases when cards have empty descriptions
