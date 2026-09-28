@@ -884,3 +884,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:15:35]` Refactor: fix goal category tags and color palette synchronization and handle edge cases when cards have empty descriptions
 - `[10:49:50]` Refactor: fix Android splash screen exit animation and window background theme and streamline component props and clean up legacy utility helpers
 - `[11:21:45]` Update workspace membership role permissions checking middleware
+- `[11:50:53]` Ensure goal status transitions and completion celebration particle effect
