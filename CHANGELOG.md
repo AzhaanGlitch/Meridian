@@ -882,3 +882,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:14:36]` Tune goal priority flag indicators and custom sorting filters
 - `[09:46:41]` Update color swatch popover layout with recent palette history to ensure smooth state transitions without visual layout shifts
 - `[10:15:35]` Refactor: fix goal category tags and color palette synchronization and handle edge cases when cards have empty descriptions
+- `[10:49:50]` Refactor: fix Android splash screen exit animation and window background theme and streamline component props and clean up legacy utility helpers
