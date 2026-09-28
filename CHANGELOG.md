@@ -885,3 +885,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:49:50]` Refactor: fix Android splash screen exit animation and window background theme and streamline component props and clean up legacy utility helpers
 - `[11:21:45]` Update workspace membership role permissions checking middleware
 - `[11:50:53]` Ensure goal status transitions and completion celebration particle effect
+- `[12:23:21]` Update rate limiting on authentication and password reset routes
