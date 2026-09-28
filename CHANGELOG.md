@@ -887,3 +887,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:50:53]` Ensure goal status transitions and completion celebration particle effect
 - `[12:23:21]` Update rate limiting on authentication and password reset routes
 - `[12:53:57]` Tune custom SVG icon badge rendering inside flowchart card headers
+- `[13:24:50]` Refactor goal archive view and soft-delete restoration workflow to provide user-friendly fallback messaging on network timeouts
