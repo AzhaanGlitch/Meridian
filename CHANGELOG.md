@@ -877,3 +877,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[22:05:33]` Fix: enhance custom scrollbar track styling and auto-hiding behavior and normalize layout dimensions across Chrome, Safari and Firefox
 - `[22:34:53]` Improve keyboard navigation shortcuts for panning and centering flowchart canvas to improve frame rate and eliminate micro-stutters during heavy animations
 - `[23:01:37]` Enhance goal status transitions and completion celebration particle effect to ensure backward compatibility with existing saved layouts
+
+### September 28, 2026 (Monday)
+- `[09:14:36]` Tune goal priority flag indicators and custom sorting filters
