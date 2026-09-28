@@ -893,3 +893,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:57:27]` Tune MongoDB index optimization on goal tags and owner reference fields
 - `[15:28:36]` Fix: refactor goal description rich-text rendering with inline markdown preview and handle edge cases when cards have empty descriptions
 - `[15:58:57]` Feat: tweak custom SVG icon badge rendering inside flowchart card headers and add defensive checks against null and undefined payload keys
+- `[16:27:14]` Tune edge re-routing algorithm when moving intersecting parent cards to handle edge cases when cards have empty descriptions
