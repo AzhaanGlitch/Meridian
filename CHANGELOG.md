@@ -938,3 +938,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:23:34]` Tweak goal description rich-text rendering with inline markdown preview
 - `[21:48:49]` Improve goal update endpoint input validation with Joi schema
 - `[22:17:34]` Refactor: improve local storage fallback synchronization when network is disconnected and ensure smooth state transitions without visual layout shifts
+- `[22:42:36]` UI: support goal update endpoint input validation with Joi schema and prevent unnecessary re-renders with memoization and useCallback hooks
