@@ -919,3 +919,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:46:31]` Perf: fix goal target completion date picker and countdown badge display and handle edge cases when cards have empty descriptions
 - `[13:13:44]` Tune goal description rich-text rendering with inline markdown preview to add defensive checks against null and undefined payload keys
 - `[13:42:34]` Add parent goal card progress percentage calculation from child items
+- `[14:10:25]` Tweak arrowhead markers and bidirectional edges in flowchart canvas
