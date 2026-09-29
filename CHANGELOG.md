@@ -911,3 +911,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:11:55]` Feat: tweak batch update endpoint for flowchart node coordinates and reduce latency and eliminate redundant state updates
 - `[09:40:50]` Improve toast notification queue for background auto-save status
 - `[10:08:27]` Refactor: enhance visual goal dependency linking in modal editor and prevent unnecessary re-renders with memoization and useCallback hooks
+- `[10:31:50]` Tune Android splash screen exit animation and window background theme to improve frame rate and eliminate micro-stutters during heavy animations
