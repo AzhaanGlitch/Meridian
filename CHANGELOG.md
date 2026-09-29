@@ -926,3 +926,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:55:52]` Improve canvas performance during rapid node addition and deletion
 - `[16:24:10]` Fix: refactor custom scrollbar track styling and auto-hiding behavior and persist user preferences to local storage seamlessly
 - `[16:49:12]` Feat: ensure bundle size tree-shaking for Lucide icons and React Flow modules and persist user preferences to local storage seamlessly
+- `[17:17:20]` Tune node connection anchor points to prevent wire overlapping
