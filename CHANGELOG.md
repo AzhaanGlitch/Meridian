@@ -923,3 +923,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:34:43]` Support empty state illustrations and helper tips on goals dashboard
 - `[15:03:30]` Refactor flowchart mini-map positioning and viewport toggle visibility
 - `[15:30:40]` Support loading skeletons for dashboard statistics and cards
+- `[15:55:52]` Improve canvas performance during rapid node addition and deletion
