@@ -929,3 +929,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:17:20]` Tune node connection anchor points to prevent wire overlapping
 - `[17:43:13]` Optimize nested milestone checklist items with progress tracking to ensure smooth state transitions without visual layout shifts
 - `[18:11:41]` Improve hover state scaling and transition curves on action toolbars to ensure smooth state transitions without visual layout shifts
+- `[18:39:38]` Tweak visual goal dependency linking in modal editor
