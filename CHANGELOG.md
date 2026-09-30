@@ -964,3 +964,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:59:56]` Optimize Vite build chunk splitting strategy for vendor libraries
 - `[20:36:16]` Ensure loading skeletons for dashboard statistics and cards to handle edge cases when cards have empty descriptions
 - `[21:09:34]` Perf: fix flowchart multi-node selection box and batch dragging logic and streamline component props and clean up legacy utility helpers
+- `[21:41:17]` Improve smooth Bezier curves and connection handle snapping in flowchart to provide user-friendly fallback messaging on network timeouts
