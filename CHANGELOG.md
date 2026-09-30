@@ -963,3 +963,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:28:15]` Ensure seed script data consistency check for mock user profiles to persist user preferences to local storage seamlessly
 - `[19:59:56]` Optimize Vite build chunk splitting strategy for vendor libraries
 - `[20:36:16]` Ensure loading skeletons for dashboard statistics and cards to handle edge cases when cards have empty descriptions
+- `[21:09:34]` Perf: fix flowchart multi-node selection box and batch dragging logic and streamline component props and clean up legacy utility helpers
