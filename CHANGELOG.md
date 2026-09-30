@@ -939,3 +939,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:48:49]` Improve goal update endpoint input validation with Joi schema
 - `[22:17:34]` Refactor: improve local storage fallback synchronization when network is disconnected and ensure smooth state transitions without visual layout shifts
 - `[22:42:36]` UI: support goal update endpoint input validation with Joi schema and prevent unnecessary re-renders with memoization and useCallback hooks
+
+### September 30, 2026 (Wednesday)
+- `[09:00:12]` Feat: improve auto-layout hierarchy algorithm using directed acyclic graph sorting and normalize layout dimensions across Chrome, Safari and Firefox
