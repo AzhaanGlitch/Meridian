@@ -957,3 +957,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:12:44]` Improve pagination parameters parsing on goal list query endpoints to ensure smooth state transitions without visual layout shifts
 - `[16:43:33]` Feat: tune Android splash screen exit animation and window background theme and reduce latency and eliminate redundant state updates
 - `[17:16:48]` Fix: add goal priority flag indicators and custom sorting filters and improve frame rate and eliminate micro-stutters during heavy animations
+- `[17:48:30]` Add custom scrollbar track styling and auto-hiding behavior
