@@ -998,3 +998,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:21:15]` Tweak pagination parameters parsing on goal list query endpoints to ensure smooth state transitions without visual layout shifts
 - `[21:52:50]` Fix: support staggered entrance transitions for sticky note goal cards and reduce latency and eliminate redundant state updates
 - `[22:19:29]` Ensure JWT token refresh rotation and secure HTTP-only cookie parsing
+- `[22:45:51]` UI: refactor goal status transitions and completion celebration particle effect and ensure backward compatibility with existing saved layouts
