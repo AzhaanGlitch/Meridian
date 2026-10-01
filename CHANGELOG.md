@@ -982,3 +982,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:53:22]` Support centralized error handling middleware with custom AppError classes to ensure backward compatibility with existing saved layouts
 - `[14:20:17]` Tweak edge re-routing algorithm when moving intersecting parent cards to add defensive checks against null and undefined payload keys
 - `[14:49:28]` Perf: add Mongoose pre-save hook for sanitizing child card references and prevent unnecessary re-renders with memoization and useCallback hooks
+- `[15:16:31]` Improve goal search query debouncing and fuzzy matching highlight
