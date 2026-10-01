@@ -990,3 +990,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:38:16]` Add responsive bottom action drawer for mobile screen sizes
 - `[18:07:42]` Tweak keyboard navigation shortcuts for panning and centering flowchart canvas
 - `[18:36:44]` Fix goal description rich-text rendering with inline markdown preview
+- `[19:03:45]` Style: tweak canvas zoom levels and pinch-to-zoom gestures on touch devices and handle edge cases when cards have empty descriptions
