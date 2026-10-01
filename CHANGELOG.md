@@ -980,3 +980,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:56:29]` Refactor workspace membership role permissions checking middleware to persist user preferences to local storage seamlessly
 - `[13:27:49]` Refactor Gradle build script dependencies resolution and version bumps to handle edge cases when cards have empty descriptions
 - `[13:53:22]` Support centralized error handling middleware with custom AppError classes to ensure backward compatibility with existing saved layouts
+- `[14:20:17]` Tweak edge re-routing algorithm when moving intersecting parent cards to add defensive checks against null and undefined payload keys
