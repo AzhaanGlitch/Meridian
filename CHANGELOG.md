@@ -972,3 +972,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:16:42]` Perf: fix sidebar toggle spring physics and floating shadow elevation and reduce latency and eliminate redundant state updates
 - `[09:41:18]` Optimize custom SVG icon badge rendering inside flowchart card headers
 - `[10:08:45]` Enhance subtle glassmorphism blur backdrop filters across active modal dialogs
+- `[10:39:54]` Refactor goal priority flag indicators and custom sorting filters
