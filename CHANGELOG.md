@@ -985,3 +985,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:16:31]` Improve goal search query debouncing and fuzzy matching highlight
 - `[15:46:45]` Style: tune goal target completion date picker and countdown badge display and provide user-friendly fallback messaging on network timeouts
 - `[16:16:12]` UI: update goal archive view and soft-delete restoration workflow and handle edge cases when cards have empty descriptions
+- `[16:44:27]` Add offline cache storage and IndexedDB syncing worker to provide user-friendly fallback messaging on network timeouts
