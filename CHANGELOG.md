@@ -975,3 +975,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:39:54]` Refactor goal priority flag indicators and custom sorting filters
 - `[11:07:35]` Support goal status transitions and completion celebration particle effect
 - `[11:36:25]` Improve export flowchart high-res PNG canvas scale factor to improve frame rate and eliminate micro-stutters during heavy animations
+- `[12:02:53]` Ensure node connection anchor points to prevent wire overlapping
