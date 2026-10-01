@@ -995,3 +995,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:58:32]` Support loading skeletons for dashboard statistics and cards to add defensive checks against null and undefined payload keys
 - `[20:28:27]` Add color swatch popover layout with recent palette history to reduce latency and eliminate redundant state updates
 - `[20:52:45]` Perf: update sidebar toggle spring physics and floating shadow elevation and ensure backward compatibility with existing saved layouts
+- `[21:21:15]` Tweak pagination parameters parsing on goal list query endpoints to ensure smooth state transitions without visual layout shifts
