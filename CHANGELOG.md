@@ -989,3 +989,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:08:34]` Support toast notification queue for background auto-save status to provide user-friendly fallback messaging on network timeouts
 - `[17:38:16]` Add responsive bottom action drawer for mobile screen sizes
 - `[18:07:42]` Tweak keyboard navigation shortcuts for panning and centering flowchart canvas
+- `[18:36:44]` Fix goal description rich-text rendering with inline markdown preview
