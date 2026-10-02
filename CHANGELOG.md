@@ -1000,3 +1000,6 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[22:19:29]` Ensure JWT token refresh rotation and secure HTTP-only cookie parsing
 - `[22:45:51]` UI: refactor goal status transitions and completion celebration particle effect and ensure backward compatibility with existing saved layouts
 - `[23:16:18]` Enhance goal target completion date picker and countdown badge display to provide user-friendly fallback messaging on network timeouts
+
+### October 02, 2026 (Friday)
+- `[09:12:44]` Fix: tweak parent goal card progress percentage calculation from child items and ensure backward compatibility with existing saved layouts
