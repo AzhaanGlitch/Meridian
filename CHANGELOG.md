@@ -1013,3 +1013,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:17:14]` Refactor Gradle build script dependencies resolution and version bumps
 - `[13:49:39]` Improve Android WebView bridge interface for native gesture dispatching to reduce latency and eliminate redundant state updates
 - `[14:22:57]` Enhance hover state scaling and transition curves on action toolbars
+- `[14:53:48]` Perf: clean up arrowhead markers and bidirectional edges in flowchart canvas and ensure smooth state transitions without visual layout shifts
