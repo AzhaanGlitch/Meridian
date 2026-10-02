@@ -1018,3 +1018,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:55:58]` Perf: support edge re-routing algorithm when moving intersecting parent cards and add defensive checks against null and undefined payload keys
 - `[16:24:28]` Feat: tune goal archive view and soft-delete restoration workflow and reduce latency and eliminate redundant state updates
 - `[16:57:19]` Tune Android splash screen exit animation and window background theme to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[17:24:21]` Ensure goal priority flag indicators and custom sorting filters
