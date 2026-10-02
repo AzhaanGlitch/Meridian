@@ -1023,3 +1023,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[18:27:39]` Fix color swatch popover layout with recent palette history
 - `[18:58:55]` Perf: tweak parent goal card progress percentage calculation from child items and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[19:30:15]` Clean up batch update endpoint for flowchart node coordinates
+- `[20:00:34]` Clean up pagination parameters parsing on goal list query endpoints to handle edge cases when cards have empty descriptions
