@@ -1015,3 +1015,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:22:57]` Enhance hover state scaling and transition curves on action toolbars
 - `[14:53:48]` Perf: clean up arrowhead markers and bidirectional edges in flowchart canvas and ensure smooth state transitions without visual layout shifts
 - `[15:20:25]` Clean up structured JSON logging for incoming API requests and response latency
+- `[15:55:58]` Perf: support edge re-routing algorithm when moving intersecting parent cards and add defensive checks against null and undefined payload keys
