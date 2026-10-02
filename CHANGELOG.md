@@ -1027,3 +1027,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:32:46]` Support nested milestone checklist items with progress tracking to ensure backward compatibility with existing saved layouts
 - `[21:02:55]` Perf: add health check endpoint with database connection ping latency and improve frame rate and eliminate micro-stutters during heavy animations
 - `[21:34:50]` Refactor parent goal card progress percentage calculation from child items to ensure backward compatibility with existing saved layouts
+- `[22:03:49]` Update smooth Bezier curves and connection handle snapping in flowchart
