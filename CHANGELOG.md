@@ -1047,3 +1047,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:06:50]` Fix empty state illustrations and helper tips on goals dashboard to persist user preferences to local storage seamlessly
 - `[15:33:12]` Optimize workspace membership role permissions checking middleware to ensure smooth state transitions without visual layout shifts
 - `[15:58:10]` Feat: support goal status transitions and completion celebration particle effect and improve frame rate and eliminate micro-stutters during heavy animations
+- `[16:26:29]` Refactor: clean up goal update endpoint input validation with Joi schema and handle edge cases when cards have empty descriptions
