@@ -1035,3 +1035,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:41:49]` Feat: support empty state illustrations and helper tips on goals dashboard and handle edge cases when cards have empty descriptions
 - `[10:08:12]` Refactor arrowhead markers and bidirectional edges in flowchart canvas
 - `[10:37:29]` Fix: optimize node connection anchor points to prevent wire overlapping and handle edge cases when cards have empty descriptions
+- `[11:01:53]` Update recurring goal cadence presets (daily, weekly, monthly) to normalize layout dimensions across Chrome, Safari and Firefox
