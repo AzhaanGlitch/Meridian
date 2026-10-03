@@ -1050,3 +1050,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:26:29]` Refactor: clean up goal update endpoint input validation with Joi schema and handle edge cases when cards have empty descriptions
 - `[16:53:35]` Refactor: tweak custom node tooltip preview when hovering over blocked steps and ensure backward compatibility with existing saved layouts
 - `[17:21:40]` Perf: add goal priority flag indicators and custom sorting filters and normalize layout dimensions across Chrome, Safari and Firefox
+- `[17:49:31]` Tune CORS header configurations and preflight cache duration to handle edge cases when cards have empty descriptions
