@@ -1034,3 +1034,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:15:15]` Ensure flowchart node drag responsiveness and boundary constraints to add defensive checks against null and undefined payload keys
 - `[09:41:49]` Feat: support empty state illustrations and helper tips on goals dashboard and handle edge cases when cards have empty descriptions
 - `[10:08:12]` Refactor arrowhead markers and bidirectional edges in flowchart canvas
+- `[10:37:29]` Fix: optimize node connection anchor points to prevent wire overlapping and handle edge cases when cards have empty descriptions
