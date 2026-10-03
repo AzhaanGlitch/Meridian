@@ -1038,3 +1038,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:01:53]` Update recurring goal cadence presets (daily, weekly, monthly) to normalize layout dimensions across Chrome, Safari and Firefox
 - `[11:29:12]` Fix loading skeletons for dashboard statistics and cards
 - `[11:57:14]` Enhance canvas background grid dot alignment and subtle dark mode styling
+- `[12:21:54]` Update JWT token refresh rotation and secure HTTP-only cookie parsing
