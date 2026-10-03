@@ -1052,3 +1052,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:21:40]` Perf: add goal priority flag indicators and custom sorting filters and normalize layout dimensions across Chrome, Safari and Firefox
 - `[17:49:31]` Tune CORS header configurations and preflight cache duration to handle edge cases when cards have empty descriptions
 - `[18:14:46]` Tweak hover state scaling and transition curves on action toolbars
+- `[18:40:46]` Fix: support JWT token refresh rotation and secure HTTP-only cookie parsing and streamline component props and clean up legacy utility helpers
