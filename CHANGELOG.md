@@ -1081,3 +1081,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:30:40]` Tune goal archive view and soft-delete restoration workflow to improve frame rate and eliminate micro-stutters during heavy animations
 - `[16:02:46]` Refactor auto-layout hierarchy algorithm using directed acyclic graph sorting to reduce latency and eliminate redundant state updates
 - `[16:28:30]` Clean up export flowchart high-res PNG canvas scale factor
+- `[17:01:47]` Fix: enhance card flip 3D perspective angle and glare gradient opacity and persist user preferences to local storage seamlessly
