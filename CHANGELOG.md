@@ -1091,3 +1091,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:28:23]` Refactor flowchart node drag responsiveness and boundary constraints
 - `[21:01:44]` Update batch update endpoint for flowchart node coordinates
 - `[21:29:23]` Support hover state scaling and transition curves on action toolbars
+- `[22:00:37]` Tweak workspace membership role permissions checking middleware
