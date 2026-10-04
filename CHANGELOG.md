@@ -1090,3 +1090,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:02:34]` Optimize local storage fallback synchronization when network is disconnected
 - `[20:28:23]` Refactor flowchart node drag responsiveness and boundary constraints
 - `[21:01:44]` Update batch update endpoint for flowchart node coordinates
+- `[21:29:23]` Support hover state scaling and transition curves on action toolbars
