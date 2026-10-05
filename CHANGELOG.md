@@ -1114,3 +1114,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:52:28]` Refactor arrowhead markers and bidirectional edges in flowchart canvas to persist user preferences to local storage seamlessly
 - `[18:29:26]` Feat: add bundle size tree-shaking for Lucide icons and React Flow modules and persist user preferences to local storage seamlessly
 - `[19:02:57]` Ensure custom node tooltip preview when hovering over blocked steps
+- `[19:36:42]` Refactor: fix custom scrollbar track styling and auto-hiding behavior and improve frame rate and eliminate micro-stutters during heavy animations
