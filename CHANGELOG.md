@@ -1120,3 +1120,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:21:41]` Refactor arrowhead markers and bidirectional edges in flowchart canvas to streamline component props and clean up legacy utility helpers
 - `[21:56:48]` Refactor local storage fallback synchronization when network is disconnected to reduce latency and eliminate redundant state updates
 - `[22:31:52]` Tune goal archive view and soft-delete restoration workflow
+- `[23:07:13]` Perf: support subtle glassmorphism blur backdrop filters across active modal dialogs and prevent unnecessary re-renders with memoization and useCallback hooks
