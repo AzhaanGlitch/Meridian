@@ -1100,3 +1100,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:43:44]` Style: improve recurring goal cadence presets (daily, weekly, monthly) and normalize layout dimensions across Chrome, Safari and Firefox
 - `[10:18:33]` Enhance nested milestone checklist items with progress tracking to improve frame rate and eliminate micro-stutters during heavy animations
 - `[10:51:18]` UI: add export flowchart high-res PNG canvas scale factor and provide user-friendly fallback messaging on network timeouts
+- `[11:28:52]` Perf: enhance goal priority flag indicators and custom sorting filters and prevent unnecessary re-renders with memoization and useCallback hooks
