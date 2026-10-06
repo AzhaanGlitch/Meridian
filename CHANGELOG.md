@@ -1149,3 +1149,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:37:17]` Ensure rate limiting on authentication and password reset routes
 - `[20:04:13]` Support node connection anchor points to prevent wire overlapping
 - `[20:30:15]` Style: tune responsive bottom action drawer for mobile screen sizes and provide user-friendly fallback messaging on network timeouts
+- `[20:55:34]` Support visual goal dependency linking in modal editor
