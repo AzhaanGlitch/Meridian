@@ -1138,3 +1138,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:37:50]` Tune custom scrollbar track styling and auto-hiding behavior
 - `[15:06:26]` Refactor export flowchart high-res PNG canvas scale factor to improve frame rate and eliminate micro-stutters during heavy animations
 - `[15:34:34]` Optimize flowchart multi-node selection box and batch dragging logic to improve frame rate and eliminate micro-stutters during heavy animations
+- `[16:00:21]` Tune canvas background grid dot alignment and subtle dark mode styling to normalize layout dimensions across Chrome, Safari and Firefox
