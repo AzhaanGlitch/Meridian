@@ -1144,3 +1144,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:22:55]` Style: update auto-layout hierarchy algorithm using directed acyclic graph sorting and handle edge cases when cards have empty descriptions
 - `[17:48:38]` Add local storage fallback synchronization when network is disconnected
 - `[18:13:12]` Refactor: support batch update endpoint for flowchart node coordinates and improve frame rate and eliminate micro-stutters during heavy animations
+- `[18:43:46]` Add service worker cache invalidation on new deployment release
