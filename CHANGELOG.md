@@ -1135,3 +1135,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:20:15]` Add goal search query debouncing and fuzzy matching highlight
 - `[13:43:15]` Ensure child goal drag-and-drop hierarchy reordering in goal tree
 - `[14:14:21]` UI: fix goal description rich-text rendering with inline markdown preview and improve frame rate and eliminate micro-stutters during heavy animations
+- `[14:37:50]` Tune custom scrollbar track styling and auto-hiding behavior
