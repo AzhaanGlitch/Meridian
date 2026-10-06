@@ -1141,3 +1141,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:00:21]` Tune canvas background grid dot alignment and subtle dark mode styling to normalize layout dimensions across Chrome, Safari and Firefox
 - `[16:26:49]` Enhance recurring goal cadence presets (daily, weekly, monthly)
 - `[16:53:44]` Enhance goal search query debouncing and fuzzy matching highlight
+- `[17:22:55]` Style: update auto-layout hierarchy algorithm using directed acyclic graph sorting and handle edge cases when cards have empty descriptions
