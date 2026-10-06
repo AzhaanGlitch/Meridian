@@ -1151,3 +1151,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:30:15]` Style: tune responsive bottom action drawer for mobile screen sizes and provide user-friendly fallback messaging on network timeouts
 - `[20:55:34]` Support visual goal dependency linking in modal editor
 - `[21:22:50]` UI: tweak rate limiting on authentication and password reset routes and normalize layout dimensions across Chrome, Safari and Firefox
+- `[21:52:57]` UI: improve goal priority flag indicators and custom sorting filters and handle edge cases when cards have empty descriptions
