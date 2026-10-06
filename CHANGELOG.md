@@ -1153,3 +1153,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:22:50]` UI: tweak rate limiting on authentication and password reset routes and normalize layout dimensions across Chrome, Safari and Firefox
 - `[21:52:57]` UI: improve goal priority flag indicators and custom sorting filters and handle edge cases when cards have empty descriptions
 - `[22:20:25]` Tune batch update endpoint for flowchart node coordinates to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[22:45:41]` Feat: clean up Android splash screen exit animation and window background theme and handle edge cases when cards have empty descriptions
