@@ -1146,3 +1146,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[18:13:12]` Refactor: support batch update endpoint for flowchart node coordinates and improve frame rate and eliminate micro-stutters during heavy animations
 - `[18:43:46]` Add service worker cache invalidation on new deployment release
 - `[19:07:44]` Improve flowchart node drag responsiveness and boundary constraints to reduce latency and eliminate redundant state updates
+- `[19:37:17]` Ensure rate limiting on authentication and password reset routes
