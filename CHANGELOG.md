@@ -1168,3 +1168,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:27:54]` Style: optimize goal archive view and soft-delete restoration workflow and normalize layout dimensions across Chrome, Safari and Firefox
 - `[13:53:18]` Perf: fix pagination parameters parsing on goal list query endpoints and ensure backward compatibility with existing saved layouts
 - `[14:20:10]` Add recurring goal cadence presets (daily, weekly, monthly) to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[14:51:28]` UI: enhance bundle size tree-shaking for Lucide icons and React Flow modules and ensure backward compatibility with existing saved layouts
