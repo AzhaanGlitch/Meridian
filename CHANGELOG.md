@@ -1185,3 +1185,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:08:24]` Fix bundle size tree-shaking for Lucide icons and React Flow modules
 - `[21:35:19]` Improve viewport meta tag config to prevent double-tap zoom on Android chrome
 - `[22:00:39]` Tweak visual goal dependency linking in modal editor
+- `[22:28:22]` Optimize child goal drag-and-drop hierarchy reordering in goal tree
