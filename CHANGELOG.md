@@ -1166,3 +1166,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:36:44]` Refactor goal update endpoint input validation with Joi schema to add defensive checks against null and undefined payload keys
 - `[13:03:21]` Perf: optimize canvas background grid dot alignment and subtle dark mode styling and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[13:27:54]` Style: optimize goal archive view and soft-delete restoration workflow and normalize layout dimensions across Chrome, Safari and Firefox
+- `[13:53:18]` Perf: fix pagination parameters parsing on goal list query endpoints and ensure backward compatibility with existing saved layouts
