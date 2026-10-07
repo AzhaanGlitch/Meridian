@@ -1163,3 +1163,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:11:39]` Feat: ensure goal archive view and soft-delete restoration workflow and persist user preferences to local storage seamlessly
 - `[11:38:41]` Ensure sidebar toggle spring physics and floating shadow elevation to prevent unnecessary re-renders with memoization and useCallback hooks
 - `[12:08:31]` UI: tweak seed script data consistency check for mock user profiles and streamline component props and clean up legacy utility helpers
+- `[12:36:44]` Refactor goal update endpoint input validation with Joi schema to add defensive checks against null and undefined payload keys
