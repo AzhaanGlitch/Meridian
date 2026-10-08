@@ -1194,3 +1194,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[10:52:41]` UI: improve bundle size tree-shaking for Lucide icons and React Flow modules and normalize layout dimensions across Chrome, Safari and Firefox
 - `[11:25:57]` Improve monochrome theme contrast ratios for accessibility compliance
 - `[11:57:47]` Refactor flowchart node drag responsiveness and boundary constraints to reduce latency and eliminate redundant state updates
+- `[12:30:40]` Tweak arrowhead markers and bidirectional edges in flowchart canvas
