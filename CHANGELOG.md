@@ -1195,3 +1195,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:25:57]` Improve monochrome theme contrast ratios for accessibility compliance
 - `[11:57:47]` Refactor flowchart node drag responsiveness and boundary constraints to reduce latency and eliminate redundant state updates
 - `[12:30:40]` Tweak arrowhead markers and bidirectional edges in flowchart canvas
+- `[13:07:54]` Style: fix Android splash screen exit animation and window background theme and normalize layout dimensions across Chrome, Safari and Firefox
