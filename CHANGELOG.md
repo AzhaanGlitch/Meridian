@@ -1202,3 +1202,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:21:55]` Enhance goal description rich-text rendering with inline markdown preview
 - `[15:54:50]` Fix batch update endpoint for flowchart node coordinates
 - `[16:30:37]` Refactor: update empty state illustrations and helper tips on goals dashboard and provide user-friendly fallback messaging on network timeouts
+- `[17:02:42]` Refactor: support MongoDB index optimization on goal tags and owner reference fields and handle edge cases when cards have empty descriptions
