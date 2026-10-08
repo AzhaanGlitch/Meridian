@@ -1197,3 +1197,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:30:40]` Tweak arrowhead markers and bidirectional edges in flowchart canvas
 - `[13:07:54]` Style: fix Android splash screen exit animation and window background theme and normalize layout dimensions across Chrome, Safari and Firefox
 - `[13:38:54]` Refactor: tweak CORS header configurations and preflight cache duration and add defensive checks against null and undefined payload keys
+- `[14:13:51]` Fix canvas zoom levels and pinch-to-zoom gestures on touch devices
