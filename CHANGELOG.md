@@ -1212,3 +1212,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:04:28]` Tune centralized error handling middleware with custom AppError classes to provide user-friendly fallback messaging on network timeouts
 - `[21:34:22]` Tune node connection anchor points to prevent wire overlapping
 - `[22:09:28]` UI: fix auto-layout hierarchy algorithm using directed acyclic graph sorting and ensure backward compatibility with existing saved layouts
+- `[22:43:41]` Refactor empty state illustrations and helper tips on goals dashboard to ensure smooth state transitions without visual layout shifts
