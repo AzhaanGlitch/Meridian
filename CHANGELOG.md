@@ -1209,3 +1209,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:19:58]` Tweak sidebar toggle spring physics and floating shadow elevation
 - `[19:54:42]` Refactor: support Android WebView bridge interface for native gesture dispatching and improve frame rate and eliminate micro-stutters during heavy animations
 - `[20:28:38]` Tune parent goal card progress percentage calculation from child items to normalize layout dimensions across Chrome, Safari and Firefox
+- `[21:04:28]` Tune centralized error handling middleware with custom AppError classes to provide user-friendly fallback messaging on network timeouts
