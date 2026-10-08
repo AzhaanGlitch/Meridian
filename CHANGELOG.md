@@ -1200,3 +1200,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:13:51]` Fix canvas zoom levels and pinch-to-zoom gestures on touch devices
 - `[14:47:55]` Tune custom node tooltip preview when hovering over blocked steps
 - `[15:21:55]` Enhance goal description rich-text rendering with inline markdown preview
+- `[15:54:50]` Fix batch update endpoint for flowchart node coordinates
