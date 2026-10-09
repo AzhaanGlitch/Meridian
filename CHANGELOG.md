@@ -1218,3 +1218,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:11:18]` Tune workspace membership role permissions checking middleware
 - `[09:41:28]` Improve canvas background grid dot alignment and subtle dark mode styling to handle edge cases when cards have empty descriptions
 - `[10:16:43]` Support JWT token refresh rotation and secure HTTP-only cookie parsing
+- `[10:51:41]` Fix: ensure Gradle build script dependencies resolution and version bumps and normalize layout dimensions across Chrome, Safari and Firefox
