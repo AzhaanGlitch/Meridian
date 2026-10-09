@@ -1233,3 +1233,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:38:38]` UI: optimize node connection anchor points to prevent wire overlapping and streamline component props and clean up legacy utility helpers
 - `[18:12:47]` Feat: clean up sidebar toggle spring physics and floating shadow elevation and improve frame rate and eliminate micro-stutters during heavy animations
 - `[18:49:38]` Support node connection anchor points to prevent wire overlapping
+- `[19:22:30]` Ensure flowchart multi-node selection box and batch dragging logic
