@@ -1,31 +1,88 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Layers } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Landing = () => {
   const navigate = useNavigate();
 
-  return (
-    <div className="h-screen w-screen bg-[#F1F5F9] flex flex-col items-center justify-center overflow-hidden p-6 select-none">
-      <div className="flex flex-col items-center justify-center space-y-8 text-center">
-        {/* Large Website Name */}
-        <div className="flex items-center gap-4">
-          <div className="w-16 h-16 bg-[#0F172A] rounded-3xl flex items-center justify-center text-white shadow-xl">
-            <Layers className="w-9 h-9 text-[#22D3EE]" />
-          </div>
-          <h1 className="text-6xl md:text-7xl font-extrabold text-[#0F172A] tracking-tighter">
-            Meridian
-          </h1>
-        </div>
+  // You can replace these paths with your custom image paths inside client/public/
+  const bgImagePath = '/landing-bg.jpg';
+  const linkedinIconPath = '/linkedin.svg';
+  const githubIconPath = '/github.svg';
+  const mailIconPath = '/mail.svg';
 
-        {/* Small Button leading to dashboard */}
+  return (
+    <div 
+      className="h-screen w-screen relative flex flex-col items-center justify-between overflow-hidden p-8 select-none bg-cover bg-center bg-no-repeat bg-[#F1F5F9]"
+      style={{ backgroundImage: `url('${bgImagePath}')` }}
+    >
+      {/* Spacer to keep center alignment vertically */}
+      <div className="w-full flex-1" />
+
+      {/* Hero Content: Website Title (Logo Removed) & Open App Button */}
+      <div className="flex flex-col items-center justify-center space-y-6 text-center z-10">
+        <h1 className="text-6xl md:text-8xl font-extrabold text-[#0F172A] tracking-tighter drop-shadow-sm">
+          Meridian
+        </h1>
+
         <button
           onClick={() => navigate('/dashboard')}
-          className="mt-4 px-6 py-2.5 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold rounded-xl flex items-center gap-2 shadow-lg transition-all active:scale-95 group cursor-pointer"
+          className="px-7 py-3 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold rounded-xl flex items-center gap-2.5 shadow-lg transition-all active:scale-95 group cursor-pointer"
         >
           <span>Open App</span>
-          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
         </button>
+      </div>
+
+      {/* Bottom Spacer & Social Icon Bar */}
+      <div className="w-full flex-1 flex flex-col justify-end items-center">
+        <div className="flex items-center gap-6 z-10 py-2">
+          {/* LinkedIn Icon */}
+          <a 
+            href="#" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-7 h-7 flex items-center justify-center hover:opacity-80 transition-opacity"
+            title="LinkedIn"
+          >
+            <img 
+              src={linkedinIconPath} 
+              alt="LinkedIn" 
+              className="w-5 h-5 object-contain"
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+          </a>
+
+          {/* GitHub Icon */}
+          <a 
+            href="#" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-7 h-7 flex items-center justify-center hover:opacity-80 transition-opacity"
+            title="GitHub"
+          >
+            <img 
+              src={githubIconPath} 
+              alt="GitHub" 
+              className="w-5 h-5 object-contain"
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+          </a>
+
+          {/* Mail Icon */}
+          <a 
+            href="mailto:contact@meridian.app" 
+            className="w-7 h-7 flex items-center justify-center hover:opacity-80 transition-opacity"
+            title="Email"
+          >
+            <img 
+              src={mailIconPath} 
+              alt="Mail" 
+              className="w-5 h-5 object-contain"
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+          </a>
+        </div>
       </div>
     </div>
   );
