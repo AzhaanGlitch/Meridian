@@ -40,9 +40,9 @@ function App() {
           
           {/* Main App Routes — Default directly to /goals */}
           <Route path="/goals" element={<Layout><Goals /></Layout>} />
-          <Route path="/goals/:id" element={<Layout><GoalDetail /></Layout>} />
-          <Route path="/maps" element={<Layout><Maps /></Layout>} />
-          <Route path="/roadmap" element={<Layout><Roadmap /></Layout>} />
+          <Route path="/goals/:id" element={<Layout><Goals /><GoalDetail /></Layout>} />
+          <Route path="/goals/:id/map" element={<Layout><Goals /><GoalDetail initialTab="map" /></Layout>} />
+          <Route path="/goals/:id/roadmap" element={<Layout><Goals /><GoalDetail initialTab="roadmap" /></Layout>} />
           <Route path="/settings" element={<Layout><Settings /></Layout>} />
           <Route path="/dashboard" element={<Navigate to="/goals" replace />} />
           <Route path="*" element={<Navigate to="/goals" replace />} />
