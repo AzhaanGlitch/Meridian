@@ -3,12 +3,29 @@ import React, { createContext, useContext, useState } from 'react';
 const AppContext = createContext();
 
 export const PASTEL_COLORS = [
-  { name: 'Warm Yellow', hex: '#FBBF24', bg: 'bg-[#FBBF24]' },
-  { name: 'Coral Orange', hex: '#FB923C', bg: 'bg-[#FB923C]' },
-  { name: 'Soft Purple', hex: '#C084FC', bg: 'bg-[#C084FC]' },
-  { name: 'Lime Green', hex: '#A3E635', bg: 'bg-[#A3E635]' },
-  { name: 'Mint Green', hex: '#86EFAC', bg: 'bg-[#86EFAC]' },
-  { name: 'Sky Cyan', hex: '#22D3EE', bg: 'bg-[#22D3EE]' },
+  // Row 1: Warm Sunshine & Soft Corals
+  { name: 'Warm Sun', hex: '#FDE047' },
+  { name: 'Peach Cream', hex: '#FED7AA' },
+  { name: 'Soft Apricot', hex: '#FDBA74' },
+  { name: 'Coral Blush', hex: '#FCA5A5' },
+
+  // Row 2: Fresh Mint & Soft Cyan
+  { name: 'Soft Lime', hex: '#E9D5FF' ? '#D9F99D' : '#D9F99D' },
+  { name: 'Fresh Mint', hex: '#86EFAC' },
+  { name: 'Pastel Aqua', hex: '#99F6E4' },
+  { name: 'Soft Cyan', hex: '#BAE6FD' },
+
+  // Row 3: Sky Blue, Lavender & Pinks
+  { name: 'Sky Blue', hex: '#93C5FD' },
+  { name: 'Lavender Dream', hex: '#DDD6FE' },
+  { name: 'Soft Magenta', hex: '#F5D0FE' },
+  { name: 'Blush Pink', hex: '#FBCFE8' },
+
+  // Row 4: Earthy Neutrals & Slate
+  { name: 'Warm Taupe', hex: '#D6C0B3' },
+  { name: 'Sand Beige', hex: '#E5D9B6' },
+  { name: 'Light Slate', hex: '#E2E8F0' },
+  { name: 'Dark Slate', hex: '#64748B' }
 ];
 
 export const CATEGORIES = [

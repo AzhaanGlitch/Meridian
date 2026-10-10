@@ -20,6 +20,7 @@ const GoalModal = () => {
     cardColor: '#FBBF24'
   });
 
+  const [showExpandedPalette, setShowExpandedPalette] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -146,23 +147,79 @@ const GoalModal = () => {
             />
           </div>
 
-          {/* Pastel Card Color Picker */}
+          {/* Pastel Card Color Picker with + Button to Expand Larger Palette */}
           <div>
-            <label className="block font-bold text-[#0F172A] mb-2 text-xs">Card Color</label>
-            <div className="flex items-center justify-between">
-              {PASTEL_COLORS.map(c => (
-                <button
-                  key={c.hex}
-                  type="button"
-                  onClick={() => setFormData({ ...formData, cardColor: c.hex })}
-                  style={{ backgroundColor: c.hex }}
-                  className={`w-8 h-8 rounded-full border-2 transition-transform ${
-                    formData.cardColor === c.hex ? 'border-[#0F172A] scale-110 shadow-sm' : 'border-transparent hover:scale-105'
-                  }`}
-                  title={c.name}
-                />
-              ))}
+            <div className="flex items-center justify-between mb-2">
+              <label className="block font-bold text-[#0F172A] text-xs">Card Color</label>
+              <button
+                type="button"
+                onClick={() => setShowExpandedPalette(!showExpandedPalette)}
+                className="text-[11px] font-bold text-[#22D3EE] bg-[#0F172A] px-2.5 py-0.5 rounded-full hover:bg-[#1E293B] transition-colors flex items-center gap-1"
+              >
+                <span>{showExpandedPalette ? 'Less colors' : '+ More colors'}</span>
+              </button>
             </div>
+
+            {showExpandedPalette ? (
+              /* Expanded 16 Color Grid + Custom Hex Picker */
+              <div className="space-y-3 bg-[#F8FAFC] p-3 rounded-2xl border border-[#E2E8F0]">
+                <div className="grid grid-cols-8 gap-2">
+                  {PASTEL_COLORS.map(c => (
+                    <button
+                      key={c.hex}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, cardColor: c.hex })}
+                      style={{ backgroundColor: c.hex }}
+                      className={`w-7 h-7 rounded-full border-2 transition-transform ${
+                        formData.cardColor === c.hex ? 'border-[#0F172A] scale-110 shadow-sm' : 'border-transparent hover:scale-105'
+                      }`}
+                      title={c.name}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-3 pt-2 border-t border-[#E2E8F0]">
+                  <span className="text-[11px] font-bold text-[#64748B]">Custom Color:</span>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="color"
+                      value={formData.cardColor}
+                      onChange={(e) => setFormData({ ...formData, cardColor: e.target.value })}
+                      className="w-7 h-7 rounded-lg border-0 cursor-pointer p-0 bg-transparent"
+                    />
+                    <span className="text-xs font-mono font-bold text-[#0F172A] uppercase">
+                      {formData.cardColor}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Compact Inline Row with + Button */
+              <div className="flex items-center justify-between gap-1.5">
+                {PASTEL_COLORS.slice(0, 6).map(c => (
+                  <button
+                    key={c.hex}
+                    type="button"
+                    onClick={() => setFormData({ ...formData, cardColor: c.hex })}
+                    style={{ backgroundColor: c.hex }}
+                    className={`w-7 h-7 rounded-full border-2 transition-transform ${
+                      formData.cardColor === c.hex ? 'border-[#0F172A] scale-110 shadow-sm' : 'border-transparent hover:scale-105'
+                    }`}
+                    title={c.name}
+                  />
+                ))}
+                
+                {/* '+' Icon Button to expand larger palette */}
+                <button
+                  type="button"
+                  onClick={() => setShowExpandedPalette(true)}
+                  className="w-7 h-7 rounded-full border border-dashed border-[#0F172A] bg-slate-100 hover:bg-slate-200 text-[#0F172A] flex items-center justify-center transition-transform hover:scale-105 font-extrabold text-sm"
+                  title="More colors"
+                >
+                  +
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Footer Submit Buttons */}
