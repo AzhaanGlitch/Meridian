@@ -6,7 +6,6 @@ import Sidebar from './components/Sidebar';
 import GoalModal from './components/GoalModal';
 
 import Landing from './pages/Landing';
-import Dashboard from './pages/Dashboard';
 import Goals from './pages/Goals';
 import GoalDetail from './pages/GoalDetail';
 import Maps from './pages/Maps';
@@ -39,14 +38,14 @@ function App() {
           {/* Landing Page as default root */}
           <Route path="/" element={<Landing />} />
           
-          {/* Main App Routes */}
-          <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+          {/* Main App Routes — Default directly to /goals */}
           <Route path="/goals" element={<Layout><Goals /></Layout>} />
           <Route path="/goals/:id" element={<Layout><GoalDetail /></Layout>} />
           <Route path="/maps" element={<Layout><Maps /></Layout>} />
           <Route path="/roadmap" element={<Layout><Roadmap /></Layout>} />
           <Route path="/settings" element={<Layout><Settings /></Layout>} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/dashboard" element={<Navigate to="/goals" replace />} />
+          <Route path="*" element={<Navigate to="/goals" replace />} />
         </Routes>
       </AppProvider>
     </BrowserRouter>

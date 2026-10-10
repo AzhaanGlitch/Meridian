@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
-  LayoutDashboard, 
   Target, 
   Network, 
   CalendarRange, 
@@ -17,7 +16,6 @@ const Sidebar = () => {
   } = useApp();
 
   const navItems = [
-    { label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
     { label: 'Goals & Tasks', icon: Target, path: '/goals' },
     { label: 'Work Maps & Flow', icon: Network, path: '/maps' },
     { label: 'Roadmap', icon: CalendarRange, path: '/roadmap' },
