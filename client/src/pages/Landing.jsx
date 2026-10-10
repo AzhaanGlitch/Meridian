@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Linkedin, Github, Mail } from 'lucide-react';
 
 const Landing = () => {
   const navigate = useNavigate();
 
-  // You can replace these paths with your custom image paths inside client/public/
+  // Custom image paths inside client/public/ (if present)
   const bgImagePath = '/landing-bg.jpg';
   const linkedinIconPath = '/linkedin.svg';
   const githubIconPath = '/github.svg';
@@ -13,74 +13,60 @@ const Landing = () => {
 
   return (
     <div 
-      className="h-screen w-screen relative flex flex-col items-center justify-between overflow-hidden p-8 select-none bg-cover bg-center bg-no-repeat bg-[#F1F5F9]"
+      className="h-screen w-screen relative flex flex-col items-center justify-between overflow-hidden p-8 select-none bg-cover bg-center bg-no-repeat bg-[#0F172A]"
       style={{ backgroundImage: `url('${bgImagePath}')` }}
     >
-      {/* Spacer to keep center alignment vertically */}
+      {/* Spacer for center vertical alignment */}
       <div className="w-full flex-1" />
 
-      {/* Hero Content: Website Title (Logo Removed) & Open App Button */}
+      {/* Hero Content: White Title & Glassmorphism Button */}
       <div className="flex flex-col items-center justify-center space-y-6 text-center z-10">
-        <h1 className="text-6xl md:text-8xl font-extrabold text-[#0F172A] tracking-tighter drop-shadow-sm">
+        <h1 className="text-6xl md:text-8xl font-extrabold text-white tracking-tighter drop-shadow-md">
           Meridian
         </h1>
 
+        {/* Glassmorphism Action Button */}
         <button
           onClick={() => navigate('/dashboard')}
-          className="px-7 py-3 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold rounded-xl flex items-center gap-2.5 shadow-lg transition-all active:scale-95 group cursor-pointer"
+          className="px-7 py-3 bg-white/20 hover:bg-white/30 text-white text-xs font-bold rounded-xl flex items-center gap-2.5 backdrop-blur-md border border-white/30 shadow-xl transition-all active:scale-95 group cursor-pointer"
         >
           <span>Open App</span>
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
         </button>
       </div>
 
-      {/* Bottom Spacer & Social Icon Bar */}
+      {/* Bottom Social Icon Bar */}
       <div className="w-full flex-1 flex flex-col justify-end items-center">
         <div className="flex items-center gap-6 z-10 py-2">
-          {/* LinkedIn Icon */}
+          {/* LinkedIn Link */}
           <a 
-            href="#" 
+            href="https://linkedin.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="w-7 h-7 flex items-center justify-center hover:opacity-80 transition-opacity"
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white transition-all hover:scale-105"
             title="LinkedIn"
           >
-            <img 
-              src={linkedinIconPath} 
-              alt="LinkedIn" 
-              className="w-5 h-5 object-contain"
-              onError={(e) => { e.target.style.display = 'none'; }}
-            />
+            <Linkedin className="w-5 h-5" />
           </a>
 
-          {/* GitHub Icon */}
+          {/* GitHub Link */}
           <a 
-            href="#" 
+            href="https://github.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="w-7 h-7 flex items-center justify-center hover:opacity-80 transition-opacity"
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white transition-all hover:scale-105"
             title="GitHub"
           >
-            <img 
-              src={githubIconPath} 
-              alt="GitHub" 
-              className="w-5 h-5 object-contain"
-              onError={(e) => { e.target.style.display = 'none'; }}
-            />
+            <Github className="w-5 h-5" />
           </a>
 
-          {/* Mail Icon */}
+          {/* Mail Link */}
           <a 
             href="mailto:contact@meridian.app" 
-            className="w-7 h-7 flex items-center justify-center hover:opacity-80 transition-opacity"
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white transition-all hover:scale-105"
             title="Email"
           >
-            <img 
-              src={mailIconPath} 
-              alt="Mail" 
-              className="w-5 h-5 object-contain"
-              onError={(e) => { e.target.style.display = 'none'; }}
-            />
+            <Mail className="w-5 h-5" />
           </a>
         </div>
       </div>
