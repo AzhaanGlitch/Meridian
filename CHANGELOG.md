@@ -1252,3 +1252,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:38:11]` Refactor: update goal category tags and color palette synchronization and persist user preferences to local storage seamlessly
 - `[13:06:54]` Refactor: refactor rate limiting on authentication and password reset routes and ensure backward compatibility with existing saved layouts
 - `[13:35:50]` UI: optimize edge re-routing algorithm when moving intersecting parent cards and improve frame rate and eliminate micro-stutters during heavy animations
+- `[14:01:42]` Improve goal description rich-text rendering with inline markdown preview
