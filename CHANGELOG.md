@@ -1259,3 +1259,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:00:31]` Fix: refactor auto-layout hierarchy algorithm using directed acyclic graph sorting and add defensive checks against null and undefined payload keys
 - `[16:27:45]` Ensure canvas performance during rapid node addition and deletion
 - `[16:55:17]` UI: refactor canvas zoom levels and pinch-to-zoom gestures on touch devices and normalize layout dimensions across Chrome, Safari and Firefox
+- `[17:26:18]` Tune Mongoose pre-save hook for sanitizing child card references to ensure backward compatibility with existing saved layouts
