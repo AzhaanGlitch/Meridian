@@ -1255,3 +1255,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:01:42]` Improve goal description rich-text rendering with inline markdown preview
 - `[14:31:44]` Optimize hover state scaling and transition curves on action toolbars to provide user-friendly fallback messaging on network timeouts
 - `[15:01:53]` Tweak MongoDB index optimization on goal tags and owner reference fields
+- `[15:30:19]` Perf: add goal priority flag indicators and custom sorting filters and ensure smooth state transitions without visual layout shifts
