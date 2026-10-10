@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Linkedin, Github, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Landing = () => {
   const navigate = useNavigate();
 
-  // Custom image paths inside client/public/ (if present)
+  // Custom image paths inside client/public/
   const bgImagePath = '/landing-bg.jpg';
   const linkedinIconPath = '/linkedin.svg';
   const githubIconPath = '/github.svg';
@@ -43,10 +43,18 @@ const Landing = () => {
             href="https://linkedin.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white transition-all hover:scale-105"
+            className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white transition-all hover:scale-105"
             title="LinkedIn"
           >
-            <Linkedin className="w-5 h-5" />
+            <img 
+              src={linkedinIconPath} 
+              alt="LinkedIn" 
+              className="w-4 h-4 object-contain"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.parentNode.innerText = 'in';
+              }}
+            />
           </a>
 
           {/* GitHub Link */}
@@ -54,19 +62,35 @@ const Landing = () => {
             href="https://github.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white transition-all hover:scale-105"
+            className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white transition-all hover:scale-105 font-bold text-xs"
             title="GitHub"
           >
-            <Github className="w-5 h-5" />
+            <img 
+              src={githubIconPath} 
+              alt="GitHub" 
+              className="w-4 h-4 object-contain"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.parentNode.innerText = 'GH';
+              }}
+            />
           </a>
 
           {/* Mail Link */}
           <a 
             href="mailto:contact@meridian.app" 
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white transition-all hover:scale-105"
+            className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white transition-all hover:scale-105 font-bold text-xs"
             title="Email"
           >
-            <Mail className="w-5 h-5" />
+            <img 
+              src={mailIconPath} 
+              alt="Mail" 
+              className="w-4 h-4 object-contain"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.parentNode.innerText = '@';
+              }}
+            />
           </a>
         </div>
       </div>

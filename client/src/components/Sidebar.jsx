@@ -6,8 +6,7 @@ import {
   Network, 
   CalendarRange, 
   Settings, 
-  Plus, 
-  Layers
+  Plus
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -32,12 +31,19 @@ const Sidebar = () => {
 
   return (
     <aside className="w-64 bg-white border-r border-[#E2E8F0] flex flex-col justify-between h-screen sticky top-0 select-none z-20">
-      {/* Top Branding */}
+      {/* Top Branding with logo.jpg from public folder */}
       <div className="p-4 space-y-6">
         <div className="flex items-center justify-between px-2 pt-2">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 bg-[#0F172A] rounded-xl flex items-center justify-center text-white shadow-md">
-              <Layers className="w-5 h-5 text-[#22D3EE]" />
+            <div className="w-9 h-9 rounded-xl overflow-hidden shadow-md flex items-center justify-center bg-[#0F172A] border border-[#E2E8F0]">
+              <img 
+                src="/logo.jpg" 
+                alt="Meridian Logo" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
             </div>
             <div>
               <h1 className="font-bold text-lg leading-none text-[#0F172A] tracking-tight">Meridian</h1>
