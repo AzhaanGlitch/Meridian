@@ -30,30 +30,24 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="w-64 bg-white border-r border-[#E2E8F0] flex flex-col justify-between h-screen sticky top-0 select-none z-20">
-      {/* Top Branding with logo.jpg from public folder */}
-      <div className="p-4 space-y-6">
-        <div className="flex items-center justify-between px-2 pt-2">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl overflow-hidden shadow-md flex items-center justify-center bg-[#0F172A] border border-[#E2E8F0]">
-              <img 
-                src="/logo.jpg" 
-                alt="Meridian Logo" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            </div>
-            <div>
-              <h1 className="font-bold text-lg leading-none text-[#0F172A] tracking-tight">Meridian</h1>
-              <span className="text-[11px] font-medium text-[#64748B] tracking-wider uppercase">Planning Studio</span>
-            </div>
+    <aside className="w-16 hover:w-64 transition-all duration-300 ease-in-out bg-white border-r border-[#E2E8F0] flex flex-col justify-between h-screen sticky top-0 select-none z-30 group overflow-hidden shadow-sm">
+      {/* Top Branding - Only Logo image, no text */}
+      <div className="p-3 space-y-6">
+        <div className="flex items-center gap-3 px-1 pt-1">
+          <div className="w-9 h-9 min-w-[36px] rounded-xl overflow-hidden shadow-md flex items-center justify-center bg-[#0F172A] border border-[#E2E8F0]">
+            <img 
+              src="/logo.jpg" 
+              alt="Logo" 
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.style.display = 'none';
+              }}
+            />
           </div>
         </div>
 
         {/* Main Navigation Links */}
-        <nav className="space-y-1">
+        <nav className="space-y-1.5">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -61,29 +55,35 @@ const Sidebar = () => {
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  `flex items-center gap-3.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                     isActive
                       ? 'bg-[#0F172A] text-white shadow-sm font-semibold'
                       : 'text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#0F172A]'
                   }`
                 }
+                title={item.label}
               >
-                <Icon className="w-4 h-4" />
-                <span>{item.label}</span>
+                <Icon className="w-5 h-5 min-w-[20px] flex-shrink-0" />
+                <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  {item.label}
+                </span>
               </NavLink>
             );
           })}
         </nav>
       </div>
 
-      {/* Bottom Action Button */}
-      <div className="p-4 border-t border-[#E2E8F0]">
+      {/* Bottom Action Button - Icon only in collapsed state, text reveals on hover */}
+      <div className="p-3 border-t border-[#E2E8F0]">
         <button
           onClick={handleCreateNew}
-          className="w-full bg-[#0F172A] hover:bg-[#1E293B] text-white py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 text-sm font-semibold shadow-md transition-all active:scale-95"
+          className="w-full bg-[#0F172A] hover:bg-[#1E293B] text-white py-2.5 px-3 rounded-xl flex items-center justify-center gap-2 text-sm font-semibold shadow-md transition-all active:scale-95 cursor-pointer overflow-hidden"
+          title="Create New Goal / Note"
         >
-          <Plus className="w-4 h-4" />
-          <span>New Goal / Note</span>
+          <Plus className="w-5 h-5 min-w-[20px] flex-shrink-0" />
+          <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden group-hover:inline">
+            New Goal
+          </span>
         </button>
       </div>
     </aside>
