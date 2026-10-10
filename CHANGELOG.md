@@ -1250,3 +1250,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:38:41]` Fix MongoDB index optimization on goal tags and owner reference fields
 - `[12:08:26]` Support bundle size tree-shaking for Lucide icons and React Flow modules
 - `[12:38:11]` Refactor: update goal category tags and color palette synchronization and persist user preferences to local storage seamlessly
+- `[13:06:54]` Refactor: refactor rate limiting on authentication and password reset routes and ensure backward compatibility with existing saved layouts
