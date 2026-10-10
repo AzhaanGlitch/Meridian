@@ -1243,3 +1243,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 
 ### October 10, 2026 (Saturday)
 - `[09:15:39]` Perf: tweak goal priority flag indicators and custom sorting filters and add defensive checks against null and undefined payload keys
+- `[09:42:45]` Tune flowchart mini-map positioning and viewport toggle visibility to improve frame rate and eliminate micro-stutters during heavy animations
