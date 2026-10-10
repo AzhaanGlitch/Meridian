@@ -11,7 +11,8 @@ const Sidebar = () => {
   const { 
     goals,
     setIsGoalModalOpen,
-    setEditingGoal
+    setEditingGoal,
+    setParentGoalContext
   } = useApp();
 
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Sidebar = () => {
 
   const handleCreateNew = () => {
     setEditingGoal(null);
+    setParentGoalContext(null);
     setIsGoalModalOpen(true);
   };
 

@@ -24,7 +24,7 @@ const GoalDetail = ({ initialTab = 'details' }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { deleteGoal, updateGoal, setEditingGoal, setIsGoalModalOpen, goals, getGoalById } = useApp();
+  const { deleteGoal, updateGoal, setEditingGoal, setIsGoalModalOpen, setParentGoalContext, goals, getGoalById } = useApp();
 
   // Determine active tab based on route or prop
   const [activeTab, setActiveTab] = useState(() => {
@@ -407,36 +407,52 @@ const GoalDetail = ({ initialTab = 'details' }) => {
                   </div>
 
                   {/* Step 4: Child Cards Section inside Parent Card */}
-                  {!selectedChildId && childGoals.length > 0 && (
+                  {!selectedChildId && (
                     <div className="bg-slate-50 p-6 rounded-2xl border border-[#E2E8F0] space-y-4 shadow-xs">
-                      <h3 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
-                        <Folder className="w-4 h-4 text-[#C084FC]" />
-                        <span>Child Goals ({childGoals.length})</span>
-                      </h3>
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                          <Folder className="w-4 h-4 text-[#C084FC]" />
+                          <span>Child Cards ({childGoals.length})</span>
+                        </h3>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {childGoals.map((cg) => (
-                          <div
-                            key={cg._id}
-                            onClick={() => setSelectedChildId(cg._id)}
-                            style={{ backgroundColor: cg.cardColor || '#FBBF24' }}
-                            className="p-4 rounded-2xl border border-black/5 text-[#0F172A] cursor-pointer hover:scale-[1.02] transition-transform space-y-2 shadow-xs"
-                          >
-                            <div className="flex items-center justify-between">
-                              <span className="px-2 py-0.5 bg-black/10 rounded-full text-[10px] font-bold">
-                                {cg.category}
-                              </span>
-                              <ArrowRight className="w-4 h-4" />
-                            </div>
-                            <h4 className="font-extrabold text-sm leading-snug">{cg.title}</h4>
-                            <p className="text-xs text-[#0F172A]/80 line-clamp-2">{cg.description}</p>
-                            <div className="pt-2 flex items-center justify-between text-[11px] font-bold">
-                              <span>Tasks: {cg.tasks?.length || 0}</span>
-                              <span>{cg.progress || 0}% Complete</span>
-                            </div>
-                          </div>
-                        ))}
+                        <button
+                          onClick={() => {
+                            setParentGoalContext(goal._id);
+                            setEditingGoal(null);
+                            setIsGoalModalOpen(true);
+                          }}
+                          className="px-3.5 py-1.5 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer"
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                          <span>Add Child Card</span>
+                        </button>
                       </div>
+
+                      {childGoals.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {childGoals.map((cg) => (
+                            <div
+                              key={cg._id}
+                              onClick={() => setSelectedChildId(cg._id)}
+                              style={{ backgroundColor: cg.cardColor || '#FBBF24' }}
+                              className="p-4 rounded-2xl border border-black/5 text-[#0F172A] cursor-pointer hover:scale-[1.02] transition-transform space-y-2 shadow-xs"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="px-2 py-0.5 bg-black/10 rounded-full text-[10px] font-bold">
+                                  Child Card
+                                </span>
+                                <ArrowRight className="w-4 h-4" />
+                              </div>
+                              <h4 className="font-extrabold text-sm leading-snug">{cg.title}</h4>
+                              <p className="text-xs text-[#0F172A]/80 line-clamp-2">{cg.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="text-xs text-[#64748B] italic py-2">
+                          No child cards created yet. Click "+ Add Child Card" above to add your first child card under {goal.title}.
+                        </div>
+                      )}
                     </div>
                   )}
 

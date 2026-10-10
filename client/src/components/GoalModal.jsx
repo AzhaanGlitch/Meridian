@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { X, Plus, Trash2, Calendar, Tag, AlertCircle } from 'lucide-react';
-import { useApp, PASTEL_COLORS, CATEGORIES } from '../context/AppContext';
+import { X, AlertCircle } from 'lucide-react';
+import { useApp, PASTEL_COLORS } from '../context/AppContext';
 
 const GoalModal = () => {
   const { 
@@ -10,23 +10,16 @@ const GoalModal = () => {
     setEditingGoal, 
     createGoal, 
     updateGoal,
-    goals
+    parentGoalContext,
+    setParentGoalContext
   } = useApp();
 
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    category: 'Personal',
-    priority: 'Medium',
-    status: 'In Progress',
-    cardColor: '#FBBF24',
-    dueDate: '',
-    parentGoal: '',
-    tags: '',
-    tasks: []
+    cardColor: '#FBBF24'
   });
 
-  const [newTaskTitle, setNewTaskTitle] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -35,50 +28,19 @@ const GoalModal = () => {
       setFormData({
         title: editingGoal.title || '',
         description: editingGoal.description || '',
-        category: editingGoal.category || 'Personal',
-        priority: editingGoal.priority || 'Medium',
-        status: editingGoal.status || 'In Progress',
-        cardColor: editingGoal.cardColor || '#FBBF24',
-        dueDate: editingGoal.dueDate ? new Date(editingGoal.dueDate).toISOString().split('T')[0] : '',
-        parentGoal: editingGoal.parentGoal || '',
-        tags: editingGoal.tags ? editingGoal.tags.join(', ') : '',
-        tasks: editingGoal.tasks || []
+        cardColor: editingGoal.cardColor || '#FBBF24'
       });
     } else {
       setFormData({
         title: '',
         description: '',
-        category: 'Personal',
-        priority: 'Medium',
-        status: 'In Progress',
-        cardColor: '#FBBF24',
-        dueDate: '',
-        parentGoal: '',
-        tags: '',
-        tasks: []
+        cardColor: '#FBBF24'
       });
     }
     setError('');
   }, [editingGoal, isGoalModalOpen]);
 
   if (!isGoalModalOpen) return null;
-
-  const handleAddTask = (e) => {
-    e.preventDefault();
-    if (!newTaskTitle.trim()) return;
-    setFormData(prev => ({
-      ...prev,
-      tasks: [...prev.tasks, { title: newTaskTitle.trim(), completed: false }]
-    }));
-    setNewTaskTitle('');
-  };
-
-  const handleRemoveTask = (index) => {
-    setFormData(prev => ({
-      ...prev,
-      tasks: prev.tasks.filter((_, i) => i !== index)
-    }));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,15 +53,25 @@ const GoalModal = () => {
     setError('');
 
     const payload = {
-      ...formData,
-      tags: formData.tags ? formData.tags.split(',').map(t => t.trim()).filter(Boolean) : [],
-      parentGoal: formData.parentGoal || null,
-      dueDate: formData.dueDate ? new Date(formData.dueDate) : null
+      title: formData.title.trim(),
+      description: formData.description.trim(),
+      cardColor: formData.cardColor,
+      category: 'General',
+      priority: 'Medium',
+      status: 'In Progress',
+      progress: 0,
+      isParent: parentGoalContext ? false : true,
+      parentGoal: parentGoalContext || null,
+      tasks: []
     };
 
     let result;
     if (editingGoal) {
-      result = await updateGoal(editingGoal._id, payload);
+      result = await updateGoal(editingGoal._id, {
+        title: formData.title.trim(),
+        description: formData.description.trim(),
+        cardColor: formData.cardColor
+      });
     } else {
       result = await createGoal(payload);
     }
@@ -108,29 +80,40 @@ const GoalModal = () => {
     if (result.success) {
       setIsGoalModalOpen(false);
       setEditingGoal(null);
+      setParentGoalContext(null);
     } else {
-      setError(result.message);
+      setError(result.message || 'Failed to save card');
     }
   };
 
+  const isChildCreation = Boolean(parentGoalContext);
+
   return (
     <div className="fixed inset-0 z-50 bg-[#0F172A]/40 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl w-full max-w-xl shadow-2xl border border-[#E2E8F0] overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="bg-white rounded-3xl w-full max-w-md shadow-2xl border border-[#E2E8F0] overflow-hidden flex flex-col">
         {/* Header */}
         <div className="px-6 py-4 border-b border-[#E2E8F0] flex items-center justify-between bg-slate-50">
-          <h2 className="text-lg font-bold text-[#0F172A]">
-            {editingGoal ? 'Edit Goal / Note' : 'Create New Goal / Milestone'}
+          <h2 className="text-base font-extrabold text-[#0F172A]">
+            {editingGoal 
+              ? 'Edit Card' 
+              : isChildCreation 
+                ? 'Create Child Card' 
+                : 'Create Parent Card'}
           </h2>
           <button
-            onClick={() => setIsGoalModalOpen(false)}
-            className="p-1.5 text-[#64748B] hover:text-[#0F172A] hover:bg-slate-200 rounded-lg transition-colors"
+            onClick={() => {
+              setIsGoalModalOpen(false);
+              setEditingGoal(null);
+              setParentGoalContext(null);
+            }}
+            className="p-1.5 text-[#64748B] hover:text-[#0F172A] hover:bg-slate-200 rounded-xl transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Body Form */}
-        <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-5 flex-1 text-xs text-[#0F172A]">
+        {/* Body Form: Title, Description, Color */}
+        <form onSubmit={handleSubmit} className="p-6 space-y-5 text-xs text-[#0F172A]">
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 flex items-center gap-2 font-medium">
               <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -140,40 +123,40 @@ const GoalModal = () => {
 
           {/* Title */}
           <div>
-            <label className="block font-bold text-[#0F172A] mb-1">Goal Title *</label>
+            <label className="block font-bold text-[#0F172A] mb-1.5 text-xs">Title *</label>
             <input
               type="text"
               required
-              placeholder="e.g., Launch SaaS MVP v1.0"
+              placeholder={isChildCreation ? "e.g., Assignment Module 1" : "e.g., Academics"}
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3.5 py-2.5 font-medium focus:ring-2 focus:ring-[#0F172A] focus:outline-none"
+              className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-4 py-2.5 font-semibold text-xs focus:ring-2 focus:ring-[#0F172A] focus:outline-none"
             />
           </div>
 
           {/* Description */}
           <div>
-            <label className="block font-bold text-[#0F172A] mb-1">Description / Details</label>
+            <label className="block font-bold text-[#0F172A] mb-1.5 text-xs">Description</label>
             <textarea
               rows="3"
-              placeholder="Add details, notes, or clear acceptance criteria..."
+              placeholder="Add brief description..."
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3.5 py-2.5 font-medium focus:ring-2 focus:ring-[#0F172A] focus:outline-none"
+              className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-4 py-2.5 font-medium text-xs focus:ring-2 focus:ring-[#0F172A] focus:outline-none"
             />
           </div>
 
           {/* Pastel Card Color Picker */}
           <div>
-            <label className="block font-bold text-[#0F172A] mb-1.5">Card Color (Pastel Accent)</label>
-            <div className="flex items-center gap-3">
+            <label className="block font-bold text-[#0F172A] mb-2 text-xs">Card Color</label>
+            <div className="flex items-center justify-between">
               {PASTEL_COLORS.map(c => (
                 <button
                   key={c.hex}
                   type="button"
                   onClick={() => setFormData({ ...formData, cardColor: c.hex })}
                   style={{ backgroundColor: c.hex }}
-                  className={`w-7 h-7 rounded-full border-2 transition-transform ${
+                  className={`w-8 h-8 rounded-full border-2 transition-transform ${
                     formData.cardColor === c.hex ? 'border-[#0F172A] scale-110 shadow-sm' : 'border-transparent hover:scale-105'
                   }`}
                   title={c.name}
@@ -182,143 +165,25 @@ const GoalModal = () => {
             </div>
           </div>
 
-          {/* Grid Category, Priority, Status */}
-          <div className="grid grid-cols-3 gap-3">
-            <div>
-              <label className="block font-bold text-[#0F172A] mb-1">Category</label>
-              <select
-                value={formData.category}
-                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-2 font-semibold"
-              >
-                {CATEGORIES.map(c => (
-                  <option key={c.name} value={c.name}>{c.name}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block font-bold text-[#0F172A] mb-1">Priority</label>
-              <select
-                value={formData.priority}
-                onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-                className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-2 font-semibold"
-              >
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
-                <option value="Urgent">Urgent</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block font-bold text-[#0F172A] mb-1">Status</label>
-              <select
-                value={formData.status}
-                onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-2 font-semibold"
-              >
-                <option value="Not Started">Not Started</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Completed">Completed</option>
-                <option value="On Hold">On Hold</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Hierarchy & Due Date */}
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block font-bold text-[#0F172A] mb-1">Parent Goal (Optional)</label>
-              <select
-                value={formData.parentGoal}
-                onChange={(e) => setFormData({ ...formData, parentGoal: e.target.value })}
-                className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-2 font-medium"
-              >
-                <option value="">None (Top-level Goal)</option>
-                {goals
-                  .filter(g => g._id !== editingGoal?._id)
-                  .map(g => (
-                    <option key={g._id} value={g._id}>{g.title}</option>
-                  ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block font-bold text-[#0F172A] mb-1">Due Date</label>
-              <input
-                type="date"
-                value={formData.dueDate}
-                onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
-                className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-2 font-medium"
-              />
-            </div>
-          </div>
-
-          {/* Tags */}
-          <div>
-            <label className="block font-bold text-[#0F172A] mb-1">Tags (Comma separated)</label>
-            <input
-              type="text"
-              placeholder="e.g., MVP, Design, Frontend"
-              value={formData.tags}
-              onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
-              className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3.5 py-2 font-medium"
-            />
-          </div>
-
-          {/* Action Tasks checklist */}
-          <div>
-            <label className="block font-bold text-[#0F172A] mb-1">Action Tasks Checklist</label>
-            <div className="space-y-2 mb-2">
-              {formData.tasks.map((task, idx) => (
-                <div key={idx} className="flex items-center justify-between bg-[#F1F5F9] px-3 py-1.5 rounded-lg border border-[#E2E8F0]">
-                  <span className="font-medium">{task.title}</span>
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveTask(idx)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex gap-2">
-              <input
-                type="text"
-                placeholder="Add sub-task..."
-                value={newTaskTitle}
-                onChange={(e) => setNewTaskTitle(e.target.value)}
-                className="flex-1 bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-1.5 font-medium"
-              />
-              <button
-                type="button"
-                onClick={handleAddTask}
-                className="bg-[#0F172A] text-white px-3 py-1.5 rounded-xl font-bold flex items-center gap-1"
-              >
-                <Plus className="w-4 h-4" />
-                Add
-              </button>
-            </div>
-          </div>
-
-          {/* Footer Submit */}
+          {/* Footer Submit Buttons */}
           <div className="pt-3 border-t border-[#E2E8F0] flex justify-end gap-3">
             <button
               type="button"
-              onClick={() => setIsGoalModalOpen(false)}
-              className="px-4 py-2 rounded-xl font-semibold text-[#64748B] hover:bg-[#F1F5F9]"
+              onClick={() => {
+                setIsGoalModalOpen(false);
+                setEditingGoal(null);
+                setParentGoalContext(null);
+              }}
+              className="px-4 py-2 rounded-xl font-bold text-[#64748B] hover:bg-[#F1F5F9] text-xs"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="px-5 py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl font-bold shadow-md transition-all active:scale-95"
+              className="px-5 py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl font-bold text-xs shadow-md transition-all active:scale-95"
             >
-              {loading ? 'Saving...' : editingGoal ? 'Update Goal' : 'Create Goal'}
+              {loading ? 'Saving...' : editingGoal ? 'Update Card' : 'Create Card'}
             </button>
           </div>
         </form>

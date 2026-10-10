@@ -225,6 +225,7 @@ export const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [isGoalModalOpen, setIsGoalModalOpen] = useState(false);
   const [editingGoal, setEditingGoal] = useState(null);
+  const [parentGoalContext, setParentGoalContext] = useState(null);
 
   const createGoal = async (goalData) => {
     const newGoal = {
@@ -327,7 +328,9 @@ export const AppProvider = ({ children }) => {
       isGoalModalOpen,
       setIsGoalModalOpen,
       editingGoal,
-      setEditingGoal
+      setEditingGoal,
+      parentGoalContext,
+      setParentGoalContext
     }}>
       {children}
     </AppContext.Provider>
