@@ -1262,3 +1262,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:26:18]` Tune Mongoose pre-save hook for sanitizing child card references to ensure backward compatibility with existing saved layouts
 - `[17:53:57]` Fix sidebar toggle spring physics and floating shadow elevation to ensure backward compatibility with existing saved layouts
 - `[18:23:54]` Feat: improve micro-interaction haptic feedback animations on card tap and ensure backward compatibility with existing saved layouts
+- `[18:54:54]` Fix export flowchart high-res PNG canvas scale factor to handle edge cases when cards have empty descriptions
