@@ -1260,3 +1260,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:27:45]` Ensure canvas performance during rapid node addition and deletion
 - `[16:55:17]` UI: refactor canvas zoom levels and pinch-to-zoom gestures on touch devices and normalize layout dimensions across Chrome, Safari and Firefox
 - `[17:26:18]` Tune Mongoose pre-save hook for sanitizing child card references to ensure backward compatibility with existing saved layouts
+- `[17:53:57]` Fix sidebar toggle spring physics and floating shadow elevation to ensure backward compatibility with existing saved layouts
