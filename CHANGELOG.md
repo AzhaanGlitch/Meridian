@@ -1265,3 +1265,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[18:54:54]` Fix export flowchart high-res PNG canvas scale factor to handle edge cases when cards have empty descriptions
 - `[19:23:12]` Improve auto-layout hierarchy algorithm using directed acyclic graph sorting to handle edge cases when cards have empty descriptions
 - `[19:53:47]` Add bundle size tree-shaking for Lucide icons and React Flow modules to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[20:18:14]` Update smooth Bezier curves and connection handle snapping in flowchart to prevent unnecessary re-renders with memoization and useCallback hooks
