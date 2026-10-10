@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useApp, PASTEL_COLORS } from '../context/AppContext';
-import api from '../services/api';
 import ReactFlow, { Controls, Background, applyNodeChanges, applyEdgeChanges, addEdge, MiniMap } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { 
@@ -15,7 +14,10 @@ import {
   FileText,
   ChevronRight,
   Save,
-  Check
+  Check,
+  Folder,
+  ArrowRight,
+  Target
 } from 'lucide-react';
 
 const GoalDetail = ({ initialTab = 'details' }) => {
@@ -32,6 +34,7 @@ const GoalDetail = ({ initialTab = 'details' }) => {
   });
 
   const [goal, setGoal] = useState(null);
+  const [selectedChildId, setSelectedChildId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
@@ -42,6 +45,14 @@ const GoalDetail = ({ initialTab = 'details' }) => {
   const [selectedNodeColor, setSelectedNodeColor] = useState('#22D3EE');
   const [savedSuccess, setSavedSuccess] = useState(false);
 
+  // Find child goals if this is a parent goal
+  const childGoals = goals.filter(g => g.parentGoal === id);
+
+  // Active focused goal (either parent or selected child)
+  const activeFocusedGoal = selectedChildId 
+    ? goals.find(g => g._id === selectedChildId) || goal 
+    : goal;
+
   useEffect(() => {
     if (location.pathname.endsWith('/map')) setActiveTab('map');
     else if (location.pathname.endsWith('/roadmap')) setActiveTab('roadmap');
@@ -49,6 +60,7 @@ const GoalDetail = ({ initialTab = 'details' }) => {
   }, [location.pathname]);
 
   useEffect(() => {
+    setSelectedChildId(null);
     fetchGoalDetails();
   }, [id, goals]);
 
@@ -65,30 +77,59 @@ const GoalDetail = ({ initialTab = 'details' }) => {
           setNodes(gData.nodes);
           setEdges(gData.edges || []);
         } else {
-          setNodes([
-            {
-              id: 'root-1',
-              type: 'input',
-              data: { label: gData.title },
-              position: { x: 250, y: 50 },
-              style: { background: '#0F172A', color: '#fff', borderRadius: '12px', padding: '12px 20px', fontWeight: 'bold' }
-            },
-            ...(gData.tasks || []).map((t, idx) => ({
-              id: `task-${idx}`,
-              data: { label: t.title },
-              position: { x: 100 + (idx % 3) * 180, y: 180 + Math.floor(idx / 3) * 100 },
-              style: { background: gData.cardColor || '#FBBF24', color: '#0F172A', borderRadius: '12px', padding: '10px 16px', border: 'none', fontWeight: '600' }
-            }))
-          ]);
-          setEdges(
-            (gData.tasks || []).map((_, idx) => ({
-              id: `e-root-task-${idx}`,
-              source: 'root-1',
-              target: `task-${idx}`,
-              animated: true,
-              style: { stroke: '#0F172A', strokeWidth: 2 }
-            }))
-          );
+          // If parent goal, connect parent to children in map
+          const children = goals.filter(g => g.parentGoal === id);
+          if (children.length > 0) {
+            setNodes([
+              {
+                id: 'parent-root',
+                type: 'input',
+                data: { label: gData.title },
+                position: { x: 250, y: 50 },
+                style: { background: '#0F172A', color: '#fff', borderRadius: '12px', padding: '12px 20px', fontWeight: 'bold' }
+              },
+              ...children.map((c, idx) => ({
+                id: `child-${c._id}`,
+                data: { label: c.title },
+                position: { x: 100 + (idx % 3) * 200, y: 180 + Math.floor(idx / 3) * 100 },
+                style: { background: c.cardColor || '#FBBF24', color: '#0F172A', borderRadius: '12px', padding: '10px 16px', border: 'none', fontWeight: '600' }
+              }))
+            ]);
+            setEdges(
+              children.map((c) => ({
+                id: `e-parent-child-${c._id}`,
+                source: 'parent-root',
+                target: `child-${c._id}`,
+                animated: true,
+                style: { stroke: '#0F172A', strokeWidth: 2 }
+              }))
+            );
+          } else {
+            setNodes([
+              {
+                id: 'root-1',
+                type: 'input',
+                data: { label: gData.title },
+                position: { x: 250, y: 50 },
+                style: { background: '#0F172A', color: '#fff', borderRadius: '12px', padding: '12px 20px', fontWeight: 'bold' }
+              },
+              ...(gData.tasks || []).map((t, idx) => ({
+                id: `task-${idx}`,
+                data: { label: t.title },
+                position: { x: 100 + (idx % 3) * 180, y: 180 + Math.floor(idx / 3) * 100 },
+                style: { background: gData.cardColor || '#FBBF24', color: '#0F172A', borderRadius: '12px', padding: '10px 16px', border: 'none', fontWeight: '600' }
+              }))
+            ]);
+            setEdges(
+              (gData.tasks || []).map((_, idx) => ({
+                id: `e-root-task-${idx}`,
+                source: 'root-1',
+                target: `task-${idx}`,
+                animated: true,
+                style: { stroke: '#0F172A', strokeWidth: 2 }
+              }))
+            );
+          }
         }
       } else {
         setGoal(null);
@@ -113,27 +154,39 @@ const GoalDetail = ({ initialTab = 'details' }) => {
   };
 
   const handleTaskToggle = async (taskIndex) => {
-    const updatedTasks = [...(goal.tasks || [])];
+    const targetGoal = activeFocusedGoal;
+    const updatedTasks = [...(targetGoal.tasks || [])];
     updatedTasks[taskIndex].completed = !updatedTasks[taskIndex].completed;
-    const res = await updateGoal(goal._id, { tasks: updatedTasks });
-    if (res.success) setGoal(res.data);
+    const res = await updateGoal(targetGoal._id, { tasks: updatedTasks });
+    if (res.success) {
+      if (selectedChildId) {
+        setGoal(prev => ({ ...prev }));
+      } else {
+        setGoal(res.data);
+      }
+    }
   };
 
   const handleAddTask = async (e) => {
     e.preventDefault();
     if (!newTaskTitle.trim()) return;
-    const updatedTasks = [...(goal.tasks || []), { title: newTaskTitle.trim(), completed: false }];
-    const res = await updateGoal(goal._id, { tasks: updatedTasks });
+    const targetGoal = activeFocusedGoal;
+    const updatedTasks = [...(targetGoal.tasks || []), { title: newTaskTitle.trim(), completed: false }];
+    const res = await updateGoal(targetGoal._id, { tasks: updatedTasks });
     if (res.success) {
-      setGoal(res.data);
       setNewTaskTitle('');
     }
   };
 
   const handleDelete = async () => {
-    if (confirm('Delete this goal permanently?')) {
-      await deleteGoal(goal._id);
-      navigate('/goals');
+    const target = activeFocusedGoal;
+    if (confirm(`Delete "${target.title}" permanently?`)) {
+      await deleteGoal(target._id);
+      if (selectedChildId) {
+        setSelectedChildId(null);
+      } else {
+        navigate('/goals');
+      }
     }
   };
 
@@ -197,12 +250,22 @@ const GoalDetail = ({ initialTab = 'details' }) => {
             {goal && (
               <div 
                 className="w-4 h-4 rounded-full flex-shrink-0" 
-                style={{ backgroundColor: goal.cardColor || '#FBBF24' }} 
+                style={{ backgroundColor: activeFocusedGoal?.cardColor || goal.cardColor || '#FBBF24' }} 
               />
             )}
-            <h2 className="text-lg font-extrabold text-[#0F172A] truncate max-w-md">
-              {loading ? 'Loading Goal...' : goal?.title}
-            </h2>
+            <div className="flex items-center gap-2 truncate">
+              <h2 className="text-lg font-extrabold text-[#0F172A] truncate max-w-md">
+                {loading ? 'Loading Goal...' : goal?.title}
+              </h2>
+              {selectedChildId && (
+                <>
+                  <ChevronRight className="w-4 h-4 text-[#64748B]" />
+                  <span className="text-sm font-bold text-[#22D3EE] bg-[#0F172A] px-2.5 py-0.5 rounded-full truncate max-w-xs">
+                    {activeFocusedGoal?.title}
+                  </span>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Center Tabs: Details / Work Map / Roadmap */}
@@ -244,7 +307,7 @@ const GoalDetail = ({ initialTab = 'details' }) => {
               <>
                 <button
                   onClick={() => {
-                    setEditingGoal(goal);
+                    setEditingGoal(activeFocusedGoal);
                     setIsGoalModalOpen(true);
                   }}
                   className="p-2 bg-white border border-[#E2E8F0] hover:bg-slate-100 text-[#0F172A] rounded-xl transition-colors"
@@ -288,28 +351,43 @@ const GoalDetail = ({ initialTab = 'details' }) => {
               {/* TAB 1: DETAILS */}
               {activeTab === 'details' && (
                 <div className="space-y-6 max-w-4xl mx-auto">
+                  {/* Parent Breadcrumb Back Button if viewing a child goal */}
+                  {selectedChildId && (
+                    <button
+                      onClick={() => setSelectedChildId(null)}
+                      className="text-xs font-bold text-[#64748B] hover:text-[#0F172A] flex items-center gap-1 mb-2"
+                    >
+                      <span>← Back to Parent Goal ({goal.title})</span>
+                    </button>
+                  )}
+
                   {/* Pastel Banner Header */}
                   <div
-                    style={{ backgroundColor: goal.cardColor || '#FBBF24' }}
+                    style={{ backgroundColor: activeFocusedGoal.cardColor || '#FBBF24' }}
                     className="p-6 rounded-3xl border border-black/5 text-[#0F172A] space-y-3 shadow-sm"
                   >
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="px-3 py-1 bg-black/10 rounded-full text-xs font-bold">
-                        {goal.category}
+                        {activeFocusedGoal.category}
                       </span>
+                      {activeFocusedGoal.isParent && (
+                        <span className="px-3 py-1 bg-[#0F172A] text-white rounded-full text-xs font-extrabold">
+                          Parent Goal
+                        </span>
+                      )}
                       <span className="px-3 py-1 bg-black/10 rounded-full text-xs font-bold">
-                        {goal.priority} Priority
+                        {activeFocusedGoal.priority} Priority
                       </span>
                       <span className="px-3 py-1 bg-white/70 rounded-full text-xs font-bold">
-                        Status: {goal.status}
+                        Status: {activeFocusedGoal.status}
                       </span>
                     </div>
 
-                    <h1 className="text-2xl font-extrabold tracking-tight">{goal.title}</h1>
+                    <h1 className="text-2xl font-extrabold tracking-tight">{activeFocusedGoal.title}</h1>
 
-                    {goal.description && (
+                    {activeFocusedGoal.description && (
                       <p className="text-xs font-semibold text-[#0F172A]/85 leading-relaxed">
-                        {goal.description}
+                        {activeFocusedGoal.description}
                       </p>
                     )}
 
@@ -317,27 +395,61 @@ const GoalDetail = ({ initialTab = 'details' }) => {
                     <div className="space-y-1.5 pt-2">
                       <div className="flex items-center justify-between text-xs font-bold">
                         <span>Progress</span>
-                        <span>{goal.progress || 0}%</span>
+                        <span>{activeFocusedGoal.progress || 0}%</span>
                       </div>
                       <div className="w-full bg-black/10 rounded-full h-2 overflow-hidden">
                         <div
                           className="bg-[#0F172A] h-full rounded-full transition-all duration-300"
-                          style={{ width: `${goal.progress || 0}%` }}
+                          style={{ width: `${activeFocusedGoal.progress || 0}%` }}
                         />
                       </div>
                     </div>
                   </div>
 
+                  {/* Step 4: Child Cards Section inside Parent Card */}
+                  {!selectedChildId && childGoals.length > 0 && (
+                    <div className="bg-slate-50 p-6 rounded-2xl border border-[#E2E8F0] space-y-4 shadow-xs">
+                      <h3 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                        <Folder className="w-4 h-4 text-[#C084FC]" />
+                        <span>Child Goals ({childGoals.length})</span>
+                      </h3>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {childGoals.map((cg) => (
+                          <div
+                            key={cg._id}
+                            onClick={() => setSelectedChildId(cg._id)}
+                            style={{ backgroundColor: cg.cardColor || '#FBBF24' }}
+                            className="p-4 rounded-2xl border border-black/5 text-[#0F172A] cursor-pointer hover:scale-[1.02] transition-transform space-y-2 shadow-xs"
+                          >
+                            <div className="flex items-center justify-between">
+                              <span className="px-2 py-0.5 bg-black/10 rounded-full text-[10px] font-bold">
+                                {cg.category}
+                              </span>
+                              <ArrowRight className="w-4 h-4" />
+                            </div>
+                            <h4 className="font-extrabold text-sm leading-snug">{cg.title}</h4>
+                            <p className="text-xs text-[#0F172A]/80 line-clamp-2">{cg.description}</p>
+                            <div className="pt-2 flex items-center justify-between text-[11px] font-bold">
+                              <span>Tasks: {cg.tasks?.length || 0}</span>
+                              <span>{cg.progress || 0}% Complete</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   {/* Tasks Section */}
                   <div className="bg-white p-6 rounded-2xl border border-[#E2E8F0] space-y-4 shadow-xs">
                     <h3 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
                       <CheckSquare className="w-4 h-4 text-[#22D3EE]" />
-                      <span>Action Tasks ({goal.tasks?.length || 0})</span>
+                      <span>Action Tasks ({activeFocusedGoal.tasks?.length || 0})</span>
                     </h3>
 
                     <div className="space-y-2">
-                      {goal.tasks && goal.tasks.length > 0 ? (
-                        goal.tasks.map((task, idx) => (
+                      {activeFocusedGoal.tasks && activeFocusedGoal.tasks.length > 0 ? (
+                        activeFocusedGoal.tasks.map((task, idx) => (
                           <div
                             key={idx}
                             onClick={() => handleTaskToggle(idx)}
@@ -470,7 +582,7 @@ const GoalDetail = ({ initialTab = 'details' }) => {
                     {/* All Goals Timeline */}
                     <div className="space-y-3 pt-2">
                       {goals.map((g, idx) => {
-                        const isCurrent = g._id === goal._id;
+                        const isCurrent = g._id === activeFocusedGoal._id;
                         const spanCol = (idx % 4) * 3 + 1;
                         const spanWidth = 4 + (idx % 3);
 

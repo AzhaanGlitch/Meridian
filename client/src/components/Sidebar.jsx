@@ -65,33 +65,35 @@ const Sidebar = () => {
           </NavLink>
         </nav>
 
-        {/* Middle Section: Colorful Circular Numbered Tabs for Quick Goal Access */}
+        {/* Middle Section: Colorful Circular Numbered Tabs for Quick Goal Access (Parent Goals) */}
         <div className="pt-2 border-t border-[#E2E8F0] space-y-2 max-h-[calc(100vh-250px)] overflow-y-auto no-scrollbar">
-          {goals.map((goal, index) => {
-            const isGoalActive = location.pathname.includes(`/goals/${goal._id}`) || location.pathname.includes(`/maps/${goal._id}`);
-            return (
-              <button
-                key={goal._id}
-                onClick={() => navigate(`/goals/${goal._id}`)}
-                className={`w-full flex items-center gap-3.5 h-9 px-2.5 rounded-xl text-left transition-colors duration-200 ${
-                  isGoalActive ? 'bg-[#0F172A]/10 font-bold' : 'hover:bg-[#E2E8F0]'
-                }`}
-                title={goal.title}
-              >
-                {/* Colorful Circular Tab with Goal Number */}
-                <div 
-                  style={{ backgroundColor: goal.cardColor || '#FBBF24' }}
-                  className="w-6 h-6 min-w-[24px] rounded-full flex items-center justify-center text-[#0F172A] font-extrabold text-[11px] shadow-xs flex-shrink-0 border border-black/10"
+          {goals
+            .filter(g => !g.parentGoal || g.isParent)
+            .map((goal, index) => {
+              const isGoalActive = location.pathname.includes(`/goals/${goal._id}`) || location.pathname.includes(`/maps/${goal._id}`);
+              return (
+                <button
+                  key={goal._id}
+                  onClick={() => navigate(`/goals/${goal._id}`)}
+                  className={`w-full flex items-center gap-3.5 h-9 px-2.5 rounded-xl text-left transition-colors duration-200 ${
+                    isGoalActive ? 'bg-[#0F172A]/10 font-bold' : 'hover:bg-[#E2E8F0]'
+                  }`}
+                  title={goal.title}
                 >
-                  {index + 1}
-                </div>
+                  {/* Colorful Circular Tab with Goal Number */}
+                  <div 
+                    style={{ backgroundColor: goal.cardColor || '#FBBF24' }}
+                    className="w-6 h-6 min-w-[24px] rounded-full flex items-center justify-center text-[#0F172A] font-extrabold text-[11px] shadow-xs flex-shrink-0 border border-black/10"
+                  >
+                    {index + 1}
+                  </div>
 
-                <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-medium text-[#0F172A] truncate">
-                  {goal.title}
-                </span>
-              </button>
-            );
-          })}
+                  <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-medium text-[#0F172A] truncate">
+                    {goal.title}
+                  </span>
+                </button>
+              );
+            })}
         </div>
       </div>
 

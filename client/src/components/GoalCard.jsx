@@ -55,6 +55,11 @@ const GoalCard = ({ goal }) => {
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-black/10 text-[#0F172A] backdrop-blur-sm">
               {goal.category || 'General'}
             </span>
+            {goal.isParent && (
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-[#0F172A] text-white">
+                Parent Card
+              </span>
+            )}
             {goal.priority && (
               <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-md ${
                 goal.priority === 'Urgent' ? 'bg-red-500 text-white' :

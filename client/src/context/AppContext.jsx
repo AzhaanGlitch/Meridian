@@ -22,14 +22,107 @@ export const CATEGORIES = [
 ];
 
 const INITIAL_GOALS = [
+  // Parent Goals (Top Level - isParent: true or parentGoal: null)
   {
-    _id: 'goal-1',
+    _id: 'parent-1',
+    title: 'Academics',
+    description: 'Core university coursework, lecture attendance, research papers, and academic excellence.',
+    status: 'In Progress',
+    priority: 'High',
+    category: 'Education',
+    cardColor: '#FBBF24',
+    isParent: true,
+    parentGoal: null,
+    dueDate: new Date(Date.now() + 120 * 24 * 60 * 60 * 1000),
+    progress: 70,
+    tags: ['Academics', 'University'],
+    tasks: [
+      { title: 'Maintain 3.8+ GPA across all modules', completed: true },
+      { title: 'Submit Machine Learning research paper draft', completed: false }
+    ]
+  },
+  {
+    _id: 'parent-2',
+    title: 'Development',
+    description: 'Full stack web applications, software engineering mastery, side projects, and open source.',
+    status: 'In Progress',
+    priority: 'High',
+    category: 'Work',
+    cardColor: '#22D3EE',
+    isParent: true,
+    parentGoal: null,
+    dueDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+    progress: 60,
+    tags: ['Development', 'SaaS', 'Engineering'],
+    tasks: [
+      { title: 'Complete Meridian React + Vite App', completed: true },
+      { title: 'Deploy production API to cloud hosting', completed: false }
+    ]
+  },
+  {
+    _id: 'parent-3',
+    title: 'Term End Exams',
+    description: 'Comprehensive exam revision, mock paper practice, formulas memorization, and final grade preparation.',
+    status: 'In Progress',
+    priority: 'Urgent',
+    category: 'Education',
+    cardColor: '#C084FC',
+    isParent: true,
+    parentGoal: null,
+    dueDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000),
+    progress: 45,
+    tags: ['Exams', 'Revision'],
+    tasks: [
+      { title: 'Solve 5 previous years question papers', completed: true },
+      { title: 'Create quick revision flashcards for all subjects', completed: false }
+    ]
+  },
+
+  // Child Goals (under Parent Goals)
+  {
+    _id: 'child-1',
+    parentGoal: 'parent-1',
+    title: 'Advanced Data Structures & Algorithms',
+    description: 'Master Graphs, Dynamic Programming, Trees, and solve 150+ LeetCode problems.',
+    status: 'In Progress',
+    priority: 'High',
+    category: 'Education',
+    cardColor: '#FBBF24',
+    dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+    progress: 75,
+    tags: ['DSA', 'LeetCode'],
+    tasks: [
+      { title: 'Solve Top 50 Array & String Questions', completed: true },
+      { title: 'Master Dynamic Programming Patterns', completed: true },
+      { title: 'Graph Traversal & Shortest Path algorithms', completed: false }
+    ]
+  },
+  {
+    _id: 'child-2',
+    parentGoal: 'parent-1',
+    title: 'Operating Systems & Database Systems',
+    description: 'Study Process Scheduling, Memory Management, Relational Schema Normalization and Indexing.',
+    status: 'In Progress',
+    priority: 'Medium',
+    category: 'Education',
+    cardColor: '#86EFAC',
+    dueDate: new Date(Date.now() + 40 * 24 * 60 * 60 * 1000),
+    progress: 60,
+    tags: ['OS', 'DBMS'],
+    tasks: [
+      { title: 'Write B-Tree and Hash Indexing notes', completed: true },
+      { title: 'Implement Producer-Consumer Synchronization', completed: true }
+    ]
+  },
+  {
+    _id: 'child-3',
+    parentGoal: 'parent-2',
     title: 'Launch SaaS Platform v1.0',
     description: 'Build, test and launch our core MVP to early adopters and get first 100 paid users.',
     status: 'In Progress',
     priority: 'High',
     category: 'Work',
-    cardColor: '#FBBF24',
+    cardColor: '#FB923C',
     dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
     progress: 65,
     tags: ['SaaS', 'MVP', 'Launch'],
@@ -37,18 +130,18 @@ const INITIAL_GOALS = [
       { title: 'Finalize UI Mockups in Figma', completed: true },
       { title: 'Setup Node.js & MongoDB backend schema', completed: true },
       { title: 'Build React Flow interactive map visualizer', completed: true },
-      { title: 'Configure Payment Gateway Integration', completed: false },
-      { title: 'Perform Beta Testing & Bug Fixes', completed: false }
+      { title: 'Configure Payment Gateway Integration', completed: false }
     ]
   },
   {
-    _id: 'goal-2',
+    _id: 'child-4',
+    parentGoal: 'parent-2',
     title: 'Design Marketing Landing Page',
     description: 'Convert visitors with clear hero sections, interactive demo cards, and pricing table.',
     status: 'In Progress',
     priority: 'Medium',
     category: 'Work',
-    cardColor: '#FB923C',
+    cardColor: '#A3E635',
     dueDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
     progress: 50,
     tags: ['Marketing', 'Design'],
@@ -58,72 +151,20 @@ const INITIAL_GOALS = [
     ]
   },
   {
-    _id: 'goal-3',
-    title: 'Full Stack Engineering Mastery',
-    description: 'Master React 19, TypeScript, Express, microservices architecture, and system design.',
+    _id: 'child-5',
+    parentGoal: 'parent-3',
+    title: 'Computer Networks & Security Mock Revision',
+    description: 'Revise TCP/IP stack, Socket programming, RSA Encryption, and Wireless Protocol security.',
     status: 'In Progress',
-    priority: 'High',
-    category: 'Career',
-    cardColor: '#C084FC',
-    dueDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
-    progress: 40,
-    tags: ['Skill', 'Engineering', 'Learning'],
-    tasks: [
-      { title: 'Complete Advanced React Patterns course', completed: true },
-      { title: 'Build 3 full stack projects with authentication', completed: true },
-      { title: 'Read System Design Interview Book Vol 1 & 2', completed: false }
-    ]
-  },
-  {
-    _id: 'goal-4',
-    title: 'Marathon Fitness Training',
-    description: 'Prepare for the autumn half-marathon by running 4 times a week with structured endurance recovery.',
-    status: 'In Progress',
-    priority: 'Medium',
-    category: 'Health',
-    cardColor: '#A3E635',
-    dueDate: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
-    progress: 80,
-    tags: ['Fitness', 'Running', 'Health'],
-    tasks: [
-      { title: 'Run 10k baseline time trial', completed: true },
-      { title: 'Increase long weekend run to 15km', completed: true },
-      { title: 'Hydration and electrolyte protocol', completed: true },
-      { title: 'Complete 21km practice run', completed: false }
-    ]
-  },
-  {
-    _id: 'goal-5',
-    title: 'Read 12 Non-Fiction Books This Year',
-    description: 'Read 1 book per month focusing on psychology, product strategy, philosophy, and personal growth.',
-    status: 'In Progress',
-    priority: 'Low',
-    category: 'Personal',
-    cardColor: '#86EFAC',
-    dueDate: new Date(Date.now() + 120 * 24 * 60 * 60 * 1000),
-    progress: 58,
-    tags: ['Reading', 'Habits'],
-    tasks: [
-      { title: 'Atomic Habits by James Clear', completed: true },
-      { title: 'Deep Work by Cal Newport', completed: true },
-      { title: 'The Lean Startup by Eric Ries', completed: true },
-      { title: 'Thinking, Fast and Slow', completed: false }
-    ]
-  },
-  {
-    _id: 'goal-6',
-    title: 'Seed Funding Investment Pitch',
-    description: 'Prepare deck, financial projections model, and pitch to angel investors.',
-    status: 'Not Started',
     priority: 'Urgent',
-    category: 'Finance',
-    cardColor: '#22D3EE',
-    dueDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000),
-    progress: 10,
-    tags: ['Pitch', 'Investor', 'Finance'],
+    category: 'Education',
+    cardColor: '#C084FC',
+    dueDate: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000),
+    progress: 40,
+    tags: ['Networks', 'Security'],
     tasks: [
-      { title: 'Draft 10-slide pitch deck', completed: true },
-      { title: 'Calculate 3-year cash flow projections', completed: false }
+      { title: 'Revise OSI 7 Layer Protocol details', completed: true },
+      { title: 'Practice Subnetting math numerical problems', completed: false }
     ]
   }
 ];
