@@ -6,7 +6,6 @@ import {
   Edit2, 
   Trash2, 
   Plus, 
-  Folder,
   ArrowRight,
   ArrowLeft
 } from 'lucide-react';
@@ -73,7 +72,7 @@ const GoalDetail = () => {
         className="w-full max-w-4xl max-h-[85vh] bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl flex flex-col overflow-hidden relative"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Header Bar */}
+        {/* Top Header Bar with Title and Action Icons */}
         <div className="px-6 py-4 border-b border-[#E2E8F0] flex items-center justify-between bg-slate-50/80">
           <div className="flex items-center gap-3">
             {goal && (
@@ -106,7 +105,7 @@ const GoalDetail = () => {
                   className="p-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-colors"
                   title="Delete Card"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="w-4 h-4 text-red-600" />
                 </button>
               </>
             )}
@@ -123,7 +122,7 @@ const GoalDetail = () => {
         <div className="flex-1 overflow-y-auto p-6 bg-white space-y-6">
           {loading ? (
             <div className="h-48 flex items-center justify-center">
-              <span className="text-xs font-bold text-[#64748B] animate-pulse">Loading card...</span>
+              <span className="text-xs font-bold text-[#64748B] animate-pulse">Loading...</span>
             </div>
           ) : !goal ? (
             <div className="h-48 flex flex-col items-center justify-center space-y-4">
@@ -145,35 +144,23 @@ const GoalDetail = () => {
                 </button>
               )}
 
-              {/* Pastel Header Card (Title, Description, Color) */}
-              <div
-                style={{ backgroundColor: activeFocusedGoal.cardColor || '#FBBF24' }}
-                className="p-6 rounded-3xl border border-black/5 text-[#0F172A] space-y-3 shadow-sm"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 bg-black/10 rounded-full text-xs font-extrabold">
-                    {selectedChildId ? 'Child Card' : 'Parent Card'}
-                  </span>
-                </div>
-
-                <h1 className="text-2xl font-extrabold tracking-tight">{activeFocusedGoal.title}</h1>
-
+              {/* Direct Description Display without colored background box or labels */}
+              <div className="space-y-1">
                 {activeFocusedGoal.description ? (
-                  <p className="text-sm font-medium text-[#0F172A]/85 leading-relaxed">
+                  <p className="text-sm font-medium text-[#475569] leading-relaxed">
                     {activeFocusedGoal.description}
                   </p>
                 ) : (
-                  <p className="text-xs italic text-[#0F172A]/60">No description provided for this card.</p>
+                  <p className="text-xs italic text-[#94A3B8]">No description provided for this card.</p>
                 )}
               </div>
 
-              {/* Child Cards Section (Only shown on Parent Cards) */}
+              {/* Child Cards Grid beneath description */}
               {!selectedChildId && (
-                <div className="bg-slate-50 p-6 rounded-3xl border border-[#E2E8F0] space-y-4 shadow-xs">
+                <div className="pt-4 border-t border-[#E2E8F0] space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
-                      <Folder className="w-4 h-4 text-[#C084FC]" />
-                      <span>Child Cards ({childGoals.length})</span>
+                    <h3 className="text-sm font-extrabold text-[#0F172A]">
+                      Child Cards ({childGoals.length})
                     </h3>
 
                     <button
@@ -196,24 +183,25 @@ const GoalDetail = () => {
                           key={cg._id}
                           onClick={() => setSelectedChildId(cg._id)}
                           style={{ backgroundColor: cg.cardColor || '#FBBF24' }}
-                          className="p-5 rounded-2xl border border-black/5 text-[#0F172A] cursor-pointer hover:scale-[1.02] transition-transform space-y-2 shadow-xs"
+                          className="p-5 rounded-2xl border border-black/5 text-[#0F172A] cursor-pointer hover:scale-[1.02] transition-transform space-y-2 shadow-xs flex flex-col justify-between"
                         >
-                          <div className="flex items-center justify-between">
-                            <span className="px-2.5 py-0.5 bg-black/10 rounded-full text-[10px] font-extrabold">
-                              Child Card
-                            </span>
-                            <ArrowRight className="w-4 h-4" />
+                          <div>
+                            <div className="flex items-center justify-end mb-1">
+                              <ArrowRight className="w-4 h-4" />
+                            </div>
+                            <h4 className="font-extrabold text-base leading-snug mb-1">{cg.title}</h4>
+                            {cg.description && (
+                              <p className="text-xs text-[#0F172A]/85 line-clamp-3 font-medium leading-relaxed">
+                                {cg.description}
+                              </p>
+                            )}
                           </div>
-                          <h4 className="font-extrabold text-base leading-snug">{cg.title}</h4>
-                          {cg.description && (
-                            <p className="text-xs text-[#0F172A]/85 line-clamp-3 font-medium">{cg.description}</p>
-                          )}
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <div className="text-xs text-[#64748B] italic py-3 text-center bg-white rounded-2xl border border-[#E2E8F0]">
-                      No child cards yet. Click "+ Add Child Card" to create one under {goal.title}.
+                    <div className="text-xs text-[#64748B] italic py-6 text-center bg-[#F8FAFC] rounded-2xl border border-[#E2E8F0]">
+                      No child cards created yet. Click "+ Add Child Card" to add your first child card.
                     </div>
                   )}
                 </div>

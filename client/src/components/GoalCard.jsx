@@ -37,10 +37,7 @@ const GoalCard = ({ goal }) => {
       className="w-full h-full p-6 flex flex-col justify-between text-[#0F172A] relative select-none border border-black/5 cursor-pointer rounded-3xl shadow-sm"
     >
       <div>
-        <div className="flex items-center justify-between gap-2 mb-3">
-          <span className="text-[11px] font-extrabold px-3 py-1 bg-black/10 rounded-full text-[#0F172A]">
-            {goal.isParent ? 'Parent Card' : 'Child Card'}
-          </span>
+        <div className="flex items-center justify-end gap-2 mb-3">
 
           <div className="flex items-center gap-1.5">
             <button
