@@ -66,18 +66,14 @@ const Sidebar = () => {
         </nav>
 
         {/* Middle Section: Colorful Circular Numbered Tabs for Quick Goal Access */}
-        <div className="pt-2 border-t border-[#E2E8F0] space-y-2 max-h-[calc(100vh-280px)] overflow-y-auto no-scrollbar">
-          <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#64748B] px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 block">
-            Active Goals ({goals.length})
-          </span>
-
+        <div className="pt-2 border-t border-[#E2E8F0] space-y-2 max-h-[calc(100vh-250px)] overflow-y-auto no-scrollbar">
           {goals.map((goal, index) => {
             const isGoalActive = location.pathname.includes(`/goals/${goal._id}`) || location.pathname.includes(`/maps/${goal._id}`);
             return (
               <button
                 key={goal._id}
                 onClick={() => navigate(`/goals/${goal._id}`)}
-                className={`w-full flex items-center gap-3.5 h-9 px-2.5 rounded-xl text-left transition-all ${
+                className={`w-full flex items-center gap-3.5 h-9 px-2.5 rounded-xl text-left transition-colors duration-200 ${
                   isGoalActive ? 'bg-[#0F172A]/10 font-bold' : 'hover:bg-[#E2E8F0]'
                 }`}
                 title={goal.title}

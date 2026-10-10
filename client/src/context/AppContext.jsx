@@ -253,6 +253,19 @@ export const AppProvider = ({ children }) => {
     return matchesCategory && matchesSearch;
   });
 
+  const getGoalById = async (id) => {
+    // Try backend API first, if it fails fallback to local state
+    try {
+      const { data } = await api.get(`/goals/${id}`);
+      if (data && data.data) return { success: true, data: data.data };
+    } catch (err) {
+      console.warn('Backend API request failed, loading from local state:', err);
+    }
+    const found = goals.find(g => g._id === id);
+    if (found) return { success: true, data: found };
+    return { success: false };
+  };
+
   return (
     <AppContext.Provider value={{
       goals,
@@ -266,6 +279,7 @@ export const AppProvider = ({ children }) => {
       createGoal,
       updateGoal,
       deleteGoal,
+      getGoalById,
       createMap,
       updateMap,
       deleteMap,

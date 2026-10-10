@@ -22,7 +22,7 @@ const GoalDetail = ({ initialTab = 'details' }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { deleteGoal, updateGoal, setEditingGoal, setIsGoalModalOpen, goals } = useApp();
+  const { deleteGoal, updateGoal, setEditingGoal, setIsGoalModalOpen, goals, getGoalById } = useApp();
 
   // Determine active tab based on route or prop
   const [activeTab, setActiveTab] = useState(() => {
@@ -50,47 +50,52 @@ const GoalDetail = ({ initialTab = 'details' }) => {
 
   useEffect(() => {
     fetchGoalDetails();
-  }, [id]);
+  }, [id, goals]);
 
   const fetchGoalDetails = async () => {
     setLoading(true);
     try {
-      const { data } = await api.get(`/goals/${id}`);
-      const gData = data.data;
-      setGoal(gData);
+      const res = await getGoalById(id);
+      if (res && res.success) {
+        const gData = res.data;
+        setGoal(gData);
 
-      // Initialize React Flow map nodes/edges from goal or default template
-      if (gData.nodes && gData.nodes.length > 0) {
-        setNodes(gData.nodes);
-        setEdges(gData.edges || []);
+        // Initialize React Flow map nodes/edges from goal or default template
+        if (gData.nodes && gData.nodes.length > 0) {
+          setNodes(gData.nodes);
+          setEdges(gData.edges || []);
+        } else {
+          setNodes([
+            {
+              id: 'root-1',
+              type: 'input',
+              data: { label: gData.title },
+              position: { x: 250, y: 50 },
+              style: { background: '#0F172A', color: '#fff', borderRadius: '12px', padding: '12px 20px', fontWeight: 'bold' }
+            },
+            ...(gData.tasks || []).map((t, idx) => ({
+              id: `task-${idx}`,
+              data: { label: t.title },
+              position: { x: 100 + (idx % 3) * 180, y: 180 + Math.floor(idx / 3) * 100 },
+              style: { background: gData.cardColor || '#FBBF24', color: '#0F172A', borderRadius: '12px', padding: '10px 16px', border: 'none', fontWeight: '600' }
+            }))
+          ]);
+          setEdges(
+            (gData.tasks || []).map((_, idx) => ({
+              id: `e-root-task-${idx}`,
+              source: 'root-1',
+              target: `task-${idx}`,
+              animated: true,
+              style: { stroke: '#0F172A', strokeWidth: 2 }
+            }))
+          );
+        }
       } else {
-        setNodes([
-          {
-            id: 'root-1',
-            type: 'input',
-            data: { label: gData.title },
-            position: { x: 250, y: 50 },
-            style: { background: '#0F172A', color: '#fff', borderRadius: '12px', padding: '12px 20px', fontWeight: 'bold' }
-          },
-          ...(gData.tasks || []).map((t, idx) => ({
-            id: `task-${idx}`,
-            data: { label: t.title },
-            position: { x: 100 + (idx % 3) * 180, y: 180 + Math.floor(idx / 3) * 100 },
-            style: { background: gData.cardColor || '#FBBF24', color: '#0F172A', borderRadius: '12px', padding: '10px 16px', border: 'none', fontWeight: '600' }
-          }))
-        ]);
-        setEdges(
-          (gData.tasks || []).map((_, idx) => ({
-            id: `e-root-task-${idx}`,
-            source: 'root-1',
-            target: `task-${idx}`,
-            animated: true,
-            style: { stroke: '#0F172A', strokeWidth: 2 }
-          }))
-        );
+        setGoal(null);
       }
     } catch (err) {
       console.error('Failed to fetch goal detail', err);
+      setGoal(null);
     } finally {
       setLoading(false);
     }
