@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import { User, Bell, Save, Check } from 'lucide-react';
+import { User, Save, Check } from 'lucide-react';
 
 const Settings = () => {
   const [name, setName] = useState('Alex Morgan');
@@ -15,10 +14,13 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col min-w-0 bg-[#F1F5F9] pb-12">
-      <Header title="Settings" subtitle="Manage your profile preferences and system settings" />
+    <div className="flex-1 flex flex-col min-w-0 bg-white min-h-full pb-12">
+      <main className="px-8 py-8 space-y-6 max-w-4xl">
+        {/* Uniform Page Heading */}
+        <h1 className="text-2xl font-extrabold text-[#0F172A] tracking-tight">
+          Settings
+        </h1>
 
-      <main className="px-8 py-6 space-y-8 max-w-4xl">
         {/* Profile Settings Card */}
         <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] soft-shadow space-y-6">
           <div className="flex items-center gap-3 pb-4 border-b border-[#E2E8F0]">
@@ -68,7 +70,7 @@ const Settings = () => {
             <div className="pt-2 flex justify-end">
               <button
                 type="submit"
-                className="px-5 py-2.5 bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold rounded-xl flex items-center gap-2 shadow-md transition-all active:scale-95"
+                className="px-5 py-2.5 bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold rounded-xl flex items-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer"
               >
                 {savedSuccess ? (
                   <>

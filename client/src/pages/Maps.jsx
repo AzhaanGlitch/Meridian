@@ -155,141 +155,148 @@ const Maps = () => {
 
   return (
     <div className="flex-1 flex flex-col min-w-0 bg-white min-h-full pb-8 h-full">
-      <main className="flex-1 flex px-8 py-6 gap-6 min-h-0 h-full">
-        {/* Left Toolbar & Saved Maps Drawer */}
-        <div className="w-72 bg-white rounded-2xl border border-[#E2E8F0] p-4 soft-shadow flex flex-col justify-between overflow-y-auto space-y-6">
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-bold text-[#0F172A] mb-1">Map Title</label>
-              <input
-                type="text"
-                value={mapTitle}
-                onChange={(e) => setMapTitle(e.target.value)}
-                className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-bold text-[#0F172A]"
-              />
-            </div>
+      <main className="flex-1 flex flex-col px-8 py-8 space-y-6 min-h-0 h-full">
+        {/* Uniform Page Heading */}
+        <h1 className="text-2xl font-extrabold text-[#0F172A] tracking-tight">
+          Work Maps & Flow
+        </h1>
 
-            {/* Type selector */}
-            <div>
-              <label className="block text-xs font-bold text-[#0F172A] mb-1">Diagram Type</label>
-              <div className="grid grid-cols-2 gap-2 text-xs font-semibold">
-                <button
-                  onClick={() => setMapType('mindmap')}
-                  className={`py-1.5 rounded-xl border ${mapType === 'mindmap' ? 'bg-[#0F172A] text-[#22D3EE] border-[#0F172A]' : 'bg-[#F1F5F9] text-[#64748B]'}`}
-                >
-                  Mind Map
-                </button>
-                <button
-                  onClick={() => setMapType('flowchart')}
-                  className={`py-1.5 rounded-xl border ${mapType === 'flowchart' ? 'bg-[#0F172A] text-[#22D3EE] border-[#0F172A]' : 'bg-[#F1F5F9] text-[#64748B]'}`}
-                >
-                  Flowchart
-                </button>
+        <div className="flex-1 flex gap-6 min-h-0">
+          {/* Left Toolbar & Saved Maps Drawer */}
+          <div className="w-72 bg-white rounded-2xl border border-[#E2E8F0] p-4 soft-shadow flex flex-col justify-between overflow-y-auto space-y-6 flex-shrink-0">
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-[#0F172A] mb-1">Map Title</label>
+                <input
+                  type="text"
+                  value={mapTitle}
+                  onChange={(e) => setMapTitle(e.target.value)}
+                  className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-bold text-[#0F172A]"
+                />
               </div>
-            </div>
 
-            {/* Add Node Tool */}
-            <div className="pt-2 border-t border-[#E2E8F0] space-y-3">
-              <span className="text-xs font-bold text-[#0F172A] block">Add Custom Node</span>
-              <input
-                type="text"
-                placeholder="Node label..."
-                value={newNodeLabel}
-                onChange={(e) => setNewNodeLabel(e.target.value)}
-                className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-2 text-xs font-medium"
-              />
-
-              {/* Node Color picker */}
-              <div className="flex items-center justify-between gap-1">
-                {PASTEL_COLORS.map(c => (
+              {/* Type selector */}
+              <div>
+                <label className="block text-xs font-bold text-[#0F172A] mb-1">Diagram Type</label>
+                <div className="grid grid-cols-2 gap-2 text-xs font-semibold">
                   <button
-                    key={c.hex}
-                    onClick={() => setSelectedNodeColor(c.hex)}
-                    style={{ backgroundColor: c.hex }}
-                    className={`w-6 h-6 rounded-full border-2 ${selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110' : 'border-transparent'}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={handleAddNode}
-                className="w-full py-2 bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border border-[#E2E8F0]"
-              >
-                <Plus className="w-4 h-4" />
-                <span>Add Node to Canvas</span>
-              </button>
-            </div>
-
-            {/* Saved Canvas List */}
-            <div className="pt-3 border-t border-[#E2E8F0] space-y-2">
-              <div className="flex items-center justify-between text-xs font-bold text-[#64748B]">
-                <span>Saved Maps</span>
-                <button onClick={loadDefaultTemplate} className="text-[#0F172A] underline text-[10px]">
-                  + New Blank
-                </button>
-              </div>
-
-              <div className="space-y-1 max-h-40 overflow-y-auto">
-                {maps.map(m => (
-                  <button
-                    key={m._id}
-                    onClick={() => loadMap(m)}
-                    className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold truncate transition-colors ${
-                      activeMapId === m._id ? 'bg-[#0F172A] text-white' : 'bg-[#F1F5F9] hover:bg-slate-200 text-[#0F172A]'
-                    }`}
+                    onClick={() => setMapType('mindmap')}
+                    className={`py-1.5 rounded-xl border ${mapType === 'mindmap' ? 'bg-[#0F172A] text-[#22D3EE] border-[#0F172A]' : 'bg-[#F1F5F9] text-[#64748B]'}`}
                   >
-                    {m.title}
+                    Mind Map
                   </button>
-                ))}
+                  <button
+                    onClick={() => setMapType('flowchart')}
+                    className={`py-1.5 rounded-xl border ${mapType === 'flowchart' ? 'bg-[#0F172A] text-[#22D3EE] border-[#0F172A]' : 'bg-[#F1F5F9] text-[#64748B]'}`}
+                  >
+                    Flowchart
+                  </button>
+                </div>
               </div>
+
+              {/* Add Node Tool */}
+              <div className="pt-2 border-t border-[#E2E8F0] space-y-3">
+                <span className="text-xs font-bold text-[#0F172A] block">Add Custom Node</span>
+                <input
+                  type="text"
+                  placeholder="Node label..."
+                  value={newNodeLabel}
+                  onChange={(e) => setNewNodeLabel(e.target.value)}
+                  className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3 py-2 text-xs font-medium"
+                />
+
+                {/* Node Color picker */}
+                <div className="flex items-center justify-between gap-1">
+                  {PASTEL_COLORS.map(c => (
+                    <button
+                      key={c.hex}
+                      onClick={() => setSelectedNodeColor(c.hex)}
+                      style={{ backgroundColor: c.hex }}
+                      className={`w-6 h-6 rounded-full border-2 ${selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110' : 'border-transparent'}`}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  onClick={handleAddNode}
+                  className="w-full py-2 bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border border-[#E2E8F0]"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add Node to Canvas</span>
+                </button>
+              </div>
+
+              {/* Saved Canvas List */}
+              <div className="pt-3 border-t border-[#E2E8F0] space-y-2">
+                <div className="flex items-center justify-between text-xs font-bold text-[#64748B]">
+                  <span>Saved Maps</span>
+                  <button onClick={loadDefaultTemplate} className="text-[#0F172A] underline text-[10px]">
+                    + New Blank
+                  </button>
+                </div>
+
+                <div className="space-y-1 max-h-40 overflow-y-auto">
+                  {maps.map(m => (
+                    <button
+                      key={m._id}
+                      onClick={() => loadMap(m)}
+                      className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold truncate transition-colors ${
+                        activeMapId === m._id ? 'bg-[#0F172A] text-white' : 'bg-[#F1F5F9] hover:bg-slate-200 text-[#0F172A]'
+                      }`}
+                    >
+                      {m.title}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="space-y-2 pt-2 border-t border-[#E2E8F0]">
+              <button
+                onClick={handleSaveMap}
+                className="w-full py-2.5 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95"
+              >
+                {savedSuccess ? (
+                  <>
+                    <Check className="w-4 h-4 text-[#86EFAC]" />
+                    <span>Saved!</span>
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4" />
+                    <span>Save Map Canvas</span>
+                  </>
+                )}
+              </button>
+
+              {activeMapId && (
+                <button
+                  onClick={handleDeleteMap}
+                  className="w-full py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  <span>Delete Map</span>
+                </button>
+              )}
             </div>
           </div>
 
-          {/* Bottom Actions */}
-          <div className="space-y-2 pt-2 border-t border-[#E2E8F0]">
-            <button
-              onClick={handleSaveMap}
-              className="w-full py-2.5 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95"
+          {/* Right Interactive React Flow Canvas */}
+          <div className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden soft-shadow relative min-h-[450px]">
+            <ReactFlow
+              nodes={nodes}
+              edges={edges}
+              onNodesChange={onNodesChange}
+              onEdgesChange={onEdgesChange}
+              onConnect={onConnect}
+              fitView
             >
-              {savedSuccess ? (
-                <>
-                  <Check className="w-4 h-4 text-[#86EFAC]" />
-                  <span>Saved!</span>
-                </>
-              ) : (
-                <>
-                  <Save className="w-4 h-4" />
-                  <span>Save Map Canvas</span>
-                </>
-              )}
-            </button>
-
-            {activeMapId && (
-              <button
-                onClick={handleDeleteMap}
-                className="w-full py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5"
-              >
-                <Trash2 className="w-4 h-4" />
-                <span>Delete Map</span>
-              </button>
-            )}
+              <Controls className="bg-white border border-[#E2E8F0] rounded-xl shadow-md p-1" />
+              <MiniMap nodeColor={() => '#22D3EE'} className="rounded-xl border border-[#E2E8F0] shadow-md" />
+              <Background color="#E2E8F0" gap={16} size={1} />
+            </ReactFlow>
           </div>
-        </div>
-
-        {/* Right Interactive React Flow Canvas */}
-        <div className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden soft-shadow relative min-h-[500px]">
-          <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-            fitView
-          >
-            <Controls className="bg-white border border-[#E2E8F0] rounded-xl shadow-md p-1" />
-            <MiniMap nodeColor={() => '#22D3EE'} className="rounded-xl border border-[#E2E8F0] shadow-md" />
-            <Background color="#E2E8F0" gap={16} size={1} />
-          </ReactFlow>
         </div>
       </main>
     </div>

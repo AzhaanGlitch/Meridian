@@ -11,6 +11,11 @@ const Roadmap = () => {
   return (
     <div className="flex-1 flex flex-col min-w-0 bg-white min-h-full pb-12">
       <main className="px-8 py-8 space-y-6 max-w-7xl">
+        {/* Uniform Page Heading */}
+        <h1 className="text-2xl font-extrabold text-[#0F172A] tracking-tight">
+          Roadmap
+        </h1>
+
         {/* Timeline Visual Matrix */}
         <div className="bg-white rounded-3xl border border-[#E2E8F0] soft-shadow p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0]">
