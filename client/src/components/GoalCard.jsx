@@ -37,11 +37,17 @@ const GoalCard = ({ goal }) => {
     }
   };
 
-  // Front Side of FlipCard (Pastel Note Preview)
+  const openGoalDetails = (e) => {
+    e.stopPropagation();
+    navigate(`/goals/${goal._id}`);
+  };
+
+  // Front Side of FlipCard (Pastel Note Preview & Direct Details Link)
   const FrontSide = (
     <div
+      onClick={openGoalDetails}
       style={{ backgroundColor: goal.cardColor || '#FBBF24' }}
-      className="w-full h-full p-6 flex flex-col justify-between text-[#0F172A] relative select-none border border-black/5"
+      className="w-full h-full p-6 flex flex-col justify-between text-[#0F172A] relative select-none border border-black/5 cursor-pointer"
     >
       <div>
         <div className="flex items-center justify-between gap-2 mb-3">
@@ -58,16 +64,55 @@ const GoalCard = ({ goal }) => {
               </span>
             )}
           </div>
-          <span className="text-[10px] font-bold text-[#0F172A]/60 flex items-center gap-1 bg-black/5 px-2 py-0.5 rounded-md">
-            <RotateCw className="w-3 h-3" /> Flip
-          </span>
+          
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={openGoalDetails}
+              className="p-1 rounded-lg hover:bg-black/10 transition-colors text-[#0F172A]"
+              title="Open Goal Details"
+            >
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+
+            <div className="relative z-50">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowMenu(!showMenu);
+                }}
+                className="p-1 rounded-lg hover:bg-black/10 transition-colors text-[#0F172A]"
+                title="Options"
+              >
+                <MoreVertical className="w-4 h-4" />
+              </button>
+
+              {showMenu && (
+                <div className="absolute right-0 top-full mt-1 w-32 bg-white rounded-xl shadow-lg border border-[#E2E8F0] p-1 z-50">
+                  <button
+                    onClick={handleEdit}
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-lg"
+                  >
+                    <Edit2 className="w-3.5 h-3.5" />
+                    Edit
+                  </button>
+                  <button
+                    onClick={handleDelete}
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50 rounded-lg"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
         <h3 className="font-bold text-lg leading-snug mb-2 text-[#0F172A] line-clamp-2">
           {goal.title}
         </h3>
         {goal.description && (
-          <p className="text-xs text-[#0F172A]/80 line-clamp-3 mb-3 font-normal leading-relaxed">
+          <p className="text-xs text-[#0F172A]/80 line-clamp-4 mb-3 font-normal leading-relaxed">
             {goal.description}
           </p>
         )}
@@ -89,13 +134,15 @@ const GoalCard = ({ goal }) => {
             <Clock className="w-3 h-3" />
             <span>{goal.dueDate ? format(new Date(goal.dueDate), 'MMM d') : 'No due date'}</span>
           </div>
-          <span className="text-[10px] font-bold underline">Click to Flip Back</span>
+          <span className="text-[10px] font-bold opacity-75 flex items-center gap-1">
+            <RotateCw className="w-3 h-3" /> Drag to Spin
+          </span>
         </div>
       </div>
     </div>
   );
 
-  // Back Side of FlipCard (Tasks Checklist & Quick Action Menu)
+  // Back Side of FlipCard (Tasks Checklist & Options)
   const BackSide = (
     <div
       style={{ backgroundColor: goal.cardColor || '#FBBF24' }}
@@ -140,8 +187,7 @@ const GoalCard = ({ goal }) => {
           </div>
         </div>
 
-        {/* Interactive Tasks Checklist */}
-        <div className="space-y-2 my-2 bg-white/50 p-3 rounded-xl backdrop-blur-xs max-h-[200px] overflow-y-auto">
+        <div className="space-y-2 my-2 bg-white/50 p-3 rounded-xl backdrop-blur-xs max-h-[220px] overflow-y-auto">
           {goal.tasks && goal.tasks.length > 0 ? (
             goal.tasks.map((t, idx) => (
               <div
@@ -161,20 +207,16 @@ const GoalCard = ({ goal }) => {
         </div>
       </div>
 
-      {/* Back Footer */}
       <div className="pt-3 border-t border-black/10 flex items-center justify-between text-xs">
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            navigate(`/goals/${goal._id}`);
-          }}
-          className="px-3 py-1.5 bg-[#0F172A] text-white font-bold rounded-lg text-xs flex items-center gap-1 shadow-sm hover:bg-[#1E293B]"
+          onClick={openGoalDetails}
+          className="px-3.5 py-1.5 bg-[#0F172A] text-white font-bold rounded-lg text-xs flex items-center gap-1 shadow-sm hover:bg-[#1E293B] cursor-pointer"
         >
           <span>Full Details</span>
           <ArrowUpRight className="w-3.5 h-3.5" />
         </button>
 
-        <span className="text-[10px] font-bold opacity-70">Click to Flip Front</span>
+        <span className="text-[10px] font-bold opacity-75">Drag to Spin</span>
       </div>
     </div>
   );
@@ -185,24 +227,25 @@ const GoalCard = ({ goal }) => {
         front={FrontSide}
         back={BackSide}
         axis="y"
-        flipOnClick={true}
-        draggable={false}
+        flipOnClick={false}
+        draggable={true}
+        dragDistance={300}
         tilt={true}
-        tiltMax={10}
+        tiltMax={15}
         glare={true}
-        glareOpacity={0.15}
-        hoverScale={1.02}
+        glareOpacity={0.2}
+        hoverScale={1.03}
         perspective={1100}
         stiffness={170}
         damping={20}
         width="100%"
-        height={280}
-        radius={22}
+        height={340}
+        radius={24}
         background={goal.cardColor || '#FBBF24'}
         color="#0F172A"
         shadow={true}
         shadowColor="#000000"
-        shadowOpacity={0.15}
+        shadowOpacity={0.18}
       />
     </div>
   );
