@@ -15,11 +15,17 @@ import Settings from './pages/Settings';
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex min-h-screen bg-[#F1F5F9]">
+    <div className="flex h-screen w-screen bg-[#F1F5F9] overflow-hidden">
+      {/* Base Page Sidebar */}
       <Sidebar />
-      <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
-        {children}
+
+      {/* Overlaid Large Rounded Border Card for Content */}
+      <div className="flex-1 my-3 mr-3 bg-white rounded-3xl border border-[#E2E8F0] shadow-xl overflow-hidden flex flex-col min-w-0">
+        <div className="flex-1 overflow-y-auto">
+          {children}
+        </div>
       </div>
+
       <GoalModal />
     </div>
   );

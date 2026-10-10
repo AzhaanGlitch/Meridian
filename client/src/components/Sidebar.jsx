@@ -30,11 +30,11 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="w-16 hover:w-64 transition-all duration-300 ease-in-out bg-white border-r border-[#E2E8F0] flex flex-col justify-between h-screen sticky top-0 select-none z-30 group overflow-hidden shadow-sm">
-      {/* Top Branding - Only Logo image, no text */}
-      <div className="p-3 space-y-6">
-        <div className="flex items-center gap-3 px-1 pt-1">
-          <div className="w-9 h-9 min-w-[36px] rounded-xl overflow-hidden shadow-md flex items-center justify-center bg-[#0F172A] border border-[#E2E8F0]">
+    <aside className="w-16 hover:w-64 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] bg-[#F1F5F9] flex flex-col justify-between h-screen sticky top-0 select-none z-30 group overflow-hidden flex-shrink-0">
+      {/* Top Branding - Perfectly Centered Icon/Logo */}
+      <div className="py-4 px-2 space-y-6">
+        <div className="flex items-center justify-start h-10 px-1">
+          <div className="w-10 h-10 min-w-[40px] rounded-xl overflow-hidden shadow-sm flex items-center justify-center bg-[#0F172A] border border-[#E2E8F0]">
             <img 
               src="/logo.jpg" 
               alt="Logo" 
@@ -46,8 +46,8 @@ const Sidebar = () => {
           </div>
         </div>
 
-        {/* Main Navigation Links */}
-        <nav className="space-y-1.5">
+        {/* Main Navigation Links - Perfectly Centered Icons */}
+        <nav className="space-y-2">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -55,16 +55,19 @@ const Sidebar = () => {
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `flex items-center gap-3.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  `flex items-center gap-3.5 h-10 px-2.5 rounded-xl text-sm font-medium transition-colors ${
                     isActive
-                      ? 'bg-[#0F172A] text-white shadow-sm font-semibold'
-                      : 'text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#0F172A]'
+                      ? 'bg-[#0F172A] text-white shadow-md'
+                      : 'text-[#64748B] hover:bg-[#E2E8F0] hover:text-[#0F172A]'
                   }`
                 }
                 title={item.label}
               >
-                <Icon className="w-5 h-5 min-w-[20px] flex-shrink-0" />
-                <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                {/* 20px Icon inside 24px container for perfect pixel alignment */}
+                <div className="w-6 h-6 min-w-[24px] flex items-center justify-center">
+                  <Icon className="w-5 h-5 flex-shrink-0" />
+                </div>
+                <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-semibold">
                   {item.label}
                 </span>
               </NavLink>
@@ -73,15 +76,17 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      {/* Bottom Action Button - Icon only in collapsed state, text reveals on hover */}
-      <div className="p-3 border-t border-[#E2E8F0]">
+      {/* Bottom Action Button - Centered icon */}
+      <div className="p-2 mb-2">
         <button
           onClick={handleCreateNew}
-          className="w-full bg-[#0F172A] hover:bg-[#1E293B] text-white py-2.5 px-3 rounded-xl flex items-center justify-center gap-2 text-sm font-semibold shadow-md transition-all active:scale-95 cursor-pointer overflow-hidden"
+          className="w-full h-10 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl flex items-center justify-start px-2.5 gap-3.5 text-sm font-semibold shadow-md transition-all active:scale-95 cursor-pointer overflow-hidden"
           title="Create New Goal / Note"
         >
-          <Plus className="w-5 h-5 min-w-[20px] flex-shrink-0" />
-          <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden group-hover:inline">
+          <div className="w-6 h-6 min-w-[24px] flex items-center justify-center">
+            <Plus className="w-5 h-5 flex-shrink-0" />
+          </div>
+          <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-bold">
             New Goal
           </span>
         </button>
