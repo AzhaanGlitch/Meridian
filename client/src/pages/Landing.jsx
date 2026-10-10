@@ -8,6 +8,8 @@ const Landing = () => {
   // Background image path inside client/public/
   const bgImagePath = '/landing-bg.jpg';
 
+  const titleText = "Meridian";
+
   return (
     <div 
       className="h-screen w-screen relative flex flex-col items-center justify-between overflow-hidden p-8 select-none bg-cover bg-center bg-no-repeat bg-[#0F172A]"
@@ -16,15 +18,25 @@ const Landing = () => {
       {/* Top Spacer */}
       <div className="w-full flex-1" />
 
-      {/* Hero Title & Glassmorphism Circular Arrow Button */}
+      {/* Hero Title with Staggered Letter Entrance Animation */}
       <div className="flex flex-col items-center justify-center space-y-6 text-center z-10">
-        <h1 className="text-6xl md:text-8xl font-extrabold text-white tracking-tighter drop-shadow-md">
-          Meridian
+        <h1 className="text-6xl md:text-8xl font-extrabold text-white tracking-tighter drop-shadow-md flex items-center justify-center">
+          {titleText.split('').map((char, index) => (
+            <span
+              key={index}
+              className="animate-letter-pop"
+              style={{ animationDelay: `${index * 80 + 150}ms` }}
+            >
+              {char}
+            </span>
+          ))}
         </h1>
 
+        {/* Circular Glassmorphism Button */}
         <button
           onClick={() => navigate('/dashboard')}
-          className="px-7 py-3 bg-black/50 hover:bg-black/70 text-white text-xs font-bold rounded-full flex items-center justify-center backdrop-blur-md border border-white/70 shadow-2xl shadow-black/80 transition-all active:scale-95 group cursor-pointer"
+          className="px-7 py-3 bg-black/50 hover:bg-black/70 text-white text-xs font-bold rounded-full flex items-center justify-center backdrop-blur-md border border-white/70 shadow-2xl shadow-black/80 transition-all active:scale-95 group cursor-pointer animate-fade-in-rise"
+          style={{ animationDelay: '800ms' }}
           title="Open App"
         >
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -32,11 +44,11 @@ const Landing = () => {
       </div>
 
       {/* Bottom Compact Social Handles Bar */}
-      <div className="w-full flex-1 flex flex-col justify-end items-center">
+      <div className="w-full flex-1 flex flex-col justify-end items-center animate-fade-in-rise" style={{ animationDelay: '1000ms' }}>
         <div className="flex items-center gap-4 z-10 py-2">
-          {/* LinkedIn Monochrome White Logo SVG */}
+          {/* LinkedIn Link */}
           <a 
-            href="https://linkedin.com" 
+            href="https://www.linkedin.com/in/azhaanalisiddiqui/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-7 h-7 rounded-full bg-black/40 hover:bg-black/80 border border-white/20 backdrop-blur-md flex items-center justify-center transition-all hover:scale-110 shadow-md"
@@ -47,9 +59,9 @@ const Landing = () => {
             </svg>
           </a>
 
-          {/* GitHub Monochrome White Logo SVG */}
+          {/* GitHub Link */}
           <a 
-            href="https://github.com" 
+            href="https://github.com/AzhaanGlitch" 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-7 h-7 rounded-full bg-black/40 hover:bg-black/80 border border-white/20 backdrop-blur-md flex items-center justify-center transition-all hover:scale-110 shadow-md"
@@ -60,9 +72,9 @@ const Landing = () => {
             </svg>
           </a>
 
-          {/* Mail Monochrome White Logo SVG */}
+          {/* Mail Link */}
           <a 
-            href="mailto:contact@meridian.app" 
+            href="mailto:azhaanalisiddiqui15@gmail.com" 
             className="w-7 h-7 rounded-full bg-black/40 hover:bg-black/80 border border-white/20 backdrop-blur-md flex items-center justify-center transition-all hover:scale-110 shadow-md"
             title="Email"
           >
