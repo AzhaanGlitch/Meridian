@@ -86,8 +86,8 @@ const GoalDetail = () => {
             </h2>
           </div>
 
-          {/* Action Buttons & Close Icon */}
-          <div className="flex items-center gap-2">
+          {/* Action Buttons & Close Icon - Direct icons without border/pill backgrounds */}
+          <div className="flex items-center gap-3">
             {goal && (
               <>
                 <button
@@ -95,25 +95,26 @@ const GoalDetail = () => {
                     setEditingGoal(activeFocusedGoal);
                     setIsGoalModalOpen(true);
                   }}
-                  className="p-2 bg-white border border-[#E2E8F0] hover:bg-slate-100 text-[#0F172A] rounded-xl transition-colors"
+                  className="text-[#64748B] hover:text-[#0F172A] transition-colors p-1"
                   title="Edit Card"
                 >
-                  <Edit2 className="w-4 h-4" />
+                  <Edit2 className="w-5 h-5" />
                 </button>
                 <button
                   onClick={handleDelete}
-                  className="p-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-colors"
+                  className="text-[#64748B] hover:text-red-600 transition-colors p-1"
                   title="Delete Card"
                 >
-                  <Trash2 className="w-4 h-4 text-red-600" />
+                  <Trash2 className="w-5 h-5" />
                 </button>
               </>
             )}
             <button
               onClick={handleClose}
-              className="p-2 bg-slate-200 hover:bg-slate-300 text-[#0F172A] rounded-xl transition-colors ml-2"
+              className="text-[#64748B] hover:text-[#0F172A] transition-colors p-1 ml-1"
+              title="Close"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -155,24 +156,20 @@ const GoalDetail = () => {
                 )}
               </div>
 
-              {/* Child Cards Grid beneath description */}
+              {/* Child Cards Grid beneath description - No heading, simple + button */}
               {!selectedChildId && (
                 <div className="pt-4 border-t border-[#E2E8F0] space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-extrabold text-[#0F172A]">
-                      Child Cards ({childGoals.length})
-                    </h3>
-
+                  <div className="flex items-center justify-end">
                     <button
                       onClick={() => {
                         setParentGoalContext(goal._id);
                         setEditingGoal(null);
                         setIsGoalModalOpen(true);
                       }}
-                      className="px-4 py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-md transition-all active:scale-95 cursor-pointer"
+                      className="w-8 h-8 rounded-full bg-[#0F172A] hover:bg-[#1E293B] text-white flex items-center justify-center shadow-md transition-all active:scale-95 cursor-pointer"
+                      title="Add Child Card"
                     >
                       <Plus className="w-4 h-4" />
-                      <span>Add Child Card</span>
                     </button>
                   </div>
 
@@ -201,7 +198,7 @@ const GoalDetail = () => {
                     </div>
                   ) : (
                     <div className="text-xs text-[#64748B] italic py-6 text-center bg-[#F8FAFC] rounded-2xl border border-[#E2E8F0]">
-                      No child cards created yet. Click "+ Add Child Card" to add your first child card.
+                      No child cards created yet. Click "+" above to add your first child card.
                     </div>
                   )}
                 </div>
