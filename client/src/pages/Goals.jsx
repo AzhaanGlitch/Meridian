@@ -7,8 +7,13 @@ const Goals = () => {
 
   return (
     <div className="flex-1 flex flex-col min-w-0 bg-white min-h-full">
-      <main className="px-8 py-8 max-w-7xl">
-        {/* Goals Sticky Notes Grid starting directly from the top */}
+      <main className="px-8 py-8 max-w-7xl space-y-6">
+        {/* Page Heading */}
+        <h1 className="text-2xl font-extrabold text-[#0F172A] tracking-tight">
+          Goals
+        </h1>
+
+        {/* Goals Sticky Notes Grid - Exactly 3 cards per row */}
         {filteredGoals.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredGoals.map((goal) => (

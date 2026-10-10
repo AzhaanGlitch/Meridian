@@ -8,13 +8,11 @@ import ReactFlow, {
   MiniMap
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import Header from '../components/Header';
 import { useApp, PASTEL_COLORS } from '../context/AppContext';
 import { 
   Plus, 
   Save, 
   Trash2, 
-  Network, 
   Check
 } from 'lucide-react';
 
@@ -156,10 +154,8 @@ const Maps = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col min-w-0 bg-[#F1F5F9] pb-8 h-screen">
-      <Header title="Work Maps & Flowcharts" subtitle="Drag, drop, connect nodes, and visualize work structures" />
-
-      <main className="flex-1 flex px-8 py-4 gap-6 min-h-0">
+    <div className="flex-1 flex flex-col min-w-0 bg-white min-h-full pb-8 h-full">
+      <main className="flex-1 flex px-8 py-6 gap-6 min-h-0 h-full">
         {/* Left Toolbar & Saved Maps Drawer */}
         <div className="w-72 bg-white rounded-2xl border border-[#E2E8F0] p-4 soft-shadow flex flex-col justify-between overflow-y-auto space-y-6">
           <div className="space-y-4">
@@ -281,7 +277,7 @@ const Maps = () => {
         </div>
 
         {/* Right Interactive React Flow Canvas */}
-        <div className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden soft-shadow relative">
+        <div className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden soft-shadow relative min-h-[500px]">
           <ReactFlow
             nodes={nodes}
             edges={edges}
