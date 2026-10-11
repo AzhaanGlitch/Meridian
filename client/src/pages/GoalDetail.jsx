@@ -264,6 +264,9 @@ const GoalDetail = () => {
 
   const onEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    []
+  );
+
   // Push state snapshot before changes
   const pushSnapshot = useCallback(() => {
     if (isUndoingRef.current) return;
