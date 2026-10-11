@@ -67,9 +67,9 @@ const GoalDetail = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md transition-all animate-in fade-in duration-200">
-      {/* Centered Modal Overlay Card */}
+      {/* Centered Modal Overlay Card - Enlarged size */}
       <div 
-        className="w-full max-w-4xl max-h-[85vh] bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl flex flex-col overflow-hidden relative"
+        className="w-full max-w-5xl h-[88vh] bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl flex flex-col overflow-hidden relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header Bar with Title and Action Icons */}

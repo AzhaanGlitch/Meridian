@@ -28,12 +28,13 @@ const Sidebar = () => {
     <aside className="w-16 hover:w-64 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] bg-[#F1F5F9] flex flex-col justify-between h-screen sticky top-0 select-none z-30 group overflow-hidden flex-shrink-0">
       {/* Top Branding - Logo image */}
       <div className="py-4 px-2 space-y-4">
+        {/* Top Branding - Logo image & Website Name */}
         <div 
           onClick={() => navigate('/goals')}
-          className="flex items-center justify-start h-10 px-1 cursor-pointer"
+          className="flex items-center gap-3 h-10 px-1 cursor-pointer"
           title="Go to Goals"
         >
-          <div className="w-10 h-10 min-w-[40px] rounded-xl overflow-hidden shadow-sm flex items-center justify-center bg-[#0F172A] border border-[#E2E8F0]">
+          <div className="w-10 h-10 min-w-[40px] rounded-full overflow-hidden shadow-sm flex items-center justify-center bg-[#0F172A] border border-[#E2E8F0] flex-shrink-0">
             <img 
               src="/logo.jpg" 
               alt="Logo" 
@@ -43,27 +44,38 @@ const Sidebar = () => {
               }}
             />
           </div>
+          <span className="font-extrabold text-base tracking-tight text-[#0F172A] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            Meridian
+          </span>
         </div>
 
-        {/* Goals Main Navigation Tab */}
+        {/* Goals Main Navigation Tab - Circular black highlight */}
         <nav className="space-y-2">
           <NavLink
             to="/goals"
             className={({ isActive }) =>
-              `flex items-center gap-3.5 h-10 px-2.5 rounded-xl text-sm font-medium transition-colors ${
+              `flex items-center gap-3 h-10 px-1 text-sm font-medium transition-colors ${
                 isActive || location.pathname.startsWith('/goals')
-                  ? 'bg-[#0F172A] text-white shadow-md'
-                  : 'text-[#64748B] hover:bg-[#E2E8F0] hover:text-[#0F172A]'
+                  ? 'text-[#0F172A]'
+                  : 'text-[#64748B] hover:text-[#0F172A]'
               }`
             }
             title="Goals"
           >
-            <div className="w-6 h-6 min-w-[24px] flex items-center justify-center">
-              <Target className="w-5 h-5 flex-shrink-0" />
-            </div>
-            <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-semibold">
-              Goals
-            </span>
+            {({ isActive }) => (
+              <>
+                <div className={`w-10 h-10 min-w-[40px] rounded-full flex items-center justify-center transition-all ${
+                  isActive || location.pathname.startsWith('/goals')
+                    ? 'bg-[#0F172A] text-white shadow-md'
+                    : 'hover:bg-[#E2E8F0]'
+                }`}>
+                  <Target className="w-5 h-5 flex-shrink-0" />
+                </div>
+                <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-bold text-[#0F172A]">
+                  Goals
+                </span>
+              </>
+            )}
           </NavLink>
         </nav>
 
@@ -105,32 +117,40 @@ const Sidebar = () => {
         <NavLink
           to="/settings"
           className={({ isActive }) =>
-            `flex items-center gap-3.5 h-10 px-2.5 rounded-xl text-sm font-medium transition-colors ${
+            `flex items-center gap-3 h-10 px-1 text-sm font-medium transition-colors ${
               isActive
-                ? 'bg-[#0F172A] text-white shadow-md'
-                : 'text-[#64748B] hover:bg-[#E2E8F0] hover:text-[#0F172A]'
+                ? 'text-[#0F172A]'
+                : 'text-[#64748B] hover:text-[#0F172A]'
             }`
           }
           title="Settings"
         >
-          <div className="w-6 h-6 min-w-[24px] flex items-center justify-center">
-            <Settings className="w-5 h-5 flex-shrink-0" />
-          </div>
-          <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-semibold">
-            Settings
-          </span>
+          {({ isActive }) => (
+            <>
+              <div className={`w-10 h-10 min-w-[40px] rounded-full flex items-center justify-center transition-all ${
+                isActive
+                  ? 'bg-[#0F172A] text-white shadow-md'
+                  : 'hover:bg-[#E2E8F0]'
+              }`}>
+                <Settings className="w-5 h-5 flex-shrink-0" />
+              </div>
+              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-semibold">
+                Settings
+              </span>
+            </>
+          )}
         </NavLink>
 
-        {/* "+" New Goal Action Button */}
+        {/* "+" New Goal Action Button - Circular button */}
         <button
           onClick={handleCreateNew}
-          className="w-full h-10 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl flex items-center justify-start px-2.5 gap-3.5 text-sm font-semibold shadow-md transition-all active:scale-95 cursor-pointer overflow-hidden"
+          className="flex items-center gap-3 h-10 px-1 text-sm font-semibold transition-all active:scale-95 cursor-pointer"
           title="Create New Goal / Note"
         >
-          <div className="w-6 h-6 min-w-[24px] flex items-center justify-center">
+          <div className="w-10 h-10 min-w-[40px] rounded-full bg-[#0F172A] hover:bg-[#1E293B] text-white flex items-center justify-center shadow-md flex-shrink-0">
             <Plus className="w-5 h-5 flex-shrink-0" />
           </div>
-          <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-bold">
+          <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs font-bold text-[#0F172A]">
             New Goal
           </span>
         </button>
