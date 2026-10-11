@@ -1298,3 +1298,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:00:41]` Fix service worker cache invalidation on new deployment release
 - `[19:27:46]` Tune bundle size tree-shaking for Lucide icons and React Flow modules to ensure smooth state transitions without visual layout shifts
 - `[19:53:13]` Enhance subtle glassmorphism blur backdrop filters across active modal dialogs
+- `[20:18:49]` Feat: support rate limiting on authentication and password reset routes and improve frame rate and eliminate micro-stutters during heavy animations
