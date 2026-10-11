@@ -1295,3 +1295,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:39:37]` Perf: fix batch update endpoint for flowchart node coordinates and normalize layout dimensions across Chrome, Safari and Firefox
 - `[18:08:39]` Add arrowhead markers and bidirectional edges in flowchart canvas
 - `[18:33:55]` UI: refactor service worker cache invalidation on new deployment release and reduce latency and eliminate redundant state updates
+- `[19:00:41]` Fix service worker cache invalidation on new deployment release
