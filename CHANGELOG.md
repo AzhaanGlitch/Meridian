@@ -1301,3 +1301,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[20:18:49]` Feat: support rate limiting on authentication and password reset routes and improve frame rate and eliminate micro-stutters during heavy animations
 - `[20:45:12]` Refactor MongoDB index optimization on goal tags and owner reference fields to streamline component props and clean up legacy utility helpers
 - `[21:11:11]` Refactor: support Mongoose pre-save hook for sanitizing child card references and reduce latency and eliminate redundant state updates
+- `[21:35:36]` Fix: optimize flowchart multi-node selection box and batch dragging logic and provide user-friendly fallback messaging on network timeouts
