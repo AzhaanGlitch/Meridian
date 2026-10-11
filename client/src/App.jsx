@@ -8,8 +8,6 @@ import GoalModal from './components/GoalModal';
 import Landing from './pages/Landing';
 import Goals from './pages/Goals';
 import GoalDetail from './pages/GoalDetail';
-import Maps from './pages/Maps';
-import Roadmap from './pages/Roadmap';
 import Settings from './pages/Settings';
 
 const Layout = ({ children }) => {

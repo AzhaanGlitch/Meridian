@@ -38,211 +38,50 @@ export const CATEGORIES = [
   { name: 'Projects', color: '#22D3EE' }
 ];
 
-const INITIAL_GOALS = [
-  // Parent Goals (Top Level - isParent: true or parentGoal: null)
-  {
-    _id: 'parent-1',
-    title: 'Academics',
-    description: 'Core university coursework, lecture attendance, research papers, and academic excellence.',
-    status: 'In Progress',
-    priority: 'High',
-    category: 'Education',
-    cardColor: '#FBBF24',
-    isParent: true,
-    parentGoal: null,
-    dueDate: new Date(Date.now() + 120 * 24 * 60 * 60 * 1000),
-    progress: 70,
-    tags: ['Academics', 'University'],
-    tasks: [
-      { title: 'Maintain 3.8+ GPA across all modules', completed: true },
-      { title: 'Submit Machine Learning research paper draft', completed: false }
-    ]
-  },
-  {
-    _id: 'parent-2',
-    title: 'Development',
-    description: 'Full stack web applications, software engineering mastery, side projects, and open source.',
-    status: 'In Progress',
-    priority: 'High',
-    category: 'Work',
-    cardColor: '#22D3EE',
-    isParent: true,
-    parentGoal: null,
-    dueDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
-    progress: 60,
-    tags: ['Development', 'SaaS', 'Engineering'],
-    tasks: [
-      { title: 'Complete Meridian React + Vite App', completed: true },
-      { title: 'Deploy production API to cloud hosting', completed: false }
-    ]
-  },
-  {
-    _id: 'parent-3',
-    title: 'Term End Exams',
-    description: 'Comprehensive exam revision, mock paper practice, formulas memorization, and final grade preparation.',
-    status: 'In Progress',
-    priority: 'Urgent',
-    category: 'Education',
-    cardColor: '#C084FC',
-    isParent: true,
-    parentGoal: null,
-    dueDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000),
-    progress: 45,
-    tags: ['Exams', 'Revision'],
-    tasks: [
-      { title: 'Solve 5 previous years question papers', completed: true },
-      { title: 'Create quick revision flashcards for all subjects', completed: false }
-    ]
-  },
+const INITIAL_GOALS = [];
 
-  // Child Goals (under Parent Goals)
-  {
-    _id: 'child-1',
-    parentGoal: 'parent-1',
-    title: 'Advanced Data Structures & Algorithms',
-    description: 'Master Graphs, Dynamic Programming, Trees, and solve 150+ LeetCode problems.',
-    status: 'In Progress',
-    priority: 'High',
-    category: 'Education',
-    cardColor: '#FBBF24',
-    dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-    progress: 75,
-    tags: ['DSA', 'LeetCode'],
-    tasks: [
-      { title: 'Solve Top 50 Array & String Questions', completed: true },
-      { title: 'Master Dynamic Programming Patterns', completed: true },
-      { title: 'Graph Traversal & Shortest Path algorithms', completed: false }
-    ]
-  },
-  {
-    _id: 'child-2',
-    parentGoal: 'parent-1',
-    title: 'Operating Systems & Database Systems',
-    description: 'Study Process Scheduling, Memory Management, Relational Schema Normalization and Indexing.',
-    status: 'In Progress',
-    priority: 'Medium',
-    category: 'Education',
-    cardColor: '#86EFAC',
-    dueDate: new Date(Date.now() + 40 * 24 * 60 * 60 * 1000),
-    progress: 60,
-    tags: ['OS', 'DBMS'],
-    tasks: [
-      { title: 'Write B-Tree and Hash Indexing notes', completed: true },
-      { title: 'Implement Producer-Consumer Synchronization', completed: true }
-    ]
-  },
-  {
-    _id: 'child-3',
-    parentGoal: 'parent-2',
-    title: 'Launch SaaS Platform v1.0',
-    description: 'Build, test and launch our core MVP to early adopters and get first 100 paid users.',
-    status: 'In Progress',
-    priority: 'High',
-    category: 'Work',
-    cardColor: '#FB923C',
-    dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-    progress: 65,
-    tags: ['SaaS', 'MVP', 'Launch'],
-    tasks: [
-      { title: 'Finalize UI Mockups in Figma', completed: true },
-      { title: 'Setup Node.js & MongoDB backend schema', completed: true },
-      { title: 'Build React Flow interactive map visualizer', completed: true },
-      { title: 'Configure Payment Gateway Integration', completed: false }
-    ]
-  },
-  {
-    _id: 'child-4',
-    parentGoal: 'parent-2',
-    title: 'Design Marketing Landing Page',
-    description: 'Convert visitors with clear hero sections, interactive demo cards, and pricing table.',
-    status: 'In Progress',
-    priority: 'Medium',
-    category: 'Work',
-    cardColor: '#A3E635',
-    dueDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
-    progress: 50,
-    tags: ['Marketing', 'Design'],
-    tasks: [
-      { title: 'Draft value proposition headline', completed: true },
-      { title: 'Design high-converting pricing cards', completed: false }
-    ]
-  },
-  {
-    _id: 'child-5',
-    parentGoal: 'parent-3',
-    title: 'Computer Networks & Security Mock Revision',
-    description: 'Revise TCP/IP stack, Socket programming, RSA Encryption, and Wireless Protocol security.',
-    status: 'In Progress',
-    priority: 'Urgent',
-    category: 'Education',
-    cardColor: '#C084FC',
-    dueDate: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000),
-    progress: 40,
-    tags: ['Networks', 'Security'],
-    tasks: [
-      { title: 'Revise OSI 7 Layer Protocol details', completed: true },
-      { title: 'Practice Subnetting math numerical problems', completed: false }
-    ]
-  }
-];
-
-const INITIAL_MAPS = [
-  {
-    _id: 'map-1',
-    title: 'Meridian Product Architecture Mind Map',
-    type: 'mindmap',
-    cardColor: '#22D3EE',
-    nodes: [
-      {
-        id: '1',
-        type: 'input',
-        data: { label: 'Meridian App Engine' },
-        position: { x: 250, y: 50 },
-        style: { background: '#0F172A', color: '#fff', borderRadius: '12px', padding: '12px 20px', fontWeight: 'bold' }
-      },
-      {
-        id: '2',
-        data: { label: 'React + Vite Client' },
-        position: { x: 100, y: 180 },
-        style: { background: '#FBBF24', color: '#0F172A', borderRadius: '12px', padding: '10px 16px', border: 'none', fontWeight: 'semibold' }
-      },
-      {
-        id: '3',
-        data: { label: 'Node.js Express API' },
-        position: { x: 400, y: 180 },
-        style: { background: '#C084FC', color: '#0F172A', borderRadius: '12px', padding: '10px 16px', border: 'none', fontWeight: 'semibold' }
-      },
-      {
-        id: '4',
-        data: { label: 'MongoDB Database' },
-        position: { x: 400, y: 300 },
-        style: { background: '#86EFAC', color: '#0F172A', borderRadius: '12px', padding: '10px 16px', border: 'none', fontWeight: 'semibold' }
-      },
-      {
-        id: '5',
-        data: { label: 'React Flow Canvas' },
-        position: { x: 100, y: 300 },
-        style: { background: '#22D3EE', color: '#0F172A', borderRadius: '12px', padding: '10px 16px', border: 'none', fontWeight: 'semibold' }
-      }
-    ],
-    edges: [
-      { id: 'e1-2', source: '1', target: '2', animated: true, style: { stroke: '#0F172A', strokeWidth: 2 } },
-      { id: 'e1-3', source: '1', target: '3', animated: true, style: { stroke: '#0F172A', strokeWidth: 2 } },
-      { id: 'e3-4', source: '3', target: '4', style: { stroke: '#0F172A', strokeWidth: 2 } },
-      { id: 'e2-5', source: '2', target: '5', style: { stroke: '#0F172A', strokeWidth: 2 } }
-    ]
-  }
-];
+const INITIAL_MAPS = [];
 
 export const AppProvider = ({ children }) => {
-  const [goals, setGoals] = useState(INITIAL_GOALS);
-  const [maps, setMaps] = useState(INITIAL_MAPS);
+  const [goals, setGoals] = useState(() => {
+    try {
+      const saved = localStorage.getItem('meridian_goals');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [maps, setMaps] = useState(() => {
+    try {
+      const saved = localStorage.getItem('meridian_maps');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isGoalModalOpen, setIsGoalModalOpen] = useState(false);
   const [editingGoal, setEditingGoal] = useState(null);
   const [parentGoalContext, setParentGoalContext] = useState(null);
+
+  // Synchronize goals and maps to localStorage so user created cards persist
+  React.useEffect(() => {
+    try {
+      localStorage.setItem('meridian_goals', JSON.stringify(goals));
+    } catch (e) {
+      console.error('Failed to save goals', e);
+    }
+  }, [goals]);
+
+  React.useEffect(() => {
+    try {
+      localStorage.setItem('meridian_maps', JSON.stringify(maps));
+    } catch (e) {
+      console.error('Failed to save maps', e);
+    }
+  }, [maps]);
 
   const createGoal = async (goalData) => {
     const newGoal = {

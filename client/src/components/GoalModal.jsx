@@ -128,7 +128,7 @@ const GoalModal = () => {
             <input
               type="text"
               required
-              placeholder={isChildCreation ? "e.g., Assignment Module 1" : "e.g., Academics"}
+              placeholder={isChildCreation ? "Enter card title..." : "Enter goal title..."}
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               className="w-full bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-4 py-2.5 font-semibold text-xs focus:ring-2 focus:ring-[#0F172A] focus:outline-none"

@@ -34,7 +34,7 @@ const Landing = () => {
 
         {/* Circular Glassmorphism Button */}
         <button
-          onClick={() => navigate('/dashboard')}
+          onClick={() => navigate('/goals')}
           className="px-7 py-3 bg-black/50 hover:bg-black/70 text-white text-xs font-bold rounded-full flex items-center justify-center backdrop-blur-md border border-white/70 shadow-2xl shadow-black/80 transition-all active:scale-95 group cursor-pointer animate-fade-in-rise"
           style={{ animationDelay: '800ms' }}
           title="Open App"

@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { User, Save, Check } from 'lucide-react';
 
 const Settings = () => {
-  const [name, setName] = useState('Alex Morgan');
+  const [name, setName] = useState(() => {
+    try {
+      const u = JSON.parse(localStorage.getItem('meridian_user') || '{}');
+      return u.name || '';
+    } catch {
+      return '';
+    }
+  });
   const [emailNotifications, setEmailNotifications] = useState(true);
   const [weeklyDigest, setWeeklyDigest] = useState(true);
   const [savedSuccess, setSavedSuccess] = useState(false);
