@@ -1286,3 +1286,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[13:47:22]` Perf: ensure seed script data consistency check for mock user profiles and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[14:14:27]` Tweak toast notification queue for background auto-save status to provide user-friendly fallback messaging on network timeouts
 - `[14:39:40]` Support seed script data consistency check for mock user profiles
+- `[15:04:39]` Fix parent goal card progress percentage calculation from child items
