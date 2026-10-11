@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useApp, PASTEL_COLORS } from '../context/AppContext';
 import ReactFlow, { 
@@ -7,7 +7,9 @@ import ReactFlow, {
   applyNodeChanges, 
   applyEdgeChanges, 
   addEdge, 
-  MiniMap 
+  MiniMap,
+  Handle,
+  Position
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { 
@@ -23,6 +25,69 @@ import {
   Save,
   Check
 } from 'lucide-react';
+
+// Custom Flowchart Node with 1, 2, 3 or 4 customizable connection points (Handles)
+const CustomFlowchartNode = ({ data, selected }) => {
+  const points = data?.connectionPoints || 4;
+  const label = data?.label || 'Node';
+  const color = data?.color || '#22D3EE';
+
+  return (
+    <div
+      style={{
+        backgroundColor: color,
+        color: '#0F172A',
+        borderRadius: '16px',
+        padding: '12px 20px',
+        border: selected ? '2px solid #0F172A' : '1px solid rgba(0,0,0,0.08)',
+        boxShadow: selected ? '0 6px 18px rgba(0,0,0,0.14)' : '0 3px 10px rgba(0,0,0,0.06)'
+      }}
+      className="relative text-xs font-bold text-center min-w-[130px] select-none"
+    >
+      {/* Connection Point 1: Top */}
+      {points >= 1 && (
+        <Handle
+          type="target"
+          position={Position.Top}
+          id="top"
+          className="!w-3 !h-3 !bg-[#0F172A] !border-2 !border-white !rounded-full -top-1.5 transition-transform hover:scale-125"
+        />
+      )}
+
+      {/* Connection Point 2: Bottom */}
+      {points >= 2 && (
+        <Handle
+          type="source"
+          position={Position.Bottom}
+          id="bottom"
+          className="!w-3 !h-3 !bg-[#0F172A] !border-2 !border-white !rounded-full -bottom-1.5 transition-transform hover:scale-125"
+        />
+      )}
+
+      {/* Connection Point 3: Left */}
+      {points >= 3 && (
+        <Handle
+          type="target"
+          position={Position.Left}
+          id="left"
+          className="!w-3 !h-3 !bg-[#0F172A] !border-2 !border-white !rounded-full -left-1.5 transition-transform hover:scale-125"
+        />
+      )}
+
+      {/* Connection Point 4: Right */}
+      {points >= 4 && (
+        <Handle
+          type="source"
+          position={Position.Right}
+          id="right"
+          className="!w-3 !h-3 !bg-[#0F172A] !border-2 !border-white !rounded-full -right-1.5 transition-transform hover:scale-125"
+        />
+      )}
+
+      <span className="block leading-snug">{label}</span>
+    </div>
+  );
+};
 
 const GoalDetail = () => {
   const { id } = useParams();
@@ -45,7 +110,12 @@ const GoalDetail = () => {
   const [edges, setEdges] = useState([]);
   const [newNodeLabel, setNewNodeLabel] = useState('');
   const [selectedNodeColor, setSelectedNodeColor] = useState('#22D3EE');
+  const [connectionPoints, setConnectionPoints] = useState(4);
   const [savedSuccess, setSavedSuccess] = useState(false);
+
+  const nodeTypes = useMemo(() => ({
+    customFlowNode: CustomFlowchartNode
+  }), []);
 
   // Find child goals for the current parent goal
   const childGoals = goals.filter(g => g.parentGoal === id);
@@ -190,17 +260,13 @@ const GoalDetail = () => {
     if (!newNodeLabel.trim()) return;
     const newNode = {
       id: `custom-${Date.now()}`,
-      data: { label: newNodeLabel.trim() },
-      position: { x: 200 + Math.random() * 80, y: 180 + Math.random() * 80 },
-      style: { 
-        background: selectedNodeColor, 
-        color: '#0F172A', 
-        borderRadius: '14px', 
-        padding: '10px 18px', 
-        border: 'none',
-        fontWeight: '600',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
-      }
+      type: 'customFlowNode',
+      data: { 
+        label: newNodeLabel.trim(),
+        connectionPoints: Number(connectionPoints) || 4,
+        color: selectedNodeColor
+      },
+      position: { x: 200 + Math.random() * 80, y: 180 + Math.random() * 80 }
     };
     setNodes((prev) => [...prev, newNode]);
     setNewNodeLabel('');
@@ -456,7 +522,7 @@ const GoalDetail = () => {
               {childActiveTab === 'flowchart' && (
                 <div className="flex-1 flex gap-4 min-h-[420px]">
                   {/* Left Controls: Add custom node & Save */}
-                  <div className="w-60 bg-slate-50 border border-[#E2E8F0] rounded-2xl p-4 flex flex-col justify-between space-y-4 flex-shrink-0">
+                  <div className="w-64 bg-slate-50 border border-[#E2E8F0] rounded-2xl p-4 flex flex-col justify-between space-y-4 flex-shrink-0">
                     <div className="space-y-3">
                       <span className="text-xs font-bold text-[#0F172A] block">Add Custom Node</span>
                       <input
@@ -464,21 +530,52 @@ const GoalDetail = () => {
                         placeholder="Node text..."
                         value={newNodeLabel}
                         onChange={(e) => setNewNodeLabel(e.target.value)}
-                        className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-medium"
+                        className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#0F172A]"
                       />
-                      <div className="flex items-center justify-between">
-                        {PASTEL_COLORS.slice(0, 6).map((c) => (
-                          <button
-                            key={c.hex}
-                            onClick={() => setSelectedNodeColor(c.hex)}
-                            style={{ backgroundColor: c.hex }}
-                            className={`w-5 h-5 rounded-full border-2 ${selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110' : 'border-transparent'}`}
-                          />
-                        ))}
+
+                      {/* Connection Points Selector (1, 2, 3, 4) */}
+                      <div className="space-y-1.5 pt-1">
+                        <span className="text-[11px] font-bold text-[#64748B] block">Connecting Points:</span>
+                        <div className="grid grid-cols-4 gap-1.5">
+                          {[1, 2, 3, 4].map((pt) => (
+                            <button
+                              key={pt}
+                              type="button"
+                              onClick={() => setConnectionPoints(pt)}
+                              className={`py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                                connectionPoints === pt
+                                  ? 'bg-[#0F172A] text-white shadow-xs scale-[1.02]'
+                                  : 'bg-white text-[#64748B] hover:text-[#0F172A] border border-[#E2E8F0]'
+                              }`}
+                            >
+                              {pt} pt{pt > 1 ? 's' : ''}
+                            </button>
+                          ))}
+                        </div>
                       </div>
+
+                      {/* Circular Color Palette of Minimal Soft Colors */}
+                      <div className="space-y-1.5 pt-1">
+                        <span className="text-[11px] font-bold text-[#64748B] block">Node Color:</span>
+                        <div className="grid grid-cols-6 gap-2 bg-white p-2.5 rounded-2xl border border-[#E2E8F0]">
+                          {PASTEL_COLORS.slice(0, 12).map((c) => (
+                            <button
+                              key={c.hex}
+                              type="button"
+                              onClick={() => setSelectedNodeColor(c.hex)}
+                              style={{ backgroundColor: c.hex }}
+                              className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 cursor-pointer ${
+                                selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110 shadow-xs' : 'border-black/10'
+                              }`}
+                              title={c.name}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
                       <button
                         onClick={handleAddCustomNode}
-                        className="w-full py-2 bg-[#0F172A] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5"
+                        className="w-full py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer mt-2"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         <span>Add Node</span>
@@ -487,7 +584,7 @@ const GoalDetail = () => {
 
                     <button
                       onClick={handleSaveFlowchart}
-                      className="w-full py-2 bg-[#22D3EE] text-[#0F172A] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs"
+                      className="w-full py-2 bg-[#22D3EE] hover:bg-[#06b6d4] text-[#0F172A] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer"
                     >
                       {savedSuccess ? (
                         <>
@@ -508,6 +605,7 @@ const GoalDetail = () => {
                     <ReactFlow
                       nodes={nodes}
                       edges={edges}
+                      nodeTypes={nodeTypes}
                       onNodesChange={onNodesChange}
                       onEdgesChange={onEdgesChange}
                       onConnect={onConnect}
@@ -579,23 +677,52 @@ const GoalDetail = () => {
                       placeholder="Node title/notes..."
                       value={newNodeLabel}
                       onChange={(e) => setNewNodeLabel(e.target.value)}
-                      className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-medium"
+                      className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#0F172A]"
                     />
 
-                    <div className="flex items-center justify-between">
-                      {PASTEL_COLORS.slice(0, 6).map((c) => (
-                        <button
-                          key={c.hex}
-                          onClick={() => setSelectedNodeColor(c.hex)}
-                          style={{ backgroundColor: c.hex }}
-                          className={`w-5 h-5 rounded-full border-2 ${selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110' : 'border-transparent'}`}
-                        />
-                      ))}
+                    {/* Connecting Points Option: 1, 2, 3, or 4 */}
+                    <div className="space-y-1.5 pt-1">
+                      <span className="text-[11px] font-bold text-[#64748B] block">Connecting Points:</span>
+                      <div className="grid grid-cols-4 gap-1.5">
+                        {[1, 2, 3, 4].map((pt) => (
+                          <button
+                            key={pt}
+                            type="button"
+                            onClick={() => setConnectionPoints(pt)}
+                            className={`py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                              connectionPoints === pt
+                                ? 'bg-[#0F172A] text-white shadow-xs scale-[1.02]'
+                                : 'bg-white text-[#64748B] hover:text-[#0F172A] border border-[#E2E8F0]'
+                            }`}
+                          >
+                            {pt} pt{pt > 1 ? 's' : ''}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Circular Color Palette of Minimal Soft Colors */}
+                    <div className="space-y-1.5 pt-1">
+                      <span className="text-[11px] font-bold text-[#64748B] block">Node Color:</span>
+                      <div className="grid grid-cols-6 gap-2 bg-white p-2.5 rounded-2xl border border-[#E2E8F0]">
+                        {PASTEL_COLORS.slice(0, 12).map((c) => (
+                          <button
+                            key={c.hex}
+                            type="button"
+                            onClick={() => setSelectedNodeColor(c.hex)}
+                            style={{ backgroundColor: c.hex }}
+                            className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 cursor-pointer ${
+                              selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110 shadow-xs' : 'border-black/10'
+                            }`}
+                            title={c.name}
+                          />
+                        ))}
+                      </div>
                     </div>
 
                     <button
                       onClick={handleAddCustomNode}
-                      className="w-full py-2 bg-[#0F172A] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs"
+                      className="w-full py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer mt-2"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>Add Node to Flowchart</span>
@@ -606,7 +733,7 @@ const GoalDetail = () => {
                 <div className="space-y-2 pt-2 border-t border-[#E2E8F0]">
                   <button
                     onClick={handleSaveFlowchart}
-                    className="w-full py-2 bg-[#22D3EE] text-[#0F172A] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs"
+                    className="w-full py-2 bg-[#22D3EE] hover:bg-[#06b6d4] text-[#0F172A] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer"
                   >
                     {savedSuccess ? (
                       <>
@@ -622,7 +749,7 @@ const GoalDetail = () => {
                   </button>
                   <button
                     onClick={() => setParentView('cards')}
-                    className="w-full py-2 bg-white hover:bg-slate-100 text-[#0F172A] border border-[#E2E8F0] rounded-xl text-xs font-bold"
+                    className="w-full py-2 bg-white hover:bg-slate-100 text-[#0F172A] border border-[#E2E8F0] rounded-xl text-xs font-bold cursor-pointer"
                   >
                     Back to Child Cards
                   </button>
@@ -634,6 +761,7 @@ const GoalDetail = () => {
                 <ReactFlow
                   nodes={nodes}
                   edges={edges}
+                  nodeTypes={nodeTypes}
                   onNodesChange={onNodesChange}
                   onEdgesChange={onEdgesChange}
                   onConnect={onConnect}

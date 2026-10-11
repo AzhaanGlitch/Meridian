@@ -30,9 +30,9 @@ const Sidebar = () => {
       <div className="py-4 px-2 space-y-4">
         {/* Top Branding - Logo image & Website Name */}
         <div 
-          onClick={() => navigate('/goals')}
+          onClick={() => navigate('/')}
           className="flex items-center gap-3 h-10 px-1 cursor-pointer"
-          title="Go to Goals"
+          title="Go to Landing Page"
         >
           <div className="w-10 h-10 min-w-[40px] rounded-full overflow-hidden shadow-sm flex items-center justify-center bg-[#0F172A] border border-[#E2E8F0] flex-shrink-0">
             <img 
