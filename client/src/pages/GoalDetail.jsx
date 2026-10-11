@@ -89,15 +89,17 @@ const CustomFlowchartNode = ({ data, selected }) => {
         />
       )}
       {/* Importance Stars Badge (1 or 2 stars) */}
-      {data?.importance > 0 && (
-        <div className="absolute -top-2.5 right-2 flex items-center gap-0.5 bg-[#0F172A] px-1.5 py-0.5 rounded-full shadow-md z-10 border border-white/20">
-          {Array.from({ length: Math.min(data.importance, 2) }).map((_, i) => (
-            <Star key={i} className="w-2.5 h-2.5 fill-[#FDE047] text-[#FDE047]" />
+      {Number(data?.importance) > 0 && (
+        <div className="absolute -top-3 right-2 flex items-center gap-0.5 bg-[#0F172A] px-2 py-0.5 rounded-full shadow-md z-20 border border-white/20">
+          {Array.from({ length: Math.min(Number(data.importance), 2) }).map((_, i) => (
+            <Star key={i} className="w-3 h-3 fill-[#FDE047] text-[#FDE047]" />
           ))}
         </div>
       )}
 
-      <span className="block leading-snug">{label}</span>
+      <div className="flex items-center justify-center gap-1.5 leading-snug">
+        <span>{label}</span>
+      </div>
     </div>
   );
 };
@@ -133,6 +135,10 @@ const GoalDetail = () => {
   const [editNodeColor, setEditNodeColor] = useState('#22D3EE');
   const [editNodePoints, setEditNodePoints] = useState(4);
   const [editNodeImportance, setEditNodeImportance] = useState(0); // 0 | 1 | 2 stars
+
+  // Undo / History Stack for Ctrl + Z
+  const historyRef = useRef([]);
+  const isUndoingRef = useRef(false);
 
   const flowchartWrapperRef = useRef(null);
 
@@ -183,32 +189,25 @@ const GoalDetail = () => {
       const children = goals.filter(g => g.parentGoal === targetGoal._id);
       const rootNode = {
         id: `parent-${targetGoal._id}`,
-        type: 'input',
-        data: { label: targetGoal.title },
-        position: { x: 280, y: 40 },
-        style: { 
-          background: '#0F172A', 
-          color: '#ffffff', 
-          borderRadius: '16px', 
-          padding: '14px 24px', 
-          fontWeight: 'bold',
-          border: 'none',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-        }
+        type: 'customFlowNode',
+        data: { 
+          label: targetGoal.title, 
+          color: '#0F172A',
+          importance: targetGoal.importance || 0,
+          connectionPoints: 4
+        },
+        position: { x: 280, y: 40 }
       };
       const childNodes = children.map((c, idx) => ({
         id: `child-${c._id}`,
-        data: { label: c.title },
-        position: { x: 80 + (idx % 3) * 220, y: 180 + Math.floor(idx / 3) * 110 },
-        style: { 
-          background: c.cardColor || '#FBBF24', 
-          color: '#0F172A', 
-          borderRadius: '16px', 
-          padding: '12px 20px', 
-          border: '1px solid rgba(0,0,0,0.06)', 
-          fontWeight: '600',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
-        }
+        type: 'customFlowNode',
+        data: { 
+          label: c.title,
+          color: c.cardColor || '#FBBF24',
+          importance: c.importance || 0,
+          connectionPoints: 4
+        },
+        position: { x: 80 + (idx % 3) * 220, y: 180 + Math.floor(idx / 3) * 110 }
       }));
       const childEdges = children.map(c => ({
         id: `e-${targetGoal._id}-${c._id}`,
@@ -224,31 +223,25 @@ const GoalDetail = () => {
       setNodes([
         {
           id: `child-root-${targetGoal._id}`,
-          type: 'input',
-          data: { label: targetGoal.title },
-          position: { x: 280, y: 40 },
-          style: { 
-            background: targetGoal.cardColor || '#22D3EE', 
-            color: '#0F172A', 
-            borderRadius: '16px', 
-            padding: '12px 22px', 
-            fontWeight: 'bold',
-            border: 'none',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
-          }
+          type: 'customFlowNode',
+          data: { 
+            label: targetGoal.title,
+            color: targetGoal.cardColor || '#22D3EE',
+            importance: targetGoal.importance || 0,
+            connectionPoints: 4
+          },
+          position: { x: 280, y: 40 }
         },
         ...(targetGoal.tasks || []).map((t, idx) => ({
           id: `task-node-${idx}`,
-          data: { label: t.title },
-          position: { x: 100 + (idx % 3) * 200, y: 180 + Math.floor(idx / 3) * 100 },
-          style: { 
-            background: '#F1F5F9', 
-            color: '#0F172A', 
-            borderRadius: '14px', 
-            padding: '10px 18px', 
-            border: '1px solid #E2E8F0', 
-            fontWeight: '600' 
-          }
+          type: 'customFlowNode',
+          data: { 
+            label: t.title,
+            color: '#F1F5F9',
+            importance: t.importance || 0,
+            connectionPoints: 4
+          },
+          position: { x: 100 + (idx % 3) * 200, y: 180 + Math.floor(idx / 3) * 100 }
         }))
       ]);
       setEdges(
@@ -271,19 +264,63 @@ const GoalDetail = () => {
 
   const onEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    []
-  );
+  // Push state snapshot before changes
+  const pushSnapshot = useCallback(() => {
+    if (isUndoingRef.current) return;
+    historyRef.current.push({
+      nodes: JSON.parse(JSON.stringify(nodes)),
+      edges: JSON.parse(JSON.stringify(edges))
+    });
+    // Limit history stack size to 50
+    if (historyRef.current.length > 50) {
+      historyRef.current.shift();
+    }
+  }, [nodes, edges]);
+
+  // Undo function to restore previous snapshot
+  const handleUndo = useCallback(() => {
+    if (historyRef.current.length === 0) return;
+    const lastSnapshot = historyRef.current.pop();
+    if (lastSnapshot) {
+      isUndoingRef.current = true;
+      setNodes(lastSnapshot.nodes);
+      setEdges(lastSnapshot.edges);
+      setSelectedNodeId(null);
+      setTimeout(() => {
+        isUndoingRef.current = false;
+      }, 50);
+    }
+  }, []);
+
+  // Listen for Ctrl+Z or Cmd+Z globally when flowchart is active
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Don't trigger if user is typing in an input or textarea
+      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'z' || e.key === 'Z')) {
+        e.preventDefault();
+        handleUndo();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleUndo]);
 
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge({ ...params, animated: true, style: { stroke: '#0F172A', strokeWidth: 2 } }, eds)),
-    []
+    (params) => {
+      pushSnapshot();
+      setEdges((eds) => addEdge({ ...params, animated: true, style: { stroke: '#0F172A', strokeWidth: 2 } }, eds));
+    },
+    [pushSnapshot]
   );
 
   // Delete edge/connection on a single click
   const onEdgeClick = useCallback((event, edge) => {
     event.stopPropagation();
+    pushSnapshot();
     setEdges((eds) => eds.filter((e) => e.id !== edge.id));
-  }, []);
+  }, [pushSnapshot]);
 
   // When a node is clicked, populate the edit panel
   const onNodeClick = useCallback((event, node) => {
@@ -303,6 +340,7 @@ const GoalDetail = () => {
   // Save changes to the selected node
   const handleUpdateSelectedNode = () => {
     if (!selectedNodeId) return;
+    pushSnapshot();
     setNodes((nds) =>
       nds.map((n) => {
         if (n.id === selectedNodeId) {
@@ -329,6 +367,7 @@ const GoalDetail = () => {
   // Delete the selected node and its connected edges
   const handleDeleteSelectedNode = () => {
     if (!selectedNodeId) return;
+    pushSnapshot();
     setNodes((nds) => nds.filter((n) => n.id !== selectedNodeId));
     setEdges((eds) => eds.filter((e) => e.source !== selectedNodeId && e.target !== selectedNodeId));
     setSelectedNodeId(null);
@@ -336,6 +375,7 @@ const GoalDetail = () => {
 
   const handleAddCustomNode = () => {
     if (!newNodeLabel.trim()) return;
+    pushSnapshot();
     const newNode = {
       id: `custom-${Date.now()}`,
       type: 'customFlowNode',
@@ -370,9 +410,15 @@ const GoalDetail = () => {
         backgroundColor: '#ffffff',
         quality: 0.95,
         filter: (node) => {
-          // Exclude controls / minimap buttons from output if desired, or keep clean
-          if (node.classList && (node.classList.contains('react-flow__controls') || node.classList.contains('react-flow__minimap'))) {
-            return false;
+          // Exclude controls, minimap, and connecting points (handles) from download
+          if (node.classList) {
+            if (
+              node.classList.contains('react-flow__controls') ||
+              node.classList.contains('react-flow__minimap') ||
+              node.classList.contains('react-flow__handle')
+            ) {
+              return false;
+            }
           }
           return true;
         }
