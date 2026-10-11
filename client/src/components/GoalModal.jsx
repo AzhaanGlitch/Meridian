@@ -147,17 +147,10 @@ const GoalModal = () => {
             />
           </div>
 
-          {/* Pastel Card Color Picker with + Button to Expand Larger Palette */}
+          {/* Pastel Card Color Picker */}
           <div>
-            <div className="flex items-center justify-between mb-2">
+            <div className="mb-2">
               <label className="block font-bold text-[#0F172A] text-xs">Card Color</label>
-              <button
-                type="button"
-                onClick={() => setShowExpandedPalette(!showExpandedPalette)}
-                className="text-[11px] font-bold text-[#22D3EE] bg-[#0F172A] px-2.5 py-0.5 rounded-full hover:bg-[#1E293B] transition-colors flex items-center gap-1"
-              >
-                <span>{showExpandedPalette ? 'Less colors' : '+ More colors'}</span>
-              </button>
             </div>
 
             {showExpandedPalette ? (

@@ -256,6 +256,12 @@ const GoalDetail = () => {
     []
   );
 
+  // Delete edge/connection on a single click
+  const onEdgeClick = useCallback((event, edge) => {
+    event.stopPropagation();
+    setEdges((eds) => eds.filter((e) => e.id !== edge.id));
+  }, []);
+
   const handleAddCustomNode = () => {
     if (!newNodeLabel.trim()) return;
     const newNode = {
@@ -609,6 +615,7 @@ const GoalDetail = () => {
                       onNodesChange={onNodesChange}
                       onEdgesChange={onEdgesChange}
                       onConnect={onConnect}
+                      onEdgeClick={onEdgeClick}
                       fitView
                     >
                       <Controls className="bg-white border border-[#E2E8F0] rounded-xl shadow-md p-1" />
@@ -665,10 +672,6 @@ const GoalDetail = () => {
               {/* Left Toolbar to add customizable notes and save */}
               <div className="w-64 bg-slate-50 border border-[#E2E8F0] rounded-2xl p-4 flex flex-col justify-between space-y-4 flex-shrink-0">
                 <div className="space-y-3">
-                  <h4 className="text-xs font-bold text-[#0F172A]">Flowchart Controls</h4>
-                  <p className="text-[11px] text-[#64748B]">
-                    Child cards are arranged below. Connect handles or create extra notes anywhere on the canvas.
-                  </p>
 
                   <div className="pt-2 border-t border-[#E2E8F0] space-y-2">
                     <span className="text-xs font-bold text-[#0F172A] block">Add Custom Note/Node</span>
@@ -765,6 +768,7 @@ const GoalDetail = () => {
                   onNodesChange={onNodesChange}
                   onEdgesChange={onEdgesChange}
                   onConnect={onConnect}
+                  onEdgeClick={onEdgeClick}
                   fitView
                 >
                   <Controls className="bg-white border border-[#E2E8F0] rounded-xl shadow-md p-1" />
