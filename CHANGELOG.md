@@ -1292,3 +1292,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:23:19]` Update keyboard navigation shortcuts for panning and centering flowchart canvas
 - `[16:51:41]` Tune goal status transitions and completion celebration particle effect
 - `[17:16:42]` Update Mongoose pre-save hook for sanitizing child card references
+- `[17:39:37]` Perf: fix batch update endpoint for flowchart node coordinates and normalize layout dimensions across Chrome, Safari and Firefox
