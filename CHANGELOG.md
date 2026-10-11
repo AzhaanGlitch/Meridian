@@ -1280,3 +1280,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:09:30]` Style: tune canvas performance during rapid node addition and deletion and reduce latency and eliminate redundant state updates
 - `[11:37:53]` Tune sidebar toggle spring physics and floating shadow elevation
 - `[12:04:22]` Fix bundle size tree-shaking for Lucide icons and React Flow modules
+- `[12:27:53]` Tune auto-layout hierarchy algorithm using directed acyclic graph sorting
