@@ -1303,3 +1303,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:11:11]` Refactor: support Mongoose pre-save hook for sanitizing child card references and reduce latency and eliminate redundant state updates
 - `[21:35:36]` Fix: optimize flowchart multi-node selection box and batch dragging logic and provide user-friendly fallback messaging on network timeouts
 - `[22:01:47]` Fix: fix canvas background grid dot alignment and subtle dark mode styling and improve frame rate and eliminate micro-stutters during heavy animations
+- `[22:25:44]` Optimize arrowhead markers and bidirectional edges in flowchart canvas
