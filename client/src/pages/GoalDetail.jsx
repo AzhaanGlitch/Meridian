@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useApp, PASTEL_COLORS } from '../context/AppContext';
+import { toJpeg } from 'html-to-image';
+import jsPDF from 'jspdf';
 import ReactFlow, { 
   Controls, 
   Background, 
@@ -23,7 +25,9 @@ import {
   CalendarRange,
   ChevronRight,
   Save,
-  Check
+  Check,
+  Download,
+  FileDown
 } from 'lucide-react';
 
 // Custom Flowchart Node with 1, 2, 3 or 4 customizable connection points (Handles)
@@ -112,6 +116,9 @@ const GoalDetail = () => {
   const [selectedNodeColor, setSelectedNodeColor] = useState('#22D3EE');
   const [connectionPoints, setConnectionPoints] = useState(4);
   const [savedSuccess, setSavedSuccess] = useState(false);
+  const [exportingFormat, setExportingFormat] = useState(null); // 'jpg' | 'pdf' | null
+
+  const flowchartWrapperRef = useRef(null);
 
   const nodeTypes = useMemo(() => ({
     customFlowNode: CustomFlowchartNode
@@ -284,6 +291,49 @@ const GoalDetail = () => {
     if (res.success) {
       setSavedSuccess(true);
       setTimeout(() => setSavedSuccess(false), 2000);
+    }
+  };
+
+  // Download Flowchart as JPG or PDF
+  const handleDownloadFlowchart = async (format) => {
+    if (!flowchartWrapperRef.current) return;
+    setExportingFormat(format);
+    try {
+      // Find the reactflow viewport container or wrapper
+      const element = flowchartWrapperRef.current;
+      const dataUrl = await toJpeg(element, {
+        backgroundColor: '#ffffff',
+        quality: 0.95,
+        filter: (node) => {
+          // Exclude controls / minimap buttons from output if desired, or keep clean
+          if (node.classList && (node.classList.contains('react-flow__controls') || node.classList.contains('react-flow__minimap'))) {
+            return false;
+          }
+          return true;
+        }
+      });
+
+      const filename = `${(activeFocusedGoal?.title || 'flowchart').replace(/\s+/g, '_').toLowerCase()}`;
+
+      if (format === 'jpg') {
+        const link = document.createElement('a');
+        link.download = `${filename}.jpg`;
+        link.href = dataUrl;
+        link.click();
+      } else if (format === 'pdf') {
+        const pdf = new jsPDF({
+          orientation: 'landscape',
+          unit: 'px',
+          format: [element.offsetWidth, element.offsetHeight]
+        });
+        pdf.addImage(dataUrl, 'JPEG', 0, 0, element.offsetWidth, element.offsetHeight);
+        pdf.save(`${filename}.pdf`);
+      }
+    } catch (err) {
+      console.error('Failed to export flowchart', err);
+      alert('Unable to export flowchart. Please try again.');
+    } finally {
+      setExportingFormat(null);
     }
   };
 
@@ -588,26 +638,55 @@ const GoalDetail = () => {
                       </button>
                     </div>
 
-                    <button
-                      onClick={handleSaveFlowchart}
-                      className="w-full py-2 bg-[#22D3EE] hover:bg-[#06b6d4] text-[#0F172A] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer"
-                    >
-                      {savedSuccess ? (
-                        <>
-                          <Check className="w-3.5 h-3.5" />
-                          <span>Saved!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Save className="w-3.5 h-3.5" />
-                          <span>Save Flowchart</span>
-                        </>
-                      )}
-                    </button>
+                    <div className="space-y-2 pt-2 border-t border-[#E2E8F0]">
+                      <button
+                        onClick={handleSaveFlowchart}
+                        className="w-full py-2 bg-[#22D3EE] hover:bg-[#06b6d4] text-[#0F172A] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer"
+                      >
+                        {savedSuccess ? (
+                          <>
+                            <Check className="w-3.5 h-3.5" />
+                            <span>Saved!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Save className="w-3.5 h-3.5" />
+                            <span>Save Flowchart</span>
+                          </>
+                        )}
+                      </button>
+
+                      {/* Download Buttons: JPG and PDF */}
+                      <div className="grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          disabled={!!exportingFormat}
+                          onClick={() => handleDownloadFlowchart('jpg')}
+                          className="py-1.5 bg-white hover:bg-slate-100 text-[#0F172A] border border-[#E2E8F0] rounded-xl text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 cursor-pointer disabled:opacity-50"
+                          title="Download Flowchart as JPG"
+                        >
+                          <Download className="w-3.5 h-3.5 text-[#0F172A]" />
+                          <span>{exportingFormat === 'jpg' ? 'Exporting...' : 'JPG'}</span>
+                        </button>
+                        <button
+                          type="button"
+                          disabled={!!exportingFormat}
+                          onClick={() => handleDownloadFlowchart('pdf')}
+                          className="py-1.5 bg-white hover:bg-slate-100 text-[#0F172A] border border-[#E2E8F0] rounded-xl text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 cursor-pointer disabled:opacity-50"
+                          title="Download Flowchart as PDF"
+                        >
+                          <FileDown className="w-3.5 h-3.5 text-[#0F172A]" />
+                          <span>{exportingFormat === 'pdf' ? 'Exporting...' : 'PDF'}</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
                   {/* React Flow Canvas */}
-                  <div className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden relative">
+                  <div 
+                    ref={flowchartWrapperRef}
+                    className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden relative"
+                  >
                     <ReactFlow
                       nodes={nodes}
                       edges={edges}
@@ -750,6 +829,31 @@ const GoalDetail = () => {
                       </>
                     )}
                   </button>
+
+                  {/* Download Buttons: JPG and PDF */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      disabled={!!exportingFormat}
+                      onClick={() => handleDownloadFlowchart('jpg')}
+                      className="py-1.5 bg-white hover:bg-slate-100 text-[#0F172A] border border-[#E2E8F0] rounded-xl text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 cursor-pointer disabled:opacity-50"
+                      title="Download Flowchart as JPG"
+                    >
+                      <Download className="w-3.5 h-3.5 text-[#0F172A]" />
+                      <span>{exportingFormat === 'jpg' ? 'Exporting...' : 'JPG'}</span>
+                    </button>
+                    <button
+                      type="button"
+                      disabled={!!exportingFormat}
+                      onClick={() => handleDownloadFlowchart('pdf')}
+                      className="py-1.5 bg-white hover:bg-slate-100 text-[#0F172A] border border-[#E2E8F0] rounded-xl text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 cursor-pointer disabled:opacity-50"
+                      title="Download Flowchart as PDF"
+                    >
+                      <FileDown className="w-3.5 h-3.5 text-[#0F172A]" />
+                      <span>{exportingFormat === 'pdf' ? 'Exporting...' : 'PDF'}</span>
+                    </button>
+                  </div>
+
                   <button
                     onClick={() => setParentView('cards')}
                     className="w-full py-2 bg-white hover:bg-slate-100 text-[#0F172A] border border-[#E2E8F0] rounded-xl text-xs font-bold cursor-pointer"
@@ -760,7 +864,10 @@ const GoalDetail = () => {
               </div>
 
               {/* React Flow Interactive Canvas */}
-              <div className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden relative">
+              <div 
+                ref={flowchartWrapperRef}
+                className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden relative"
+              >
                 <ReactFlow
                   nodes={nodes}
                   edges={edges}
