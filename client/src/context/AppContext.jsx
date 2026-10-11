@@ -28,6 +28,21 @@ export const PASTEL_COLORS = [
   { name: 'Dark Slate', hex: '#64748B' }
 ];
 
+export const getContrastingTextColor = (hexColor) => {
+  if (!hexColor) return '#0F172A';
+  let hex = hexColor.replace('#', '');
+  if (hex.length === 3) {
+    hex = hex.split('').map(c => c + c).join('');
+  }
+  if (hex.length !== 6) return '#0F172A';
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+  // Calculate relative luminance / brightness (YIQ formula)
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  return yiq < 140 ? '#F8FAFC' : '#0F172A';
+};
+
 export const CATEGORIES = [
   { name: 'Personal', color: '#FBBF24' },
   { name: 'Work', color: '#22D3EE' },

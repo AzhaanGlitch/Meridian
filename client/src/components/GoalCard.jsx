@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FlipCard from './FlipCard';
+import { getContrastingTextColor } from '../context/AppContext';
 
 const GoalCard = ({ goal }) => {
   const navigate = useNavigate();
@@ -9,17 +10,26 @@ const GoalCard = ({ goal }) => {
     navigate(`/goals/${goal._id}`);
   };
 
-  // Clean Card face content with only Title and Description
+  const textColor = getContrastingTextColor(goal.cardColor);
+  const isDark = textColor === '#F8FAFC';
+
+  // Clean Card face content with dynamic contrasting text
   const CardContent = (
     <div
-      style={{ backgroundColor: goal.cardColor || '#FBBF24' }}
-      className="w-full h-full p-8 flex flex-col justify-start text-[#0F172A] relative select-none cursor-pointer rounded-3xl"
+      style={{ backgroundColor: goal.cardColor || '#FBBF24', color: textColor }}
+      className="w-full h-full p-8 flex flex-col justify-start relative select-none cursor-pointer rounded-3xl"
     >
-      <h3 className="font-extrabold text-2xl leading-snug mb-3 text-[#0F172A] line-clamp-2">
+      <h3 
+        style={{ color: textColor }}
+        className="font-extrabold text-2xl leading-snug mb-3 line-clamp-2"
+      >
         {goal.title}
       </h3>
       {goal.description && (
-        <p className="text-sm text-[#0F172A]/85 line-clamp-6 font-medium leading-relaxed">
+        <p 
+          style={{ color: textColor, opacity: isDark ? 0.9 : 0.85 }}
+          className="text-sm line-clamp-6 font-medium leading-relaxed"
+        >
           {goal.description}
         </p>
       )}

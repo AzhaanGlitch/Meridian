@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useApp, PASTEL_COLORS } from '../context/AppContext';
+import { useApp, PASTEL_COLORS, getContrastingTextColor } from '../context/AppContext';
 import { toJpeg } from 'html-to-image';
 import jsPDF from 'jspdf';
 import ReactFlow, { 
@@ -36,15 +36,16 @@ const CustomFlowchartNode = ({ data, selected }) => {
   const points = data?.connectionPoints || 4;
   const label = data?.label || 'Node';
   const color = data?.color || '#22D3EE';
+  const textColor = getContrastingTextColor(color);
 
   return (
     <div
       style={{
         backgroundColor: color,
-        color: '#0F172A',
+        color: textColor,
         borderRadius: '24px',
         padding: '12px 24px',
-        border: selected ? '2px solid #0F172A' : '1px solid rgba(0,0,0,0.08)',
+        border: selected ? (textColor === '#F8FAFC' ? '2px solid #FFFFFF' : '2px solid #0F172A') : '1px solid rgba(0,0,0,0.08)',
         boxShadow: selected ? '0 6px 18px rgba(0,0,0,0.14)' : '0 3px 10px rgba(0,0,0,0.06)'
       }}
       className="relative text-xs font-bold text-center min-w-[130px] select-none"
@@ -1269,23 +1270,33 @@ const GoalDetail = () => {
 
                 {childGoals.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {childGoals.map((cg) => (
-                      <div
-                        key={cg._id}
-                        onClick={() => setSelectedChildId(cg._id)}
-                        style={{ backgroundColor: cg.cardColor || '#FBBF24' }}
-                        className="h-44 p-6 rounded-3xl border border-black/5 text-[#0F172A] cursor-pointer hover:scale-[1.02] hover:shadow-lg transition-all duration-200 flex flex-col justify-start select-none shadow-sm"
-                      >
-                        <h4 className="font-extrabold text-lg leading-snug mb-2 line-clamp-2">
-                          {cg.title}
-                        </h4>
-                        {cg.description && (
-                          <p className="text-xs text-[#0F172A]/85 line-clamp-4 font-medium leading-relaxed">
-                            {cg.description}
-                          </p>
-                        )}
-                      </div>
-                    ))}
+                    {childGoals.map((cg) => {
+                      const cgTextColor = getContrastingTextColor(cg.cardColor);
+                      const isDark = cgTextColor === '#F8FAFC';
+                      return (
+                        <div
+                          key={cg._id}
+                          onClick={() => setSelectedChildId(cg._id)}
+                          style={{ backgroundColor: cg.cardColor || '#FBBF24', color: cgTextColor }}
+                          className="h-44 p-6 rounded-3xl border border-black/5 cursor-pointer hover:scale-[1.02] hover:shadow-lg transition-all duration-200 flex flex-col justify-start select-none shadow-sm"
+                        >
+                          <h4 
+                            style={{ color: cgTextColor }}
+                            className="font-extrabold text-lg leading-snug mb-2 line-clamp-2"
+                          >
+                            {cg.title}
+                          </h4>
+                          {cg.description && (
+                            <p 
+                              style={{ color: cgTextColor, opacity: isDark ? 0.9 : 0.85 }}
+                              className="text-xs line-clamp-4 font-medium leading-relaxed"
+                            >
+                              {cg.description}
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : (
                   <div className="text-xs text-[#64748B] italic py-8 text-center bg-[#F8FAFC] rounded-2xl border border-[#E2E8F0]">
