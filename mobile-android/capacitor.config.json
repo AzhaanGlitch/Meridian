@@ -1,0 +1,9 @@
+{
+  "appId": "com.meridian.app",
+  "appName": "Meridian",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  }
+}
