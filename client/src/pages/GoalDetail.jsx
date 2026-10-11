@@ -42,8 +42,8 @@ const CustomFlowchartNode = ({ data, selected }) => {
       style={{
         backgroundColor: color,
         color: '#0F172A',
-        borderRadius: '16px',
-        padding: '12px 20px',
+        borderRadius: '24px',
+        padding: '12px 24px',
         border: selected ? '2px solid #0F172A' : '1px solid rgba(0,0,0,0.08)',
         boxShadow: selected ? '0 6px 18px rgba(0,0,0,0.14)' : '0 3px 10px rgba(0,0,0,0.06)'
       }}
@@ -158,6 +158,9 @@ const GoalDetail = () => {
     setSelectedChildId(null);
     setParentView('cards');
     setChildActiveTab('checklist');
+  }, [id]);
+
+  useEffect(() => {
     fetchGoalDetails();
   }, [id, goals]);
 
@@ -347,18 +350,16 @@ const GoalDetail = () => {
     setNodes((nds) =>
       nds.map((n) => {
         if (n.id === selectedNodeId) {
+          const { style, ...rest } = n;
           return {
-            ...n,
+            ...rest,
+            type: 'customFlowNode',
             data: {
               ...n.data,
               label: editNodeLabel.trim() || n.data?.label || 'Node',
               color: editNodeColor,
               connectionPoints: Number(editNodePoints) || 4,
               importance: Number(editNodeImportance) || 0
-            },
-            style: {
-              ...n.style,
-              background: editNodeColor
             }
           };
         }
