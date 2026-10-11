@@ -27,7 +27,8 @@ import {
   Save,
   Check,
   Download,
-  FileDown
+  FileDown,
+  Star
 } from 'lucide-react';
 
 // Custom Flowchart Node with 1, 2, 3 or 4 customizable connection points (Handles)
@@ -87,6 +88,14 @@ const CustomFlowchartNode = ({ data, selected }) => {
           className="!w-1.5 !h-1.5 !min-w-[6px] !min-h-[6px] !bg-[#0F172A] !border !border-white !rounded-full -right-1 transition-transform hover:scale-150"
         />
       )}
+      {/* Importance Stars Badge (1 or 2 stars) */}
+      {data?.importance > 0 && (
+        <div className="absolute -top-2.5 right-2 flex items-center gap-0.5 bg-[#0F172A] px-1.5 py-0.5 rounded-full shadow-md z-10 border border-white/20">
+          {Array.from({ length: Math.min(data.importance, 2) }).map((_, i) => (
+            <Star key={i} className="w-2.5 h-2.5 fill-[#FDE047] text-[#FDE047]" />
+          ))}
+        </div>
+      )}
 
       <span className="block leading-snug">{label}</span>
     </div>
@@ -117,6 +126,13 @@ const GoalDetail = () => {
   const [connectionPoints, setConnectionPoints] = useState(4);
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [exportingFormat, setExportingFormat] = useState(null); // 'jpg' | 'pdf' | null
+
+  // Selected Node State for Editing in Left Panel
+  const [selectedNodeId, setSelectedNodeId] = useState(null);
+  const [editNodeLabel, setEditNodeLabel] = useState('');
+  const [editNodeColor, setEditNodeColor] = useState('#22D3EE');
+  const [editNodePoints, setEditNodePoints] = useState(4);
+  const [editNodeImportance, setEditNodeImportance] = useState(0); // 0 | 1 | 2 stars
 
   const flowchartWrapperRef = useRef(null);
 
@@ -268,6 +284,55 @@ const GoalDetail = () => {
     event.stopPropagation();
     setEdges((eds) => eds.filter((e) => e.id !== edge.id));
   }, []);
+
+  // When a node is clicked, populate the edit panel
+  const onNodeClick = useCallback((event, node) => {
+    event.stopPropagation();
+    setSelectedNodeId(node.id);
+    setEditNodeLabel(node.data?.label || '');
+    setEditNodeColor(node.data?.color || node.style?.background || '#22D3EE');
+    setEditNodePoints(node.data?.connectionPoints || 4);
+    setEditNodeImportance(node.data?.importance || 0);
+  }, []);
+
+  // Clicking on background deselects node
+  const onPaneClick = useCallback(() => {
+    setSelectedNodeId(null);
+  }, []);
+
+  // Save changes to the selected node
+  const handleUpdateSelectedNode = () => {
+    if (!selectedNodeId) return;
+    setNodes((nds) =>
+      nds.map((n) => {
+        if (n.id === selectedNodeId) {
+          return {
+            ...n,
+            data: {
+              ...n.data,
+              label: editNodeLabel.trim() || n.data?.label || 'Node',
+              color: editNodeColor,
+              connectionPoints: Number(editNodePoints) || 4,
+              importance: Number(editNodeImportance) || 0
+            },
+            style: {
+              ...n.style,
+              background: editNodeColor
+            }
+          };
+        }
+        return n;
+      })
+    );
+  };
+
+  // Delete the selected node and its connected edges
+  const handleDeleteSelectedNode = () => {
+    if (!selectedNodeId) return;
+    setNodes((nds) => nds.filter((n) => n.id !== selectedNodeId));
+    setEdges((eds) => eds.filter((e) => e.source !== selectedNodeId && e.target !== selectedNodeId));
+    setSelectedNodeId(null);
+  };
 
   const handleAddCustomNode = () => {
     if (!newNodeLabel.trim()) return;
@@ -579,64 +644,182 @@ const GoalDetail = () => {
                 <div className="flex-1 flex gap-4 min-h-[420px]">
                   {/* Left Controls: Add custom node & Save */}
                   <div className="w-64 bg-slate-50 border border-[#E2E8F0] rounded-2xl p-4 flex flex-col justify-between space-y-4 flex-shrink-0">
-                    <div className="space-y-3">
-                      <span className="text-xs font-bold text-[#0F172A] block">Add Custom Node</span>
-                      <input
-                        type="text"
-                        placeholder="Node text..."
-                        value={newNodeLabel}
-                        onChange={(e) => setNewNodeLabel(e.target.value)}
-                        className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#0F172A]"
-                      />
+                    {/* Node Controls: Edit Mode when node is selected, otherwise Add New Node */}
+                    {selectedNodeId ? (
+                      <div className="space-y-3 bg-white p-3 rounded-2xl border border-[#0F172A] shadow-xs">
+                        <div className="flex items-center justify-between pb-1 border-b border-[#E2E8F0]">
+                          <span className="text-xs font-extrabold text-[#0F172A] flex items-center gap-1.5">
+                            <Edit2 className="w-3.5 h-3.5 text-[#22D3EE]" />
+                            <span>Edit Selected Node</span>
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedNodeId(null)}
+                            className="text-[#64748B] hover:text-[#0F172A] text-xs font-bold"
+                            title="Cancel editing"
+                          >
+                            <X className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
 
-                      {/* Connection Points Selector (1, 2, 3, 4) */}
-                      <div className="space-y-1.5 pt-1">
-                        <span className="text-[11px] font-bold text-[#64748B] block">Connecting Points:</span>
-                        <div className="grid grid-cols-4 gap-1.5">
-                          {[1, 2, 3, 4].map((pt) => (
+                        {/* Edit Label */}
+                        <div className="space-y-1">
+                          <label className="text-[10px] font-bold text-[#64748B] block">Node Text</label>
+                          <input
+                            type="text"
+                            value={editNodeLabel}
+                            onChange={(e) => setEditNodeLabel(e.target.value)}
+                            className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-2.5 py-1.5 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-[#0F172A]"
+                          />
+                        </div>
+
+                        {/* Importance Stars: 0, 1, or 2 stars */}
+                        <div className="space-y-1">
+                          <label className="text-[10px] font-bold text-[#64748B] block">Importance</label>
+                          <div className="flex items-center gap-1.5">
                             <button
-                              key={pt}
                               type="button"
-                              onClick={() => setConnectionPoints(pt)}
-                              className={`py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                                connectionPoints === pt
-                                  ? 'bg-[#0F172A] text-white shadow-xs scale-[1.02]'
-                                  : 'bg-white text-[#64748B] hover:text-[#0F172A] border border-[#E2E8F0]'
-                              }`}
+                              onClick={() => setEditNodeImportance(0)}
+                              className={`px-2 py-1 rounded-lg text-[10px] font-bold border ${editNodeImportance === 0 ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-[#F8FAFC] text-[#64748B] border-[#E2E8F0]'}`}
                             >
-                              {pt} pt{pt > 1 ? 's' : ''}
+                              None
                             </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Circular Color Palette of Minimal Soft Colors */}
-                      <div className="space-y-1.5 pt-1">
-                        <span className="text-[11px] font-bold text-[#64748B] block">Node Color:</span>
-                        <div className="grid grid-cols-6 gap-2 bg-white p-2.5 rounded-2xl border border-[#E2E8F0]">
-                          {PASTEL_COLORS.slice(0, 12).map((c) => (
                             <button
-                              key={c.hex}
                               type="button"
-                              onClick={() => setSelectedNodeColor(c.hex)}
-                              style={{ backgroundColor: c.hex }}
-                              className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 cursor-pointer ${
-                                selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110 shadow-xs' : 'border-black/10'
-                              }`}
-                              title={c.name}
-                            />
-                          ))}
+                              onClick={() => setEditNodeImportance(1)}
+                              className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-bold border ${editNodeImportance === 1 ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-[#F8FAFC] text-[#64748B] border-[#E2E8F0]'}`}
+                              title="1 Star: Important"
+                            >
+                              <Star className="w-3 h-3 fill-[#FDE047] text-[#FDE047]" />
+                              <span>Important</span>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setEditNodeImportance(2)}
+                              className={`flex items-center gap-0.5 px-2 py-1 rounded-lg text-[10px] font-bold border ${editNodeImportance === 2 ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-[#F8FAFC] text-[#64748B] border-[#E2E8F0]'}`}
+                              title="2 Stars: Very Important"
+                            >
+                              <Star className="w-3 h-3 fill-[#FDE047] text-[#FDE047]" />
+                              <Star className="w-3 h-3 fill-[#FDE047] text-[#FDE047]" />
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Connecting Points */}
+                        <div className="space-y-1">
+                          <label className="text-[10px] font-bold text-[#64748B] block">Connecting Points</label>
+                          <div className="grid grid-cols-4 gap-1">
+                            {[1, 2, 3, 4].map((pt) => (
+                              <button
+                                key={pt}
+                                type="button"
+                                onClick={() => setEditNodePoints(pt)}
+                                className={`py-1 rounded-lg text-[10px] font-bold border ${editNodePoints === pt ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-[#F8FAFC] text-[#64748B] border-[#E2E8F0]'}`}
+                              >
+                                {pt} pt{pt > 1 ? 's' : ''}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Color Selector */}
+                        <div className="space-y-1">
+                          <label className="text-[10px] font-bold text-[#64748B] block">Color</label>
+                          <div className="grid grid-cols-6 gap-1.5 bg-[#F8FAFC] p-2 rounded-xl border border-[#E2E8F0]">
+                            {PASTEL_COLORS.slice(0, 12).map((c) => (
+                              <button
+                                key={c.hex}
+                                type="button"
+                                onClick={() => setEditNodeColor(c.hex)}
+                                style={{ backgroundColor: c.hex }}
+                                className={`w-5 h-5 rounded-full border-2 transition-transform hover:scale-110 cursor-pointer ${
+                                  editNodeColor === c.hex ? 'border-[#0F172A] scale-110 shadow-xs' : 'border-black/10'
+                                }`}
+                                title={c.name}
+                              />
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Apply & Delete Node Buttons */}
+                        <div className="pt-2 flex gap-2">
+                          <button
+                            type="button"
+                            onClick={handleUpdateSelectedNode}
+                            className="flex-1 py-1.5 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold shadow-xs transition-all active:scale-95 cursor-pointer"
+                          >
+                            Apply Changes
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleDeleteSelectedNode}
+                            className="p-1.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl border border-red-200 transition-all active:scale-95 cursor-pointer"
+                            title="Delete Node"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
                         </div>
                       </div>
+                    ) : (
+                      <div className="space-y-3">
+                        <span className="text-xs font-bold text-[#0F172A] block">Add Custom Node</span>
+                        <input
+                          type="text"
+                          placeholder="Node text..."
+                          value={newNodeLabel}
+                          onChange={(e) => setNewNodeLabel(e.target.value)}
+                          className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#0F172A]"
+                        />
 
-                      <button
-                        onClick={handleAddCustomNode}
-                        className="w-full py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer mt-2"
-                      >
-                        <Plus className="w-3.5 h-3.5" />
-                        <span>Add Node</span>
-                      </button>
-                    </div>
+                        {/* Connection Points Selector (1, 2, 3, 4) */}
+                        <div className="space-y-1.5 pt-1">
+                          <span className="text-[11px] font-bold text-[#64748B] block">Connecting Points:</span>
+                          <div className="grid grid-cols-4 gap-1.5">
+                            {[1, 2, 3, 4].map((pt) => (
+                              <button
+                                key={pt}
+                                type="button"
+                                onClick={() => setConnectionPoints(pt)}
+                                className={`py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                                  connectionPoints === pt
+                                    ? 'bg-[#0F172A] text-white shadow-xs scale-[1.02]'
+                                    : 'bg-white text-[#64748B] hover:text-[#0F172A] border border-[#E2E8F0]'
+                                }`}
+                              >
+                                {pt} pt{pt > 1 ? 's' : ''}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Circular Color Palette of Minimal Soft Colors */}
+                        <div className="space-y-1.5 pt-1">
+                          <span className="text-[11px] font-bold text-[#64748B] block">Node Color:</span>
+                          <div className="grid grid-cols-6 gap-2 bg-white p-2.5 rounded-2xl border border-[#E2E8F0]">
+                            {PASTEL_COLORS.slice(0, 12).map((c) => (
+                              <button
+                                key={c.hex}
+                                type="button"
+                                onClick={() => setSelectedNodeColor(c.hex)}
+                                style={{ backgroundColor: c.hex }}
+                                className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 cursor-pointer ${
+                                  selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110 shadow-xs' : 'border-black/10'
+                                }`}
+                                title={c.name}
+                              />
+                            ))}
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={handleAddCustomNode}
+                          className="w-full py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer mt-2"
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                          <span>Add Node</span>
+                        </button>
+                      </div>
+                    )}
 
                     <div className="space-y-2 pt-2 border-t border-[#E2E8F0]">
                       <button
@@ -695,6 +878,8 @@ const GoalDetail = () => {
                       onEdgesChange={onEdgesChange}
                       onConnect={onConnect}
                       onEdgeClick={onEdgeClick}
+                      onNodeClick={onNodeClick}
+                      onPaneClick={onPaneClick}
                       fitView
                     >
                       <Controls className="bg-white border border-[#E2E8F0] rounded-xl shadow-md p-1" />
@@ -751,65 +936,181 @@ const GoalDetail = () => {
               {/* Left Toolbar to add customizable notes and save */}
               <div className="w-64 bg-slate-50 border border-[#E2E8F0] rounded-2xl p-4 flex flex-col justify-between space-y-4 flex-shrink-0">
                 <div className="space-y-3">
+                  {selectedNodeId ? (
+                    <div className="space-y-3 bg-white p-3 rounded-2xl border border-[#0F172A] shadow-xs">
+                      <div className="flex items-center justify-between pb-1 border-b border-[#E2E8F0]">
+                        <span className="text-xs font-extrabold text-[#0F172A] flex items-center gap-1.5">
+                          <Edit2 className="w-3.5 h-3.5 text-[#22D3EE]" />
+                          <span>Edit Selected Node</span>
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedNodeId(null)}
+                          className="text-[#64748B] hover:text-[#0F172A] text-xs font-bold"
+                          title="Cancel editing"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
 
-                  <div className="pt-2 border-t border-[#E2E8F0] space-y-2">
-                    <span className="text-xs font-bold text-[#0F172A] block">Add Custom Note/Node</span>
-                    <input
-                      type="text"
-                      placeholder="Node title/notes..."
-                      value={newNodeLabel}
-                      onChange={(e) => setNewNodeLabel(e.target.value)}
-                      className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#0F172A]"
-                    />
+                      {/* Edit Label */}
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-[#64748B] block">Node Text</label>
+                        <input
+                          type="text"
+                          value={editNodeLabel}
+                          onChange={(e) => setEditNodeLabel(e.target.value)}
+                          className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-2.5 py-1.5 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-[#0F172A]"
+                        />
+                      </div>
 
-                    {/* Connecting Points Option: 1, 2, 3, or 4 */}
-                    <div className="space-y-1.5 pt-1">
-                      <span className="text-[11px] font-bold text-[#64748B] block">Connecting Points:</span>
-                      <div className="grid grid-cols-4 gap-1.5">
-                        {[1, 2, 3, 4].map((pt) => (
+                      {/* Importance Stars: 0, 1, or 2 stars */}
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-[#64748B] block">Importance</label>
+                        <div className="flex items-center gap-1.5">
                           <button
-                            key={pt}
                             type="button"
-                            onClick={() => setConnectionPoints(pt)}
-                            className={`py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                              connectionPoints === pt
-                                ? 'bg-[#0F172A] text-white shadow-xs scale-[1.02]'
-                                : 'bg-white text-[#64748B] hover:text-[#0F172A] border border-[#E2E8F0]'
-                            }`}
+                            onClick={() => setEditNodeImportance(0)}
+                            className={`px-2 py-1 rounded-lg text-[10px] font-bold border ${editNodeImportance === 0 ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-[#F8FAFC] text-[#64748B] border-[#E2E8F0]'}`}
                           >
-                            {pt} pt{pt > 1 ? 's' : ''}
+                            None
                           </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Circular Color Palette of Minimal Soft Colors */}
-                    <div className="space-y-1.5 pt-1">
-                      <span className="text-[11px] font-bold text-[#64748B] block">Node Color:</span>
-                      <div className="grid grid-cols-6 gap-2 bg-white p-2.5 rounded-2xl border border-[#E2E8F0]">
-                        {PASTEL_COLORS.slice(0, 12).map((c) => (
                           <button
-                            key={c.hex}
                             type="button"
-                            onClick={() => setSelectedNodeColor(c.hex)}
-                            style={{ backgroundColor: c.hex }}
-                            className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 cursor-pointer ${
-                              selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110 shadow-xs' : 'border-black/10'
-                            }`}
-                            title={c.name}
-                          />
-                        ))}
+                            onClick={() => setEditNodeImportance(1)}
+                            className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-bold border ${editNodeImportance === 1 ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-[#F8FAFC] text-[#64748B] border-[#E2E8F0]'}`}
+                            title="1 Star: Important"
+                          >
+                            <Star className="w-3 h-3 fill-[#FDE047] text-[#FDE047]" />
+                            <span>Important</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setEditNodeImportance(2)}
+                            className={`flex items-center gap-0.5 px-2 py-1 rounded-lg text-[10px] font-bold border ${editNodeImportance === 2 ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-[#F8FAFC] text-[#64748B] border-[#E2E8F0]'}`}
+                            title="2 Stars: Very Important"
+                          >
+                            <Star className="w-3 h-3 fill-[#FDE047] text-[#FDE047]" />
+                            <Star className="w-3 h-3 fill-[#FDE047] text-[#FDE047]" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Connecting Points */}
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-[#64748B] block">Connecting Points</label>
+                        <div className="grid grid-cols-4 gap-1">
+                          {[1, 2, 3, 4].map((pt) => (
+                            <button
+                              key={pt}
+                              type="button"
+                              onClick={() => setEditNodePoints(pt)}
+                              className={`py-1 rounded-lg text-[10px] font-bold border ${editNodePoints === pt ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-[#F8FAFC] text-[#64748B] border-[#E2E8F0]'}`}
+                            >
+                              {pt} pt{pt > 1 ? 's' : ''}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Color Selector */}
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-[#64748B] block">Color</label>
+                        <div className="grid grid-cols-6 gap-1.5 bg-[#F8FAFC] p-2 rounded-xl border border-[#E2E8F0]">
+                          {PASTEL_COLORS.slice(0, 12).map((c) => (
+                            <button
+                              key={c.hex}
+                              type="button"
+                              onClick={() => setEditNodeColor(c.hex)}
+                              style={{ backgroundColor: c.hex }}
+                              className={`w-5 h-5 rounded-full border-2 transition-transform hover:scale-110 cursor-pointer ${
+                                editNodeColor === c.hex ? 'border-[#0F172A] scale-110 shadow-xs' : 'border-black/10'
+                              }`}
+                              title={c.name}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Apply & Delete Node Buttons */}
+                      <div className="pt-2 flex gap-2">
+                        <button
+                          type="button"
+                          onClick={handleUpdateSelectedNode}
+                          className="flex-1 py-1.5 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold shadow-xs transition-all active:scale-95 cursor-pointer"
+                        >
+                          Apply Changes
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleDeleteSelectedNode}
+                          className="p-1.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl border border-red-200 transition-all active:scale-95 cursor-pointer"
+                          title="Delete Node"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                       </div>
                     </div>
+                  ) : (
+                    <div className="pt-2 border-t border-[#E2E8F0] space-y-2">
+                      <span className="text-xs font-bold text-[#0F172A] block">Add Custom Note/Node</span>
+                      <input
+                        type="text"
+                        placeholder="Node title/notes..."
+                        value={newNodeLabel}
+                        onChange={(e) => setNewNodeLabel(e.target.value)}
+                        className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#0F172A]"
+                      />
 
-                    <button
-                      onClick={handleAddCustomNode}
-                      className="w-full py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer mt-2"
-                    >
-                      <Plus className="w-3.5 h-3.5" />
-                      <span>Add Node to Flowchart</span>
-                    </button>
-                  </div>
+                      {/* Connecting Points Option: 1, 2, 3, or 4 */}
+                      <div className="space-y-1.5 pt-1">
+                        <span className="text-[11px] font-bold text-[#64748B] block">Connecting Points:</span>
+                        <div className="grid grid-cols-4 gap-1.5">
+                          {[1, 2, 3, 4].map((pt) => (
+                            <button
+                              key={pt}
+                              type="button"
+                              onClick={() => setConnectionPoints(pt)}
+                              className={`py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                                connectionPoints === pt
+                                  ? 'bg-[#0F172A] text-white shadow-xs scale-[1.02]'
+                                  : 'bg-white text-[#64748B] hover:text-[#0F172A] border border-[#E2E8F0]'
+                              }`}
+                            >
+                              {pt} pt{pt > 1 ? 's' : ''}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Circular Color Palette of Minimal Soft Colors */}
+                      <div className="space-y-1.5 pt-1">
+                        <span className="text-[11px] font-bold text-[#64748B] block">Node Color:</span>
+                        <div className="grid grid-cols-6 gap-2 bg-white p-2.5 rounded-2xl border border-[#E2E8F0]">
+                          {PASTEL_COLORS.slice(0, 12).map((c) => (
+                            <button
+                              key={c.hex}
+                              type="button"
+                              onClick={() => setSelectedNodeColor(c.hex)}
+                              style={{ backgroundColor: c.hex }}
+                              className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 cursor-pointer ${
+                                selectedNodeColor === c.hex ? 'border-[#0F172A] scale-110 shadow-xs' : 'border-black/10'
+                              }`}
+                              title={c.name}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={handleAddCustomNode}
+                        className="w-full py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 cursor-pointer mt-2"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add Node to Flowchart</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2 pt-2 border-t border-[#E2E8F0]">
@@ -876,6 +1177,8 @@ const GoalDetail = () => {
                   onEdgesChange={onEdgesChange}
                   onConnect={onConnect}
                   onEdgeClick={onEdgeClick}
+                  onNodeClick={onNodeClick}
+                  onPaneClick={onPaneClick}
                   fitView
                 >
                   <Controls className="bg-white border border-[#E2E8F0] rounded-xl shadow-md p-1" />
