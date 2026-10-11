@@ -490,14 +490,14 @@ const GoalDetail = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md transition-all animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-0 md:p-4 bg-black/40 backdrop-blur-md transition-all animate-in fade-in duration-200">
       {/* Centered Modal Overlay Card */}
       <div 
-        className="w-full max-w-5xl h-[88vh] bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl flex flex-col overflow-hidden relative"
+        className="w-full max-w-5xl h-full md:h-[88vh] bg-white md:rounded-3xl border-0 md:border border-[#E2E8F0] shadow-2xl flex flex-col overflow-hidden relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header Bar */}
-        <div className="px-6 py-4 border-b border-[#E2E8F0] flex items-center justify-between bg-slate-50/80">
+        <div className="px-4 md:px-6 py-3 md:py-4 border-b border-[#E2E8F0] flex items-center justify-between bg-slate-50/80">
           <div className="flex items-center gap-3">
             {goal && (
               <div 
@@ -568,7 +568,7 @@ const GoalDetail = () => {
         </div>
 
         {/* Modal Content Body */}
-        <div className="flex-1 overflow-y-auto p-6 bg-white flex flex-col">
+        <div className="flex-1 overflow-y-auto p-3 md:p-6 bg-white flex flex-col">
           {loading ? (
             <div className="h-48 flex items-center justify-center">
               <span className="text-xs font-bold text-[#64748B] animate-pulse">Loading...</span>
@@ -692,9 +692,9 @@ const GoalDetail = () => {
 
               {/* CHILD TAB 2: FLOWCHART */}
               {childActiveTab === 'flowchart' && (
-                <div className="flex-1 flex gap-4 min-h-[420px]">
-                  {/* Left Controls: Add custom node & Save */}
-                  <div className="w-64 bg-slate-50 border border-[#E2E8F0] rounded-2xl p-4 flex flex-col justify-between space-y-4 flex-shrink-0">
+                <div className="flex-1 flex flex-col-reverse md:flex-row gap-4 min-h-[550px] md:min-h-[420px]">
+                  {/* Controls: Add custom node & Save (Placed below on mobile, left on desktop) */}
+                  <div className="w-full md:w-64 bg-slate-50 border border-[#E2E8F0] rounded-2xl p-4 flex flex-col justify-between space-y-4 flex-shrink-0">
                     {/* Node Controls: Edit Mode when node is selected, otherwise Add New Node */}
                     {selectedNodeId ? (
                       <div className="space-y-3 bg-white p-3 rounded-2xl border border-[#0F172A] shadow-xs">
@@ -916,10 +916,10 @@ const GoalDetail = () => {
                     </div>
                   </div>
 
-                  {/* React Flow Canvas */}
+                  {/* React Flow Canvas (Displayed on top on mobile screens) */}
                   <div 
                     ref={flowchartWrapperRef}
-                    className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden relative"
+                    className="flex-1 min-h-[320px] md:min-h-0 h-[340px] md:h-auto bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden relative shadow-xs"
                   >
                     <ReactFlow
                       nodes={nodes}
@@ -983,9 +983,9 @@ const GoalDetail = () => {
             </div>
           ) : parentView === 'flowchart' ? (
             /* PARENT FLOWCHART VIEW */
-            <div className="flex-1 flex gap-4 min-h-[480px]">
-              {/* Left Toolbar to add customizable notes and save */}
-              <div className="w-64 bg-slate-50 border border-[#E2E8F0] rounded-2xl p-4 flex flex-col justify-between space-y-4 flex-shrink-0">
+            <div className="flex-1 flex flex-col-reverse md:flex-row gap-4 min-h-[550px] md:min-h-[480px]">
+              {/* Controls Toolbar (Placed below flowchart on mobile, left side on desktop) */}
+              <div className="w-full md:w-64 bg-slate-50 border border-[#E2E8F0] rounded-2xl p-4 flex flex-col justify-between space-y-4 flex-shrink-0">
                 <div className="space-y-3">
                   {selectedNodeId ? (
                     <div className="space-y-3 bg-white p-3 rounded-2xl border border-[#0F172A] shadow-xs">
@@ -1215,10 +1215,10 @@ const GoalDetail = () => {
                 </div>
               </div>
 
-              {/* React Flow Interactive Canvas */}
+              {/* React Flow Interactive Canvas (Positioned on top on mobile) */}
               <div 
                 ref={flowchartWrapperRef}
-                className="flex-1 bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden relative"
+                className="flex-1 min-h-[320px] md:min-h-0 h-[340px] md:h-auto bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden relative shadow-xs"
               >
                 <ReactFlow
                   nodes={nodes}
