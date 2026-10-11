@@ -4,26 +4,14 @@ import FlipCard from './FlipCard';
 
 const GoalCard = ({ goal }) => {
   const navigate = useNavigate();
-  const pointerStartPos = useRef({ x: 0, y: 0 });
 
-  const handlePointerDown = (e) => {
-    pointerStartPos.current = { x: e.clientX, y: e.clientY };
-  };
-
-  const handleClick = (e) => {
-    // Distinguish between a drag/spin gesture and a click
-    const dx = Math.abs(e.clientX - pointerStartPos.current.x);
-    const dy = Math.abs(e.clientY - pointerStartPos.current.y);
-    if (dx < 8 && dy < 8) {
-      navigate(`/goals/${goal._id}`);
-    }
+  const handleOpenGoal = () => {
+    navigate(`/goals/${goal._id}`);
   };
 
   // Clean Card face content with only Title and Description
   const CardContent = (
     <div
-      onPointerDown={handlePointerDown}
-      onClick={handleClick}
       style={{ backgroundColor: goal.cardColor || '#FBBF24' }}
       className="w-full h-full p-8 flex flex-col justify-start text-[#0F172A] relative select-none cursor-pointer rounded-3xl"
     >
@@ -45,6 +33,7 @@ const GoalCard = ({ goal }) => {
         back={CardContent}
         axis="y"
         flipOnClick={false}
+        onCardClick={handleOpenGoal}
         draggable={true}
         dragDistance={250}
         tilt={true}

@@ -49,7 +49,8 @@ export default function FlipCard({
   shadowOpacity = 0.45,
   disabled = false,
   ariaLabel = 'Flip card',
-  className = ''
+  className = '',
+  onCardClick = null
 }) {
   const reduce = useReducedMotion();
   const controlled = flipped !== undefined;
@@ -175,8 +176,12 @@ export default function FlipCard({
     setDragging(false);
     if (e.pointerType === 'touch' || !rootRef.current?.matches(':hover')) rest();
     if (!g.moved) {
-      if (!cancelled && flipOnClick) flip(false);
-      else settle(target.current, 0, false);
+      if (!cancelled) {
+        if (onCardClick) onCardClick(e);
+        if (flipOnClick) flip(false);
+      } else {
+        settle(target.current, 0, false);
+      }
       return;
     }
     const here = turn.get();
@@ -191,10 +196,17 @@ export default function FlipCard({
   const onKeyDown = e => {
     if (disabled || (e.key !== 'Enter' && e.key !== ' ')) return;
     e.preventDefault();
-    if (!e.repeat) flip(true);
+    if (!e.repeat) {
+      if (onCardClick) onCardClick(e);
+      if (flipOnClick) flip(true);
+    }
   };
   const onClick = e => {
-    if (!disabled && e.detail === 0) flip(true);
+    if (disabled) return;
+    if (e.detail === 0) {
+      if (onCardClick) onCardClick(e);
+      if (flipOnClick) flip(true);
+    }
   };
 
   const rotorStyle = {
