@@ -50,7 +50,7 @@ const CustomFlowchartNode = ({ data, selected }) => {
           type="target"
           position={Position.Top}
           id="top"
-          className="!w-3 !h-3 !bg-[#0F172A] !border-2 !border-white !rounded-full -top-1.5 transition-transform hover:scale-125"
+          className="!w-1.5 !h-1.5 !min-w-[6px] !min-h-[6px] !bg-[#0F172A] !border !border-white !rounded-full -top-1 transition-transform hover:scale-150"
         />
       )}
 
@@ -60,7 +60,7 @@ const CustomFlowchartNode = ({ data, selected }) => {
           type="source"
           position={Position.Bottom}
           id="bottom"
-          className="!w-3 !h-3 !bg-[#0F172A] !border-2 !border-white !rounded-full -bottom-1.5 transition-transform hover:scale-125"
+          className="!w-1.5 !h-1.5 !min-w-[6px] !min-h-[6px] !bg-[#0F172A] !border !border-white !rounded-full -bottom-1 transition-transform hover:scale-150"
         />
       )}
 
@@ -70,7 +70,7 @@ const CustomFlowchartNode = ({ data, selected }) => {
           type="target"
           position={Position.Left}
           id="left"
-          className="!w-3 !h-3 !bg-[#0F172A] !border-2 !border-white !rounded-full -left-1.5 transition-transform hover:scale-125"
+          className="!w-1.5 !h-1.5 !min-w-[6px] !min-h-[6px] !bg-[#0F172A] !border !border-white !rounded-full -left-1 transition-transform hover:scale-150"
         />
       )}
 
@@ -80,7 +80,7 @@ const CustomFlowchartNode = ({ data, selected }) => {
           type="source"
           position={Position.Right}
           id="right"
-          className="!w-3 !h-3 !bg-[#0F172A] !border-2 !border-white !rounded-full -right-1.5 transition-transform hover:scale-125"
+          className="!w-1.5 !h-1.5 !min-w-[6px] !min-h-[6px] !bg-[#0F172A] !border !border-white !rounded-full -right-1 transition-transform hover:scale-150"
         />
       )}
 
