@@ -1288,3 +1288,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:39:40]` Support seed script data consistency check for mock user profiles
 - `[15:04:39]` Fix parent goal card progress percentage calculation from child items
 - `[15:30:50]` Refactor custom node tooltip preview when hovering over blocked steps to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[15:55:41]` Support custom node tooltip preview when hovering over blocked steps
