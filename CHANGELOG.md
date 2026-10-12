@@ -1324,3 +1324,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[14:27:35]` Fix: improve canvas performance during rapid node addition and deletion and ensure backward compatibility with existing saved layouts
 - `[14:53:39]` Tune Android asset pipeline compression and adaptive app icons
 - `[15:16:22]` Refactor: refactor toast notification queue for background auto-save status and ensure backward compatibility with existing saved layouts
+- `[15:45:21]` Support flowchart mini-map positioning and viewport toggle visibility to normalize layout dimensions across Chrome, Safari and Firefox
