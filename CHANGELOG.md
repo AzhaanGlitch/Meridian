@@ -1331,3 +1331,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[17:25:43]` Feat: update local storage fallback synchronization when network is disconnected and prevent unnecessary re-renders with memoization and useCallback hooks
 - `[17:48:31]` Ensure batch update endpoint for flowchart node coordinates to add defensive checks against null and undefined payload keys
 - `[18:12:19]` Fix recurring goal cadence presets (daily, weekly, monthly) to add defensive checks against null and undefined payload keys
+- `[18:39:36]` Update flowchart multi-node selection box and batch dragging logic
