@@ -1326,3 +1326,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:16:22]` Refactor: refactor toast notification queue for background auto-save status and ensure backward compatibility with existing saved layouts
 - `[15:45:21]` Support flowchart mini-map positioning and viewport toggle visibility to normalize layout dimensions across Chrome, Safari and Firefox
 - `[16:06:15]` Optimize loading skeletons for dashboard statistics and cards to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[16:34:33]` Support node connection anchor points to prevent wire overlapping to reduce latency and eliminate redundant state updates
