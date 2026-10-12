@@ -1341,3 +1341,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[21:33:23]` UI: refactor Gradle build script dependencies resolution and version bumps and provide user-friendly fallback messaging on network timeouts
 - `[21:59:12]` Update custom SVG icon badge rendering inside flowchart card headers
 - `[22:24:31]` Tweak Android WebView bridge interface for native gesture dispatching to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[22:48:42]` Fix rate limiting on authentication and password reset routes
