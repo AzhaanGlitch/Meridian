@@ -1316,3 +1316,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:10:43]` Feat: tune Android WebView bridge interface for native gesture dispatching and add defensive checks against null and undefined payload keys
 - `[11:33:42]` Update Android asset pipeline compression and adaptive app icons
 - `[11:57:36]` Enhance color swatch popover layout with recent palette history
+- `[12:25:21]` Add goal description rich-text rendering with inline markdown preview
