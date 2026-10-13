@@ -1353,3 +1353,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[11:55:51]` Ensure staggered entrance transitions for sticky note goal cards to prevent unnecessary re-renders with memoization and useCallback hooks
 - `[12:17:26]` Tweak goal archive view and soft-delete restoration workflow
 - `[12:44:48]` Update nested milestone checklist items with progress tracking to prevent unnecessary re-renders with memoization and useCallback hooks
+- `[13:07:46]` Fix smooth Bezier curves and connection handle snapping in flowchart
