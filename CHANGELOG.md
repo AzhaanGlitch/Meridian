@@ -1364,3 +1364,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[16:27:40]` Style: optimize flowchart mini-map positioning and viewport toggle visibility and handle edge cases when cards have empty descriptions
 - `[16:54:29]` Enhance centralized error handling middleware with custom AppError classes to ensure backward compatibility with existing saved layouts
 - `[17:20:12]` Perf: ensure recurring goal cadence presets (daily, weekly, monthly) and improve frame rate and eliminate micro-stutters during heavy animations
+- `[17:43:39]` Refactor node connection anchor points to prevent wire overlapping to streamline component props and clean up legacy utility helpers
