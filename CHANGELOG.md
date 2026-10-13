@@ -1347,3 +1347,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[09:24:54]` Add edge re-routing algorithm when moving intersecting parent cards
 - `[09:49:51]` Refactor: refactor flowchart node drag responsiveness and boundary constraints and reduce latency and eliminate redundant state updates
 - `[10:13:46]` UI: fix canvas performance during rapid node addition and deletion and ensure backward compatibility with existing saved layouts
+- `[10:37:48]` Support CORS header configurations and preflight cache duration
