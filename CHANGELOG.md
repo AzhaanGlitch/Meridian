@@ -1371,3 +1371,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[19:23:57]` Tune nested milestone checklist items with progress tracking to ensure smooth state transitions without visual layout shifts
 - `[19:49:13]` Feat: improve nested milestone checklist items with progress tracking and handle edge cases when cards have empty descriptions
 - `[20:14:26]` Perf: refactor offline cache storage and IndexedDB syncing worker and reduce latency and eliminate redundant state updates
+- `[20:36:38]` Optimize service worker cache invalidation on new deployment release
