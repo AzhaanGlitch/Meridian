@@ -1354,3 +1354,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[12:17:26]` Tweak goal archive view and soft-delete restoration workflow
 - `[12:44:48]` Update nested milestone checklist items with progress tracking to prevent unnecessary re-renders with memoization and useCallback hooks
 - `[13:07:46]` Fix smooth Bezier curves and connection handle snapping in flowchart
+- `[13:34:53]` Tune parent goal card progress percentage calculation from child items to add defensive checks against null and undefined payload keys
