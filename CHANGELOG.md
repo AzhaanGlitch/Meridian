@@ -1362,3 +1362,4 @@ Comprehensive milestone tracking and feature development log for the Meridian pr
 - `[15:38:54]` Enhance goal search query debouncing and fuzzy matching highlight to reduce latency and eliminate redundant state updates
 - `[16:05:26]` Refactor: fix keyboard navigation shortcuts for panning and centering flowchart canvas and ensure smooth state transitions without visual layout shifts
 - `[16:27:40]` Style: optimize flowchart mini-map positioning and viewport toggle visibility and handle edge cases when cards have empty descriptions
+- `[16:54:29]` Enhance centralized error handling middleware with custom AppError classes to ensure backward compatibility with existing saved layouts
